@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "howItWorks": "Cómo Funciona",
+    "services": "Servicios",
+    "destinations": "Destinos",
+    "contact": "Contacto",
+    "getQuote": "Solicitar Cotización"
+  },
+  "hero": {
+    "title": "TU MOTO,",
+    "titleAccent": "NUESTRO COMPROMISO",
+    "subtitle": "Transportamos tu motocicleta de forma segura a cualquier destino en Argentina. Comenzá tu aventura sin preocupaciones.",
+    "ctaPrimary": "SOLICITAR COTIZACIÓN",
+    "ctaSecondary": "CÓMO FUNCIONA"
+  },
+  "howItWorks": {
+    "title": "¿CÓMO FUNCIONA?",
+    "subtitle": "Proceso simple y transparente para que tu moto llegue segura a destino",
+    "steps": {
+      "pickup": {
+        "title": "RETIRAMOS",
+        "description": "Coordinamos la recolección de tu motocicleta en el lugar que nos indiques, con todas las medidas de seguridad."
+      },
+      "transport": {
+        "title": "TRANSPORTAMOS",
+        "description": "Tu moto viaja segura en nuestros vehículos especializados con seguro completo y seguimiento GPS."
+      },
+      "delivery": {
+        "title": "ENTREGAMOS",
+        "description": "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "¿POR QUÉ",
+    "titleAccent": "ELEGIRNOS?",
+    "subtitle": "Más de 5 años transportando motocicletas por toda Argentina con total confiabilidad",
+    "features": {
+      "insurance": {
+        "title": "Seguro Incluido",
+        "description": "Cobertura completa durante todo el trayecto. Tu moto está protegida ante cualquier eventualidad."
+      },
+      "fastDelivery": {
+        "title": "Entrega Rápida",
+        "description": "Tiempos de entrega optimizados. Sabemos que querés comenzar tu aventura cuanto antes."
+      },
+      "tracking": {
+        "title": "Seguimiento en Tiempo Real",
+        "description": "Conocé la ubicación exacta de tu motocicleta durante todo el viaje con nuestro sistema GPS."
+      },
+      "support": {
+        "title": "Atención Personalizada",
+        "description": "Equipo dedicado disponible para resolver todas tus consultas durante el proceso."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "TESTIMONIOS",
+    "subtitle": "Lo que dicen nuestros clientes sobre nuestro servicio"
+  },
+  "destinations": {
+    "title": "DESTINOS",
+    "titleAccent": "POPULARES",
+    "subtitle": "Rutas más solicitadas para comenzar tu aventura en moto",
+    "customQuote": "¿No encontrás tu destino?",
+    "customQuoteButton": "Solicitar Cotización Personalizada"
+  },
+  "faq": {
+    "title": "PREGUNTAS FRECUENTES",
+    "subtitle": "Resolvemos las dudas más comunes sobre nuestro servicio"
+  },
+  "quoteForm": {
+    "title": "SOLICITAR",
+    "titleAccent": "COTIZACIÓN",
+    "subtitle": "Completá el formulario y te enviaremos una cotización personalizada en menos de 2 horas",
+    "fields": {
+      "origin": "Ciudad de Origen",
+      "destination": "Ciudad de Destino",
+      "bikeType": "Tipo de Motocicleta",
+      "date": "Fecha Deseada",
+      "name": "Nombre Completo",
+      "phone": "Teléfono",
+      "email": "Email",
+      "comments": "Comentarios Adicionales"
+    },
+    "submit": "ENVIAR COTIZACIÓN",
+    "required": "* Campos obligatorios. Te contactaremos dentro de las próximas 2 horas.",
+    "success": {
+      "title": "¡COTIZACIÓN ENVIADA!",
+      "message": "Recibimos tu solicitud. Te contactaremos dentro de las próximas 2 horas con una cotización personalizada.",
+      "newQuote": "Enviar Nueva Cotización"
+    }
+  },
+  "footer": {
+    "description": "Transportamos tu motocicleta de forma segura por toda Argentina. Más de 5 años de experiencia respaldando las aventuras de miles de motociclistas.",
+    "contact": "Contacto",
+    "links": "Enlaces",
+    "copyright": "Todos los derechos reservados.",
+    "terms": "Términos y Condiciones",
+    "privacy": "Política de Privacidad"
+  },
+  "whatsapp": {
+    "message": "Hola! Me interesa el servicio de transporte de motocicletas. ¿Podrían darme más información?"
+  }
+}

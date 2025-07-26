@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "services": "Services",
+    "destinations": "Destinations",
+    "contact": "Contact",
+    "getQuote": "Get Quote"
+  },
+  "hero": {
+    "title": "YOUR BIKE,",
+    "titleAccent": "OUR COMMITMENT",
+    "subtitle": "We transport your motorcycle safely to any destination in Argentina. Start your adventure worry-free.",
+    "ctaPrimary": "GET QUOTE",
+    "ctaSecondary": "HOW IT WORKS"
+  },
+  "howItWorks": {
+    "title": "HOW IT WORKS?",
+    "subtitle": "Simple and transparent process to get your bike safely to destination",
+    "steps": {
+      "pickup": {
+        "title": "WE PICK UP",
+        "description": "We coordinate the collection of your motorcycle at the location you indicate, with all safety measures."
+      },
+      "transport": {
+        "title": "WE TRANSPORT",
+        "description": "Your bike travels safely in our specialized vehicles with full insurance and GPS tracking."
+      },
+      "delivery": {
+        "title": "WE DELIVER",
+        "description": "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "WHY",
+    "titleAccent": "CHOOSE US?",
+    "subtitle": "Over 5 years transporting motorcycles throughout Argentina with total reliability",
+    "features": {
+      "insurance": {
+        "title": "Insurance Included",
+        "description": "Complete coverage throughout the journey. Your bike is protected against any eventuality."
+      },
+      "fastDelivery": {
+        "title": "Fast Delivery",
+        "description": "Optimized delivery times. We know you want to start your adventure as soon as possible."
+      },
+      "tracking": {
+        "title": "Real-Time Tracking",
+        "description": "Know the exact location of your motorcycle throughout the trip with our GPS system."
+      },
+      "support": {
+        "title": "Personalized Support",
+        "description": "Dedicated team available to resolve all your queries during the process."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "TESTIMONIALS",
+    "subtitle": "What our customers say about our service"
+  },
+  "destinations": {
+    "title": "POPULAR",
+    "titleAccent": "DESTINATIONS",
+    "subtitle": "Most requested routes to start your motorcycle adventure",
+    "customQuote": "Can't find your destination?",
+    "customQuoteButton": "Request Custom Quote"
+  },
+  "faq": {
+    "title": "FREQUENTLY ASKED QUESTIONS",
+    "subtitle": "We resolve the most common doubts about our service"
+  },
+  "quoteForm": {
+    "title": "REQUEST",
+    "titleAccent": "QUOTE",
+    "subtitle": "Fill out the form and we'll send you a personalized quote in less than 2 hours",
+    "fields": {
+      "origin": "Origin City",
+      "destination": "Destination City",
+      "bikeType": "Motorcycle Type",
+      "date": "Desired Date",
+      "name": "Full Name",
+      "phone": "Phone",
+      "email": "Email",
+      "comments": "Additional Comments"
+    },
+    "submit": "SEND QUOTE",
+    "required": "* Required fields. We will contact you within the next 2 hours.",
+    "success": {
+      "title": "QUOTE SENT!",
+      "message": "We received your request. We will contact you within the next 2 hours with a personalized quote.",
+      "newQuote": "Send New Quote"
+    }
+  },
+  "footer": {
+    "description": "We transport your motorcycle safely throughout Argentina. Over 5 years of experience supporting the adventures of thousands of motorcyclists.",
+    "contact": "Contact",
+    "links": "Links",
+    "copyright": "All rights reserved.",
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "whatsapp": {
+    "message": "Hello! I'm interested in the motorcycle transport service. Could you give me more information?"
+  }
+}

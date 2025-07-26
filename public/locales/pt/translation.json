@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Início",
+    "howItWorks": "Como Funciona",
+    "services": "Serviços",
+    "destinations": "Destinos",
+    "contact": "Contato",
+    "getQuote": "Solicitar Orçamento"
+  },
+  "hero": {
+    "title": "SUA MOTO,",
+    "titleAccent": "NOSSO COMPROMISSO",
+    "subtitle": "Transportamos sua motocicleta com segurança para qualquer destino na Argentina. Comece sua aventura sem preocupações.",
+    "ctaPrimary": "SOLICITAR ORÇAMENTO",
+    "ctaSecondary": "COMO FUNCIONA"
+  },
+  "howItWorks": {
+    "title": "COMO FUNCIONA?",
+    "subtitle": "Processo simples e transparente para que sua moto chegue segura ao destino",
+    "steps": {
+      "pickup": {
+        "title": "COLETAMOS",
+        "description": "Coordenamos a coleta de sua motocicleta no local que você indicar, com todas as medidas de segurança."
+      },
+      "transport": {
+        "title": "TRANSPORTAMOS",
+        "description": "Sua moto viaja segura em nossos veículos especializados com seguro completo e rastreamento GPS."
+      },
+      "delivery": {
+        "title": "ENTREGAMOS",
+        "description": "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "POR QUE",
+    "titleAccent": "NOS ESCOLHER?",
+    "subtitle": "Mais de 5 anos transportando motocicletas por toda a Argentina com total confiabilidade",
+    "features": {
+      "insurance": {
+        "title": "Seguro Incluído",
+        "description": "Cobertura completa durante todo o trajeto. Sua moto está protegida contra qualquer eventualidade."
+      },
+      "fastDelivery": {
+        "title": "Entrega Rápida",
+        "description": "Tempos de entrega otimizados. Sabemos que você quer começar sua aventura o quanto antes."
+      },
+      "tracking": {
+        "title": "Rastreamento em Tempo Real",
+        "description": "Conheça a localização exata de sua motocicleta durante toda a viagem com nosso sistema GPS."
+      },
+      "support": {
+        "title": "Atendimento Personalizado",
+        "description": "Equipe dedicada disponível para resolver todas suas consultas durante o processo."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "DEPOIMENTOS",
+    "subtitle": "O que nossos clientes dizem sobre nosso serviço"
+  },
+  "destinations": {
+    "title": "DESTINOS",
+    "titleAccent": "POPULARES",
+    "subtitle": "Rotas mais solicitadas para começar sua aventura de motocicleta",
+    "customQuote": "Não encontra seu destino?",
+    "customQuoteButton": "Solicitar Orçamento Personalizado"
+  },
+  "faq": {
+    "title": "PERGUNTAS FREQUENTES",
+    "subtitle": "Resolvemos as dúvidas mais comuns sobre nosso serviço"
+  },
+  "quoteForm": {
+    "title": "SOLICITAR",
+    "titleAccent": "ORÇAMENTO",
+    "subtitle": "Preencha o formulário e enviaremos um orçamento personalizado em menos de 2 horas",
+    "fields": {
+      "origin": "Cidade de Origem",
+      "destination": "Cidade de Destino",
+      "bikeType": "Tipo de Motocicleta",
+      "date": "Data Desejada",
+      "name": "Nome Completo",
+      "phone": "Telefone",
+      "email": "Email",
+      "comments": "Comentários Adicionais"
+    },
+    "submit": "ENVIAR ORÇAMENTO",
+    "required": "* Campos obrigatórios. Entraremos em contato nas próximas 2 horas.",
+    "success": {
+      "title": "ORÇAMENTO ENVIADO!",
+      "message": "Recebemos sua solicitação. Entraremos em contato nas próximas 2 horas com um orçamento personalizado.",
+      "newQuote": "Enviar Novo Orçamento"
+    }
+  },
+  "footer": {
+    "description": "Transportamos sua motocicleta com segurança por toda a Argentina. Mais de 5 anos de experiência apoiando as aventuras de milhares de motociclistas.",
+    "contact": "Contato",
+    "links": "Links",
+    "copyright": "Todos os direitos reservados.",
+    "terms": "Termos e Condições",
+    "privacy": "Política de Privacidade"
+  },
+  "whatsapp": {
+    "message": "Olá! Estou interessado no serviço de transporte de motocicletas. Poderiam me dar mais informações?"
+  }
+}
