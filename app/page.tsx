@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import HeroStats from "@/components/HeroStats";
+import QuoteCalculator from "@/components/QuoteCalculator";
 import HowItWorks from "@/components/HowItWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ShowcaseVideos from "@/components/ShowcaseVideos";
@@ -13,10 +14,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-black">
+    <main className="min-h-screen bg-sand-100 text-navy-900">
       <Header />
       <Hero />
       <HeroStats />
+      <QuoteCalculator />
       <HowItWorks />
       <WhyChooseUs />
       <ShowcaseVideos />

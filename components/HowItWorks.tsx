@@ -29,12 +29,15 @@ export default function HowItWorks() {
   ]
 
   return (
-    <section className="py-24 bg-white">
+    <section className="section-padding bg-gradient-to-b from-sand-100 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-black mb-6 tracking-tight">¿CÓMO FUNCIONA?</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">
+          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-navy-900 mb-6 tracking-tight">¿CÓMO FUNCIONA?</h2>
+          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
             Proceso simple y transparente para que tu moto llegue segura a destino
+          </p>
+          <p className="text-accent mt-2">
+            Confiá en nuestra experiencia de más de 10 años
           </p>
         </div>
 
@@ -42,28 +45,28 @@ export default function HowItWorks() {
           <div className="grid md:grid-cols-3 gap-8 relative">
             {steps.map((step, index) => (
               <div key={index} className="stagger-item step-connector">
-                <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 elegant-hover relative z-10">
+                <div className="card-elegant p-8 rounded-2xl hover:scale-105 transition-all duration-300 relative z-10">
                   {/* Step number and icon */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center">
-                      <step.icon className="w-8 h-8 text-black" />
+                    <div className="w-16 h-16 bg-yellow-400 rounded-xl flex items-center justify-center shadow-medium hover:shadow-glow transition-all duration-300">
+                      <step.icon className="w-8 h-8 text-navy-900" strokeWidth={1.5} />
                     </div>
-                    <div className="text-6xl font-oswald font-light text-gray-100">
+                    <div className="text-7xl font-oswald font-light text-sand-200">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="mb-6">
-                    <h3 className="text-2xl font-oswald font-bold text-black mb-2">{step.title}</h3>
-                    <p className="text-yellow-600 font-semibold text-sm mb-4">{step.subtitle}</p>
-                    <p className="text-gray-600 leading-relaxed mb-6">{step.description}</p>
+                    <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-2">{step.title}</h3>
+                    <p className="text-clay-600 font-semibold text-sm mb-4">{step.subtitle}</p>
+                    <p className="text-charcoal-700 leading-relaxed mb-6 text-elegant">{step.description}</p>
                   </div>
 
                   {/* Features list */}
                   <div className="space-y-2">
                     {step.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center text-sm text-gray-500">
+                      <div key={featureIndex} className="flex items-center text-sm text-charcoal-700 hover:text-navy-900 transition-colors">
                         <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3" />
                         {feature}
                       </div>
@@ -71,7 +74,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Progress indicator */}
-                  <div className="mt-6 h-1 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="mt-6 h-1 bg-sand-200 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-yellow-400 rounded-full transition-all duration-1000"
                       style={{ width: `${((index + 1) / steps.length) * 100}%` }}
@@ -82,8 +85,8 @@ export default function HowItWorks() {
                 {/* Connection arrow for desktop */}
                 {index < steps.length - 1 && (
                   <div className="hidden md:block absolute top-20 -right-4 z-20">
-                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                      <ArrowRight className="w-4 h-4 text-black" />
+                    <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shadow-glow animate-pulse">
+                      <ArrowRight className="w-4 h-4 text-navy-900" strokeWidth={2} />
                     </div>
                   </div>
                 )}

@@ -45,33 +45,34 @@ export default function FAQ() {
   ]
 
   return (
-    <section className="py-20 bg-white">
+    <section className="section-padding bg-gradient-to-b from-white to-sand-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bebas font-black text-black mb-4">PREGUNTAS FRECUENTES</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">PREGUNTAS FRECUENTES</h2>
+          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
             Resolvemos las dudas más comunes sobre nuestro servicio
           </p>
+          <p className="text-accent mt-2">Todo lo que necesitás saber para viajar tranquilo</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-gray-200 last:border-b-0">
+            <div key={index} className="mb-4 last:mb-0">
               <button
-                className="w-full py-6 text-left flex justify-between items-center hover:bg-gray-50 px-4 rounded-lg"
+                className="w-full py-6 text-left flex justify-between items-center bg-white hover:bg-sand-100 px-6 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <h3 className="text-lg font-bold text-black pr-4">{faq.question}</h3>
+                <h3 className="text-lg font-semibold text-navy-900 pr-4">{faq.question}</h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+                  <ChevronUp className="w-6 h-6 text-yellow-400 flex-shrink-0 transition-transform" />
                 ) : (
-                  <ChevronDown className="w-6 h-6 text-gray-400 flex-shrink-0" />
+                  <ChevronDown className="w-6 h-6 text-charcoal-700 flex-shrink-0 transition-transform hover:text-yellow-400" />
                 )}
               </button>
 
               {openIndex === index && (
-                <div className="px-4 pb-6">
-                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                <div className="px-6 pb-6 animate-fadeInUp">
+                  <p className="text-charcoal-700 leading-relaxed text-elegant pl-4 border-l-2 border-yellow-400">{faq.answer}</p>
                 </div>
               )}
             </div>

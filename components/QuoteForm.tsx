@@ -39,19 +39,19 @@ export default function QuoteForm() {
 
   if (isSubmitted) {
     return (
-      <section id="cotizacion" className="py-20 bg-black text-white">
+      <section id="cotizacion" className="section-padding bg-navy-900 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-8">
+            <div className="bg-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-glow animate-scaleIn">
               <Send className="w-10 h-10" />
             </div>
             <h2 className="text-4xl font-bebas font-black mb-4">¡COTIZACIÓN ENVIADA!</h2>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-sand-200 mb-8">
               Recibimos tu solicitud. Te contactaremos dentro de las próximas 2 horas con una cotización personalizada.
             </p>
             <button
               onClick={() => setIsSubmitted(false)}
-              className="bg-yellow-400 text-black px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-colors"
+              className="bg-yellow-400 text-navy-900 px-8 py-3 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300"
             >
               Enviar Nueva Cotización
             </button>
@@ -62,15 +62,21 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="cotizacion" className="py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
+    <section id="cotizacion" className="section-padding bg-navy-900 text-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-olive-600 rounded-full blur-3xl" />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bebas font-black mb-4">
             SOLICITAR <span className="text-yellow-400">COTIZACIÓN</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light">
             Completá el formulario y te enviaremos una cotización personalizada en menos de 2 horas
           </p>
+          <p className="text-accent mt-2">Sin compromiso ni costos ocultos</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -86,7 +92,7 @@ export default function QuoteForm() {
                 value={formData.origen}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
                 placeholder="Ej: Buenos Aires"
               />
             </div>
@@ -102,7 +108,7 @@ export default function QuoteForm() {
                 value={formData.destino}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
                 placeholder="Ej: Bariloche"
               />
             </div>
@@ -117,7 +123,7 @@ export default function QuoteForm() {
                 value={formData.tipoMoto}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
               >
                 <option value="">Seleccionar tipo</option>
                 <option value="deportiva">Deportiva</option>
@@ -140,7 +146,7 @@ export default function QuoteForm() {
                 name="fecha"
                 value={formData.fecha}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
               />
             </div>
 
@@ -155,7 +161,7 @@ export default function QuoteForm() {
                 value={formData.nombre}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
                 placeholder="Tu nombre completo"
               />
             </div>
@@ -171,7 +177,7 @@ export default function QuoteForm() {
                 value={formData.telefono}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
                 placeholder="Ej: +54 9 11 1234-5678"
               />
             </div>
@@ -187,7 +193,7 @@ export default function QuoteForm() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white"
+                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
                 placeholder="tu@email.com"
               />
             </div>
@@ -210,13 +216,13 @@ export default function QuoteForm() {
             <div className="md:col-span-2 text-center">
               <button
                 type="submit"
-                className="bg-yellow-400 text-black px-12 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 flex items-center justify-center mx-auto"
+                className="bg-yellow-400 text-navy-900 px-12 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 hover:shadow-glow transition-all transform hover:scale-105 flex items-center justify-center mx-auto group"
               >
                 ENVIAR COTIZACIÓN
-                <Send className="ml-2 w-5 h-5" />
+                <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <p className="text-sm text-gray-400 mt-4">
+              <p className="text-sm text-sand-300 mt-4 font-light">
                 * Campos obligatorios. Te contactaremos dentro de las próximas 2 horas.
               </p>
             </div>
