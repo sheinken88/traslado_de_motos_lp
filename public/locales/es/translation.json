@@ -52,6 +52,14 @@
       "support": {
         "title": "Atención Personalizada",
         "description": "Equipo dedicado disponible para resolver todas tus consultas durante el proceso."
+      },
+      "experience": {
+        "title": "Experiencia Comprobada",
+        "description": "Más de 5 años en el mercado con miles de motocicletas transportadas exitosamente."
+      },
+      "team": {
+        "title": "Equipo Profesional",
+        "description": "Personal capacitado y especializado en el manejo y transporte de motocicletas."
       }
     }
   },
@@ -102,5 +110,14 @@
   },
   "whatsapp": {
     "message": "Hola! Me interesa el servicio de transporte de motocicletas. ¿Podrían darme más información?"
+  },
+  "heroStats": {
+    "transported": "Motos Transportadas",
+    "satisfaction": "Satisfacción",
+    "support": "Soporte",
+    "experience": "Años de Experiencia",
+    "ctaTitle": "¿LISTO PARA TU PRÓXIMA AVENTURA?",
+    "ctaSubtitle": "Dejanos transportar tu moto mientras vos te enfocás en disfrutar el viaje",
+    "ctaButton": "COMENZAR AHORA"
   }
 }

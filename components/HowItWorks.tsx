@@ -1,30 +1,26 @@
+"use client"
+
 import { Package, Truck, MapPin, ArrowRight } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function HowItWorks() {
+  const { t } = useLanguage()
+  
   const steps = [
     {
       icon: Package,
-      title: "RETIRAMOS",
-      subtitle: "Recolección Segura",
-      description:
-        "Coordinamos la recolección de tu motocicleta en el lugar que nos indiques, con todas las medidas de seguridad y documentación necesaria.",
-      features: ["Inspección previa", "Documentación completa", "Fotos del estado"],
+      titleKey: "howItWorks.steps.pickup.title",
+      descriptionKey: "howItWorks.steps.pickup.description",
     },
     {
       icon: Truck,
-      title: "TRANSPORTAMOS",
-      subtitle: "Viaje Protegido",
-      description:
-        "Tu moto viaja segura en nuestros vehículos especializados con seguro completo, seguimiento GPS y sistemas de sujeción profesionales.",
-      features: ["Seguro total", "GPS en tiempo real", "Vehículos especializados"],
+      titleKey: "howItWorks.steps.transport.title",
+      descriptionKey: "howItWorks.steps.transport.description",
     },
     {
       icon: MapPin,
-      title: "ENTREGAMOS",
-      subtitle: "Destino Final",
-      description:
-        "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura con toda la documentación en orden.",
-      features: ["Estado perfecto", "Entrega puntual", "Documentación completa"],
+      titleKey: "howItWorks.steps.delivery.title",
+      descriptionKey: "howItWorks.steps.delivery.description",
     },
   ]
 
@@ -32,12 +28,9 @@ export default function HowItWorks() {
     <section className="section-padding bg-gradient-to-b from-sand-100 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-navy-900 mb-6 tracking-tight">¿CÓMO FUNCIONA?</h2>
+          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-navy-900 mb-6 tracking-tight">{t('howItWorks.title')}</h2>
           <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
-            Proceso simple y transparente para que tu moto llegue segura a destino
-          </p>
-          <p className="text-accent mt-2">
-            Confiá en nuestra experiencia de más de 10 años
+            {t('howItWorks.subtitle')}
           </p>
         </div>
 
@@ -58,19 +51,8 @@ export default function HowItWorks() {
 
                   {/* Content */}
                   <div className="mb-6">
-                    <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-2">{step.title}</h3>
-                    <p className="text-clay-600 font-semibold text-sm mb-4">{step.subtitle}</p>
-                    <p className="text-charcoal-700 leading-relaxed mb-6 text-elegant">{step.description}</p>
-                  </div>
-
-                  {/* Features list */}
-                  <div className="space-y-2">
-                    {step.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center text-sm text-charcoal-700 hover:text-navy-900 transition-colors">
-                        <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3" />
-                        {feature}
-                      </div>
-                    ))}
+                    <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-4">{t(step.titleKey)}</h3>
+                    <p className="text-charcoal-700 leading-relaxed text-elegant">{t(step.descriptionKey)}</p>
                   </div>
 
                   {/* Progress indicator */}

@@ -4,8 +4,10 @@ import type React from "react"
 
 import { useState } from "react"
 import { Send } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function QuoteForm() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     origen: "",
     destino: "",
@@ -45,15 +47,15 @@ export default function QuoteForm() {
             <div className="bg-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-glow animate-scaleIn">
               <Send className="w-10 h-10" />
             </div>
-            <h2 className="text-4xl font-bebas font-black mb-4">¡COTIZACIÓN ENVIADA!</h2>
+            <h2 className="text-4xl font-bebas font-black mb-4">{t('quoteForm.success.title')}</h2>
             <p className="text-xl text-sand-200 mb-8">
-              Recibimos tu solicitud. Te contactaremos dentro de las próximas 2 horas con una cotización personalizada.
+              {t('quoteForm.success.message')}
             </p>
             <button
               onClick={() => setIsSubmitted(false)}
               className="bg-yellow-400 text-navy-900 px-8 py-3 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300"
             >
-              Enviar Nueva Cotización
+              {t('quoteForm.success.newQuote')}
             </button>
           </div>
         </div>
@@ -71,19 +73,18 @@ export default function QuoteForm() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bebas font-black mb-4">
-            SOLICITAR <span className="text-yellow-400">COTIZACIÓN</span>
+            {t('quoteForm.title')} <span className="text-yellow-400">{t('quoteForm.titleAccent')}</span>
           </h2>
           <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light">
-            Completá el formulario y te enviaremos una cotización personalizada en menos de 2 horas
+            {t('quoteForm.subtitle')}
           </p>
-          <p className="text-accent mt-2">Sin compromiso ni costos ocultos</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="origen">
-                Ciudad de Origen *
+                {t('quoteForm.fields.origin')} *
               </label>
               <input
                 type="text"
@@ -99,7 +100,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="destino">
-                Ciudad de Destino *
+                {t('quoteForm.fields.destination')} *
               </label>
               <input
                 type="text"
@@ -115,7 +116,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="tipoMoto">
-                Tipo de Motocicleta *
+                {t('quoteForm.fields.bikeType')} *
               </label>
               <select
                 id="tipoMoto"
@@ -138,7 +139,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="fecha">
-                Fecha Deseada
+                {t('quoteForm.fields.date')}
               </label>
               <input
                 type="date"
@@ -152,7 +153,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="nombre">
-                Nombre Completo *
+                {t('quoteForm.fields.name')} *
               </label>
               <input
                 type="text"
@@ -168,7 +169,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="telefono">
-                Teléfono *
+                {t('quoteForm.fields.phone')} *
               </label>
               <input
                 type="tel"
@@ -184,7 +185,7 @@ export default function QuoteForm() {
 
             <div className="md:col-span-2">
               <label className="block text-sm font-bold mb-2" htmlFor="email">
-                Email *
+                {t('quoteForm.fields.email')} *
               </label>
               <input
                 type="email"
@@ -200,7 +201,7 @@ export default function QuoteForm() {
 
             <div className="md:col-span-2">
               <label className="block text-sm font-bold mb-2" htmlFor="comentarios">
-                Comentarios Adicionales
+                {t('quoteForm.fields.comments')}
               </label>
               <textarea
                 id="comentarios"
@@ -218,12 +219,12 @@ export default function QuoteForm() {
                 type="submit"
                 className="bg-yellow-400 text-navy-900 px-12 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 hover:shadow-glow transition-all transform hover:scale-105 flex items-center justify-center mx-auto group"
               >
-                ENVIAR COTIZACIÓN
+                {t('quoteForm.submit')}
                 <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <p className="text-sm text-sand-300 mt-4 font-light">
-                * Campos obligatorios. Te contactaremos dentro de las próximas 2 horas.
+                {t('quoteForm.required')}
               </p>
             </div>
           </form>

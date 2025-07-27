@@ -2,52 +2,48 @@
 
 import { useRef } from "react";
 import { Shield, Clock, MapPin, Headphones, Award, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function WhyChooseUs() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   const features = [
     {
       icon: Shield,
-      title: "Seguro Incluido",
-      description:
-        "Cobertura completa durante todo el trayecto. Tu moto está protegida ante cualquier eventualidad.",
-      stat: "100% Cobertura",
+      titleKey: "whyChooseUs.features.insurance.title",
+      descriptionKey: "whyChooseUs.features.insurance.description",
+      stat: "100%",
     },
     {
       icon: Clock,
-      title: "Entrega Rápida",
-      description:
-        "Tiempos de entrega optimizados. Sabemos que querés comenzar tu aventura cuanto antes.",
+      titleKey: "whyChooseUs.features.fastDelivery.title",
+      descriptionKey: "whyChooseUs.features.fastDelivery.description",
       stat: "24-72hs",
     },
     {
       icon: MapPin,
-      title: "Seguimiento GPS",
-      description:
-        "Conocé la ubicación exacta de tu motocicleta durante todo el viaje con nuestro sistema GPS.",
-      stat: "Tiempo Real",
+      titleKey: "whyChooseUs.features.tracking.title",
+      descriptionKey: "whyChooseUs.features.tracking.description",
+      stat: "GPS",
     },
     {
       icon: Headphones,
-      title: "Atención 24/7",
-      description:
-        "Equipo dedicado disponible para resolver todas tus consultas durante el proceso.",
-      stat: "Soporte Total",
+      titleKey: "whyChooseUs.features.support.title",
+      descriptionKey: "whyChooseUs.features.support.description",
+      stat: "24/7",
     },
     {
       icon: Award,
-      title: "Experiencia Comprobada",
-      description:
-        "Más de 5 años en el mercado con miles de motocicletas transportadas exitosamente.",
-      stat: "5000+ Motos",
+      titleKey: "whyChooseUs.features.experience.title",
+      descriptionKey: "whyChooseUs.features.experience.description",
+      stat: "5000+",
     },
     {
       icon: Users,
-      title: "Equipo Profesional",
-      description:
-        "Personal capacitado y especializado en el manejo y transporte de motocicletas.",
-      stat: "Certificado",
+      titleKey: "whyChooseUs.features.team.title",
+      descriptionKey: "whyChooseUs.features.team.description",
+      stat: "PRO",
     },
   ];
 
@@ -60,13 +56,11 @@ export default function WhyChooseUs() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">
-            ¿POR QUÉ <span className="text-yellow-400">ELEGIRNOS?</span>
+            {t('whyChooseUs.title')} <span className="text-yellow-400">{t('whyChooseUs.titleAccent')}</span>
           </h2>
           <p className="text-xl text-sand-200 max-w-3xl mx-auto font-light">
-            Más de 5 años transportando motocicletas por toda Argentina con
-            total confiabilidad
+            {t('whyChooseUs.subtitle')}
           </p>
-          <p className="text-accent mt-2">La elección de los verdaderos aventureros</p>
         </div>
 
         {/* Modern horizontal scrollable carousel */}
@@ -101,11 +95,11 @@ export default function WhyChooseUs() {
 
                   {/* Content */}
                   <h3 className="text-2xl font-oswald font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
-                    {feature.title}
+                    {t(feature.titleKey)}
                   </h3>
 
                   <p className="text-sand-200/80 leading-relaxed">
-                    {feature.description}
+                    {t(feature.descriptionKey)}
                   </p>
 
                   {/* Bottom accent line */}
@@ -125,7 +119,7 @@ export default function WhyChooseUs() {
 
         <div className="text-center mt-8">
           <p className="text-sand-300/60 text-sm">
-            Deslizá para explorar más
+            {t('whyChooseUs.scrollHint') || 'Deslizá para explorar más'}
           </p>
         </div>
       </div>

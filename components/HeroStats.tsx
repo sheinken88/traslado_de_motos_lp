@@ -1,12 +1,17 @@
+"use client"
+
 import Link from "next/link"
 import { TrendingUp, Star, Clock, Award } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function HeroStats() {
+  const { t } = useLanguage()
+  
   const stats = [
-    { number: "5000", suffix: "+", label: "Motos Transportadas", icon: TrendingUp, color: "text-yellow-400" },
-    { number: "98", suffix: "%", label: "Satisfacción", icon: Star, color: "text-yellow-400" },
-    { number: "24", suffix: "/7", label: "Soporte", icon: Clock, color: "text-yellow-400" },
-    { number: "5", suffix: "+", label: "Años de Experiencia", icon: Award, color: "text-yellow-400" },
+    { number: "5000", suffix: "+", labelKey: "heroStats.transported", icon: TrendingUp, color: "text-yellow-400" },
+    { number: "98", suffix: "%", labelKey: "heroStats.satisfaction", icon: Star, color: "text-yellow-400" },
+    { number: "24", suffix: "/7", labelKey: "heroStats.support", icon: Clock, color: "text-yellow-400" },
+    { number: "5", suffix: "+", labelKey: "heroStats.experience", icon: Award, color: "text-yellow-400" },
   ]
 
   return (
@@ -46,7 +51,7 @@ export default function HeroStats() {
                     </span>
                   </div>
                   <p className="text-sand-200/70 text-sm mt-1 font-light tracking-wide">
-                    {stat.label}
+                    {t(stat.labelKey)}
                   </p>
                 </div>
               </div>
@@ -62,16 +67,16 @@ export default function HeroStats() {
             
             <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-10 max-w-2xl mx-auto">
               <h3 className="text-3xl md:text-4xl font-oswald font-bold text-white mb-4">
-                ¿LISTO PARA TU PRÓXIMA AVENTURA?
+                {t('heroStats.ctaTitle')}
               </h3>
               <p className="text-sand-200/80 mb-8 text-lg font-light leading-relaxed">
-                Dejanos transportar tu moto mientras vos te enfocás en disfrutar el viaje
+                {t('heroStats.ctaSubtitle')}
               </p>
               <Link 
                 href="#cotizacion" 
                 className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-charcoal-900 px-8 py-4 rounded-xl font-oswald font-semibold text-lg hover:shadow-glow hover:scale-105 transition-all duration-300 group"
               >
-                COMENZAR AHORA
+                {t('heroStats.ctaButton')}
                 <svg className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>

@@ -52,6 +52,14 @@
       "support": {
         "title": "Personalized Support",
         "description": "Dedicated team available to resolve all your queries during the process."
+      },
+      "experience": {
+        "title": "Proven Experience",
+        "description": "Over 5 years in the market with thousands of motorcycles successfully transported."
+      },
+      "team": {
+        "title": "Professional Team",
+        "description": "Trained staff specialized in motorcycle handling and transportation."
       }
     }
   },
@@ -102,5 +110,14 @@
   },
   "whatsapp": {
     "message": "Hello! I'm interested in the motorcycle transport service. Could you give me more information?"
+  },
+  "heroStats": {
+    "transported": "Motorcycles Transported",
+    "satisfaction": "Satisfaction",
+    "support": "Support",
+    "experience": "Years of Experience",
+    "ctaTitle": "READY FOR YOUR NEXT ADVENTURE?",
+    "ctaSubtitle": "Let us transport your bike while you focus on enjoying the journey",
+    "ctaButton": "START NOW"
   }
 }
