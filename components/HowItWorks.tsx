@@ -11,16 +11,19 @@ export default function HowItWorks() {
       icon: Package,
       titleKey: "howItWorks.steps.pickup.title",
       descriptionKey: "howItWorks.steps.pickup.description",
+      featuresKey: "howItWorks.steps.pickup.features",
     },
     {
       icon: Truck,
       titleKey: "howItWorks.steps.transport.title",
       descriptionKey: "howItWorks.steps.transport.description",
+      featuresKey: "howItWorks.steps.transport.features",
     },
     {
       icon: MapPin,
       titleKey: "howItWorks.steps.delivery.title",
       descriptionKey: "howItWorks.steps.delivery.description",
+      featuresKey: "howItWorks.steps.delivery.features",
     },
   ]
 
@@ -31,6 +34,9 @@ export default function HowItWorks() {
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-navy-900 mb-6 tracking-tight">{t('howItWorks.title')}</h2>
           <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
             {t('howItWorks.subtitle')}
+          </p>
+          <p className="text-accent mt-2 font-semibold">
+            {t('howItWorks.tagline')}
           </p>
         </div>
 
@@ -52,7 +58,23 @@ export default function HowItWorks() {
                   {/* Content */}
                   <div className="mb-6">
                     <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-4">{t(step.titleKey)}</h3>
-                    <p className="text-charcoal-700 leading-relaxed text-elegant">{t(step.descriptionKey)}</p>
+                    <p className="text-charcoal-700 leading-relaxed text-elegant mb-6">{t(step.descriptionKey)}</p>
+                  </div>
+
+                  {/* Features list */}
+                  <div className="space-y-2">
+                    {(() => {
+                      const features = t(step.featuresKey);
+                      if (Array.isArray(features)) {
+                        return features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center text-sm text-charcoal-700 hover:text-navy-900 transition-colors">
+                            <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3" />
+                            {feature}
+                          </div>
+                        ));
+                      }
+                      return null;
+                    })()}
                   </div>
 
                   {/* Progress indicator */}

@@ -17,18 +17,22 @@
   "howItWorks": {
     "title": "HOW IT WORKS?",
     "subtitle": "Simple and transparent process to get your bike safely to destination",
+    "tagline": "Providing motorcycle transport since 2018",
     "steps": {
       "pickup": {
         "title": "WE PICK UP",
-        "description": "We coordinate the collection of your motorcycle at the location you indicate, with all safety measures."
+        "description": "We coordinate the pickup of your motorcycle with all safety measures and necessary documentation.",
+        "features": ["Previous inspection", "Complete documentation", "Motorcycle loading"]
       },
       "transport": {
         "title": "WE TRANSPORT",
-        "description": "Your bike travels safely in our specialized vehicles with full insurance and GPS tracking."
+        "description": "Your bike travels safely in our specialized vehicles, constant monitoring and professional fastening system.",
+        "features": ["Real-time tracking", "Constant updates", "Motorcycle photos"]
       },
       "delivery": {
         "title": "WE DELIVER",
-        "description": "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure."
+        "description": "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure with all documentation in order.",
+        "features": ["Airport pickup available", "Punctual delivery", "Complete documentation"]
       }
     }
   },
@@ -65,7 +69,36 @@
   },
   "testimonials": {
     "title": "TESTIMONIALS",
-    "subtitle": "What our customers say about our service"
+    "subtitle": "What our customers say about our service",
+    "data": [
+      {
+        "name": "Carlos Mendoza",
+        "bike": "BMW R1250GS",
+        "brand": "BMW",
+        "model": "R1250GS",
+        "location": "Buenos Aires → Bariloche",
+        "rating": 5,
+        "comment": "Excellent service. My bike arrived in perfect condition and I was able to start my Patagonia trip without problems. Highly recommended."
+      },
+      {
+        "name": "María González",
+        "bike": "Honda Africa Twin",
+        "brand": "HONDA",
+        "model": "Africa Twin",
+        "location": "Córdoba → Salta",
+        "rating": 5,
+        "comment": "First-class professionals. The tracking was constant and delivery was punctual. I would definitely choose them again."
+      },
+      {
+        "name": "Roberto Silva",
+        "bike": "KTM 790 Adventure",
+        "brand": "KTM",
+        "model": "790 Adventure",
+        "location": "Rosario → Mendoza",
+        "rating": 5,
+        "comment": "Impeccable service. Communication was excellent throughout the process. My bike arrived as if I had taken it myself."
+      }
+    ]
   },
   "destinations": {
     "title": "POPULAR",
@@ -76,7 +109,38 @@
   },
   "faq": {
     "title": "FREQUENTLY ASKED QUESTIONS",
-    "subtitle": "We resolve the most common doubts about our service"
+    "subtitle": "We resolve the most common doubts about our service",
+    "tagline": "Everything you need to know to travel peacefully",
+    "questions": [
+      {
+        "question": "What documentation do I need for transportation?",
+        "answer": "You need the green or blue motorcycle certificate, your ID and valid insurance proof. We handle all transportation documentation."
+      },
+      {
+        "question": "How long does transportation take?",
+        "answer": "Times vary by distance. Generally: up to 500km (1-2 days), up to 1000km (2-3 days), over 1000km (3-5 days). We confirm exact time when quoting."
+      },
+      {
+        "question": "What happens if my bike is damaged during transport?",
+        "answer": "All our motorcycles travel with full insurance. In the unlikely event of damage, we take care of repair or replacement as appropriate."
+      },
+      {
+        "question": "Can I track my motorcycle during the trip?",
+        "answer": "Yes, all our vehicles have GPS and we send you regular updates. You can also contact us anytime to know the shipping status."
+      },
+      {
+        "question": "Do you transport any type of motorcycle?",
+        "answer": "We transport most motorcycles: sport, touring, adventure, cruiser, etc. Ask us about specific models or large displacement bikes."
+      },
+      {
+        "question": "How is the transportation price calculated?",
+        "answer": "Price is based on distance, motorcycle type, shipping urgency and destination. We offer competitive and transparent rates with no hidden costs."
+      },
+      {
+        "question": "Do you provide emergency services?",
+        "answer": "Yes, we offer express service with additional charge. In emergency cases, we can coordinate deliveries in 24-48 hours depending on distance."
+      }
+    ]
   },
   "quoteForm": {
     "title": "REQUEST",
@@ -119,5 +183,76 @@
     "ctaTitle": "READY FOR YOUR NEXT ADVENTURE?",
     "ctaSubtitle": "Let us transport your bike while you focus on enjoying the journey",
     "ctaButton": "START NOW"
+  },
+  "quoteCalculator": {
+    "title": "CALCULATE YOUR",
+    "titleAccent": "BUDGET",
+    "subtitle": "Get a quick estimate of transportation cost",
+    "tagline": "Instant response, no commitment",
+    "fields": {
+      "route": "Transportation Route",
+      "originPlaceholder": "Origin city",
+      "destinationPlaceholder": "Destination city",
+      "bikeType": "Motorcycle Type",
+      "bikeTypePlaceholder": "Select type",
+      "bikeTypes": {
+        "deportiva": "Sport",
+        "touring": "Touring",
+        "adventure": "Adventure",
+        "cruiser": "Cruiser",
+        "naked": "Naked",
+        "scooter": "Scooter"
+      },
+      "date": "When do you need transportation?",
+      "additionalServices": "Additional Services",
+      "urgentDelivery": "Urgent delivery (24-48hrs)",
+      "pickupService": "Home pickup",
+      "insurance": "Premium insurance included"
+    },
+    "estimate": {
+      "title": "Price Estimate",
+      "range": "Estimated range:",
+      "includes": "Price includes:",
+      "safeTransport": "Safe door-to-door transport",
+      "gpsTracking": "Real-time GPS tracking",
+      "premiumInsurance": "Premium all-risk insurance",
+      "expressDelivery": "Guaranteed express delivery",
+      "homePickup": "Home pickup included",
+      "placeholder": "Complete the data to see an instant estimate",
+      "ctaButton": "Request Detailed Quote",
+      "disclaimer": "* This is an estimate. Final price may vary."
+    }
+  },
+  "showcaseGallery": {
+    "title": "OUR SERVICE",
+    "titleAccent": "IN ACTION",
+    "subtitle": "Real image gallery of our motorcycle transportation process",
+    "tagline": "Quality and professionalism in every shipment",
+    "images": {
+      "loading": "Professional Loading Process",
+      "loadingDesc": "Safe and professional motorcycle loading with specialized equipment",
+      "security": "Advanced Fastening System",
+      "securityDesc": "Professional tie-down systems that guarantee your bike's safety",
+      "fleet": "Specialized Vehicle Fleet",
+      "fleetDesc": "Trucks specifically equipped for motorcycle transportation",
+      "coverage": "Argentina National Coverage",
+      "coverageDesc": "We reach all destinations in Argentina with the same quality level",
+      "documentation": "Documentation and Tracking",
+      "documentationDesc": "Total process control with complete documentation and GPS tracking",
+      "delivery": "Destination Delivery",
+      "deliveryDesc": "Punctual and safe delivery at the agreed destination"
+    },
+    "categories": {
+      "loading": "Loading",
+      "security": "Security",
+      "transport": "Transport",
+      "destinations": "Destinations",
+      "control": "Control",
+      "delivery": "Delivery"
+    },
+    "cta": {
+      "question": "Want to see your bike transported with the same quality?",
+      "button": "REQUEST QUOTE NOW"
+    }
   }
 }

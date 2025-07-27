@@ -10,32 +10,36 @@
   "hero": {
     "title": "TU MOTO,",
     "titleAccent": "NUESTRO COMPROMISO",
-    "subtitle": "Transportamos tu motocicleta de forma segura a cualquier destino en Argentina. Comenzá tu aventura sin preocupaciones.",
+    "subtitle": "Servicio de transporte y traslado de motos por toda Argentina. Transportamos tu motocicleta de forma segura a cualquier destino. Comenzá tu aventura sin preocupaciones.",
     "ctaPrimary": "SOLICITAR COTIZACIÓN",
     "ctaSecondary": "CÓMO FUNCIONA"
   },
   "howItWorks": {
     "title": "¿CÓMO FUNCIONA?",
     "subtitle": "Proceso simple y transparente para que tu moto llegue segura a destino",
+    "tagline": "Realizando transporte de motos desde 2018",
     "steps": {
       "pickup": {
         "title": "RETIRAMOS",
-        "description": "Coordinamos la recolección de tu motocicleta en el lugar que nos indiques, con todas las medidas de seguridad."
+        "description": "Coordinamos la entrega de tu motocicleta con todas las medidas de seguridad y documentación necesaria.",
+        "features": ["Inspección previa", "Documentación completa", "Carga de motocicletas"]
       },
       "transport": {
         "title": "TRANSPORTAMOS",
-        "description": "Tu moto viaja segura en nuestros vehículos especializados con seguro completo y seguimiento GPS."
+        "description": "Tu moto viaja segura en nuestros vehículos especializados, seguimiento constante y sistema de sujeción profesional.",
+        "features": ["Seguimiento en tiempo real", "Actualización constante", "Fotos de la moto"]
       },
       "delivery": {
         "title": "ENTREGAMOS",
-        "description": "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura."
+        "description": "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura con toda la documentación en orden.",
+        "features": ["Retiro por el aeropuerto", "Entrega puntual", "Documentación completa"]
       }
     }
   },
   "whyChooseUs": {
     "title": "¿POR QUÉ",
     "titleAccent": "ELEGIRNOS?",
-    "subtitle": "Más de 5 años transportando motocicletas por toda Argentina con total confiabilidad",
+    "subtitle": "Más de 6 años ofreciendo servicios de transporte de motos y traslado de motocicletas por toda Argentina con total confiabilidad y seguridad",
     "features": {
       "insurance": {
         "title": "Seguro Incluido",
@@ -65,7 +69,36 @@
   },
   "testimonials": {
     "title": "TESTIMONIOS",
-    "subtitle": "Lo que dicen nuestros clientes sobre nuestro servicio"
+    "subtitle": "Lo que dicen nuestros clientes sobre nuestro servicio",
+    "data": [
+      {
+        "name": "Carlos Mendoza",
+        "bike": "BMW R1250GS",
+        "brand": "BMW",
+        "model": "R1250GS",
+        "location": "Buenos Aires → Bariloche",
+        "rating": 5,
+        "comment": "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable."
+      },
+      {
+        "name": "María González",
+        "bike": "Honda Africa Twin",
+        "brand": "HONDA",
+        "model": "Africa Twin",
+        "location": "Córdoba → Salta",
+        "rating": 5,
+        "comment": "Profesionales de primera. El seguimiento fue constante y la entrega puntual. Definitivamente los volvería a elegir."
+      },
+      {
+        "name": "Roberto Silva",
+        "bike": "KTM 790 Adventure",
+        "brand": "KTM",
+        "model": "790 Adventure",
+        "location": "Rosario → Mendoza",
+        "rating": 5,
+        "comment": "Servicio impecable. La comunicación fue excelente durante todo el proceso. Mi moto llegó como si la hubiera llevado yo mismo."
+      }
+    ]
   },
   "destinations": {
     "title": "DESTINOS",
@@ -76,7 +109,38 @@
   },
   "faq": {
     "title": "PREGUNTAS FRECUENTES",
-    "subtitle": "Resolvemos las dudas más comunes sobre nuestro servicio"
+    "subtitle": "Resolvemos las dudas más comunes sobre nuestro servicio",
+    "tagline": "Todo lo que necesitás saber para viajar tranquilo",
+    "questions": [
+      {
+        "question": "¿Qué documentación necesito para el transporte?",
+        "answer": "Necesitás la cédula verde o azul de la motocicleta, tu DNI y el comprobante de seguro vigente. Nosotros nos encargamos de toda la documentación del transporte."
+      },
+      {
+        "question": "¿Cuánto tiempo demora el transporte?",
+        "answer": "Los tiempos varían según la distancia. Generalmente: hasta 500km (1-2 días), hasta 1000km (2-3 días), más de 1000km (3-5 días). Te confirmamos el tiempo exacto al cotizar."
+      },
+      {
+        "question": "¿Qué pasa si mi moto sufre algún daño durante el transporte?",
+        "answer": "Todas nuestras motos viajan con seguro completo. En el improbable caso de daños, nos hacemos cargo de la reparación o reposición según corresponda."
+      },
+      {
+        "question": "¿Puedo rastrear mi motocicleta durante el viaje?",
+        "answer": "Sí, todos nuestros vehículos tienen GPS y te enviamos actualizaciones regulares. También podés contactarnos en cualquier momento para conocer el estado del envío."
+      },
+      {
+        "question": "¿Transportan cualquier tipo de motocicleta?",
+        "answer": "Transportamos la mayoría de motocicletas: deportivas, touring, adventure, cruiser, etc. Consultanos por modelos específicos o motos de gran cilindrada."
+      },
+      {
+        "question": "¿Cómo se calcula el precio del transporte?",
+        "answer": "El precio se basa en la distancia, tipo de motocicleta, urgencia del envío y destino. Ofrecemos tarifas competitivas y transparentes sin costos ocultos."
+      },
+      {
+        "question": "¿Realizan servicios de urgencia?",
+        "answer": "Sí, ofrecemos servicio express con recargo adicional. En casos de urgencia, podemos coordinar entregas en 24-48 horas según la distancia."
+      }
+    ]
   },
   "quoteForm": {
     "title": "SOLICITAR",
@@ -119,5 +183,76 @@
     "ctaTitle": "¿LISTO PARA TU PRÓXIMA AVENTURA?",
     "ctaSubtitle": "Dejanos transportar tu moto mientras vos te enfocás en disfrutar el viaje",
     "ctaButton": "COMENZAR AHORA"
+  },
+  "quoteCalculator": {
+    "title": "CALCULÁ TU",
+    "titleAccent": "PRESUPUESTO",
+    "subtitle": "Obtené una estimación rápida del costo de transporte",
+    "tagline": "Respuesta instantánea, sin compromiso",
+    "fields": {
+      "route": "Ruta de Transporte",
+      "originPlaceholder": "Ciudad origen",
+      "destinationPlaceholder": "Ciudad destino",
+      "bikeType": "Tipo de Motocicleta",
+      "bikeTypePlaceholder": "Seleccionar tipo",
+      "bikeTypes": {
+        "deportiva": "Deportiva",
+        "touring": "Touring",
+        "adventure": "Adventure",
+        "cruiser": "Cruiser",
+        "naked": "Naked",
+        "scooter": "Scooter"
+      },
+      "date": "¿Cuándo necesitás el transporte?",
+      "additionalServices": "Servicios Adicionales",
+      "urgentDelivery": "Entrega urgente (24-48hs)",
+      "pickupService": "Retiro a domicilio",
+      "insurance": "Seguro premium incluido"
+    },
+    "estimate": {
+      "title": "Estimación de Precio",
+      "range": "Rango estimado:",
+      "includes": "El precio incluye:",
+      "safeTransport": "Transporte seguro puerta a puerta",
+      "gpsTracking": "Seguimiento GPS en tiempo real",
+      "premiumInsurance": "Seguro premium todo riesgo",
+      "expressDelivery": "Entrega express garantizada",
+      "homePickup": "Retiro a domicilio incluido",
+      "placeholder": "Completá los datos para ver una estimación instantánea",
+      "ctaButton": "Solicitar Cotización Detallada",
+      "disclaimer": "* Esta es una estimación. El precio final puede variar."
+    }
+  },
+  "showcaseGallery": {
+    "title": "NUESTRO SERVICIO",
+    "titleAccent": "EN ACCIÓN",
+    "subtitle": "Galería de imágenes reales de nuestro proceso de transporte de motocicletas",
+    "tagline": "Calidad y profesionalismo en cada envío",
+    "images": {
+      "loading": "Proceso de Carga Profesional",
+      "loadingDesc": "Carga segura y profesional de motocicletas con equipos especializados",
+      "security": "Sistema de Sujeción Avanzado",
+      "securityDesc": "Sistemas de amarre profesionales que garantizan la seguridad de tu moto",
+      "fleet": "Flota de Vehículos Especializados",
+      "fleetDesc": "Camiones equipados específicamente para el transporte de motocicletas",
+      "coverage": "Cobertura Nacional Argentina",
+      "coverageDesc": "Llegamos a todos los destinos de Argentina con el mismo nivel de calidad",
+      "documentation": "Documentación y Seguimiento",
+      "documentationDesc": "Control total del proceso con documentación completa y seguimiento GPS",
+      "delivery": "Entrega en Destino",
+      "deliveryDesc": "Entrega puntual y segura en el destino acordado"
+    },
+    "categories": {
+      "loading": "Carga",
+      "security": "Seguridad",
+      "transport": "Transporte",
+      "destinations": "Destinos",
+      "control": "Control",
+      "delivery": "Entrega"
+    },
+    "cta": {
+      "question": "¿Querés ver tu moto transportada con la misma calidad?",
+      "button": "SOLICITAR COTIZACIÓN AHORA"
+    }
   }
 }

@@ -17,18 +17,22 @@
   "howItWorks": {
     "title": "COMO FUNCIONA?",
     "subtitle": "Processo simples e transparente para que sua moto chegue segura ao destino",
+    "tagline": "Realizando transporte de motos desde 2018",
     "steps": {
       "pickup": {
         "title": "COLETAMOS",
-        "description": "Coordenamos a coleta de sua motocicleta no local que você indicar, com todas as medidas de segurança."
+        "description": "Coordenamos a entrega de sua motocicleta com todas as medidas de segurança e documentação necessária.",
+        "features": ["Inspeção prévia", "Documentação completa", "Carregamento de motocicletas"]
       },
       "transport": {
         "title": "TRANSPORTAMOS",
-        "description": "Sua moto viaja segura em nossos veículos especializados com seguro completo e rastreamento GPS."
+        "description": "Sua moto viaja segura em nossos veículos especializados, monitoramento constante e sistema de fixação profissional.",
+        "features": ["Rastreamento em tempo real", "Atualização constante", "Fotos da moto"]
       },
       "delivery": {
         "title": "ENTREGAMOS",
-        "description": "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura."
+        "description": "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura com toda a documentação em ordem.",
+        "features": ["Retirada no aeroporto", "Entrega pontual", "Documentação completa"]
       }
     }
   },
@@ -65,7 +69,36 @@
   },
   "testimonials": {
     "title": "DEPOIMENTOS",
-    "subtitle": "O que nossos clientes dizem sobre nosso serviço"
+    "subtitle": "O que nossos clientes dizem sobre nosso serviço",
+    "data": [
+      {
+        "name": "Carlos Mendoza",
+        "bike": "BMW R1250GS",
+        "brand": "BMW",
+        "model": "R1250GS",
+        "location": "Buenos Aires → Bariloche",
+        "rating": 5,
+        "comment": "Excelente serviço. Minha moto chegou em perfeito estado e pude começar minha viagem pela Patagônia sem problemas. Muito recomendado."
+      },
+      {
+        "name": "María González",
+        "bike": "Honda Africa Twin",
+        "brand": "HONDA",
+        "model": "Africa Twin",
+        "location": "Córdoba → Salta",
+        "rating": 5,
+        "comment": "Profissionais de primeira. O acompanhamento foi constante e a entrega pontual. Definitivamente os escolheria novamente."
+      },
+      {
+        "name": "Roberto Silva",
+        "bike": "KTM 790 Adventure",
+        "brand": "KTM",
+        "model": "790 Adventure",
+        "location": "Rosario → Mendoza",
+        "rating": 5,
+        "comment": "Serviço impecável. A comunicação foi excelente durante todo o processo. Minha moto chegou como se eu mesmo a tivesse levado."
+      }
+    ]
   },
   "destinations": {
     "title": "DESTINOS",
@@ -76,7 +109,38 @@
   },
   "faq": {
     "title": "PERGUNTAS FREQUENTES",
-    "subtitle": "Resolvemos as dúvidas mais comuns sobre nosso serviço"
+    "subtitle": "Resolvemos as dúvidas mais comuns sobre nosso serviço",
+    "tagline": "Tudo o que você precisa saber para viajar tranquilo",
+    "questions": [
+      {
+        "question": "Que documentação preciso para o transporte?",
+        "answer": "Você precisa do certificado verde ou azul da motocicleta, sua identidade e comprovante de seguro válido. Cuidamos de toda a documentação do transporte."
+      },
+      {
+        "question": "Quanto tempo demora o transporte?",
+        "answer": "Os tempos variam pela distância. Geralmente: até 500km (1-2 dias), até 1000km (2-3 dias), mais de 1000km (3-5 dias). Confirmamos o tempo exato na cotação."
+      },
+      {
+        "question": "O que acontece se minha moto for danificada durante o transporte?",
+        "answer": "Todas as nossas motos viajam com seguro completo. No caso improvável de danos, cuidamos do reparo ou substituição conforme apropriado."
+      },
+      {
+        "question": "Posso rastrear minha motocicleta durante a viagem?",
+        "answer": "Sim, todos os nossos veículos têm GPS e enviamos atualizações regulares. Você também pode nos contatar a qualquer momento para saber o status do envio."
+      },
+      {
+        "question": "Vocês transportam qualquer tipo de motocicleta?",
+        "answer": "Transportamos a maioria das motocicletas: esportivas, touring, adventure, cruiser, etc. Consulte-nos sobre modelos específicos ou motos de grande cilindrada."
+      },
+      {
+        "question": "Como é calculado o preço do transporte?",
+        "answer": "O preço é baseado na distância, tipo de motocicleta, urgência do envio e destino. Oferecemos tarifas competitivas e transparentes sem custos ocultos."
+      },
+      {
+        "question": "Vocês oferecem serviços de emergência?",
+        "answer": "Sim, oferecemos serviço expresso com cobrança adicional. Em casos de emergência, podemos coordenar entregas em 24-48 horas dependendo da distância."
+      }
+    ]
   },
   "quoteForm": {
     "title": "SOLICITAR",
@@ -119,5 +183,76 @@
     "ctaTitle": "PRONTO PARA SUA PRÓXIMA AVENTURA?",
     "ctaSubtitle": "Deixe-nos transportar sua moto enquanto você se concentra em aproveitar a viagem",
     "ctaButton": "COMEÇAR AGORA"
+  },
+  "quoteCalculator": {
+    "title": "CALCULE SEU",
+    "titleAccent": "ORÇAMENTO",
+    "subtitle": "Obtenha uma estimativa rápida do custo de transporte",
+    "tagline": "Resposta instantânea, sem compromisso",
+    "fields": {
+      "route": "Rota de Transporte",
+      "originPlaceholder": "Cidade origem",
+      "destinationPlaceholder": "Cidade destino",
+      "bikeType": "Tipo de Motocicleta",
+      "bikeTypePlaceholder": "Selecionar tipo",
+      "bikeTypes": {
+        "deportiva": "Esportiva",
+        "touring": "Touring",
+        "adventure": "Adventure",
+        "cruiser": "Cruiser",
+        "naked": "Naked",
+        "scooter": "Scooter"
+      },
+      "date": "Quando você precisa do transporte?",
+      "additionalServices": "Serviços Adicionais",
+      "urgentDelivery": "Entrega urgente (24-48hs)",
+      "pickupService": "Retirada em domicílio",
+      "insurance": "Seguro premium incluído"
+    },
+    "estimate": {
+      "title": "Estimativa de Preço",
+      "range": "Faixa estimada:",
+      "includes": "O preço inclui:",
+      "safeTransport": "Transporte seguro porta a porta",
+      "gpsTracking": "Rastreamento GPS em tempo real",
+      "premiumInsurance": "Seguro premium contra todos os riscos",
+      "expressDelivery": "Entrega expressa garantizada",
+      "homePickup": "Retirada em domicílio incluída",
+      "placeholder": "Complete os dados para ver uma estimativa instantânea",
+      "ctaButton": "Solicitar Orçamento Detalhado",
+      "disclaimer": "* Esta é uma estimativa. O preço final pode variar."
+    }
+  },
+  "showcaseGallery": {
+    "title": "NOSSO SERVIÇO",
+    "titleAccent": "EM AÇÃO",
+    "subtitle": "Galeria de imagens reais do nosso processo de transporte de motocicletas",
+    "tagline": "Qualidade e profissionalismo em cada envio",
+    "images": {
+      "loading": "Processo de Carregamento Profissional",
+      "loadingDesc": "Carregamento seguro e profissional de motocicletas com equipamentos especializados",
+      "security": "Sistema de Fixação Avançado",
+      "securityDesc": "Sistemas de amarração profissionais que garantem a segurança de sua moto",
+      "fleet": "Frota de Veículos Especializados",
+      "fleetDesc": "Caminhões equipados especificamente para transporte de motocicletas",
+      "coverage": "Cobertura Nacional Argentina",
+      "coverageDesc": "Chegamos a todos os destinos da Argentina com o mesmo nível de qualidade",
+      "documentation": "Documentação e Rastreamento",
+      "documentationDesc": "Controle total do processo com documentação completa e rastreamento GPS",
+      "delivery": "Entrega no Destino",
+      "deliveryDesc": "Entrega pontual e segura no destino acordado"
+    },
+    "categories": {
+      "loading": "Carregamento",
+      "security": "Segurança",
+      "transport": "Transporte",
+      "destinations": "Destinos",
+      "control": "Controle",
+      "delivery": "Entrega"
+    },
+    "cta": {
+      "question": "Quer ver sua moto transportada com a mesma qualidade?",
+      "button": "SOLICITAR ORÇAMENTO AGORA"
+    }
   }
 }

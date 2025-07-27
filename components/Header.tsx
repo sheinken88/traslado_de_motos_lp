@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Globe, Check } from "lucide-react"
+import { Menu, X, Globe, Check, MessageCircle } from "lucide-react"
 import Logo from "./Logo"
 import { useLanguage } from "@/contexts/LanguageContext"
 
@@ -93,6 +93,17 @@ export default function Header() {
               )}
             </div>
 
+            {/* WhatsApp Button */}
+            <a
+              href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp</span>
+            </a>
+
             <Link
               href="#cotizacion"
               className="bg-yellow-400 text-navy-900 px-6 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105"
@@ -126,7 +137,7 @@ export default function Header() {
               <Link href="#contacto" className="hover:text-yellow-400 transition-colors">
                 {t('nav.contact')}
               </Link>
-              <div className="flex items-center justify-between pt-4 border-t border-navy-800">
+              <div className="pt-4 border-t border-navy-800 space-y-4">
                 <button
                   onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
                   className="flex items-center space-x-2 text-sm"
@@ -134,9 +145,21 @@ export default function Header() {
                   <Globe className="w-4 h-4" />
                   <span>{languages.find(lang => lang.code === currentLanguage)?.flag} {currentLanguage.toUpperCase()}</span>
                 </button>
-                <Link href="#cotizacion" className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold">
-                  {t('nav.getQuote')}
-                </Link>
+                
+                <div className="flex space-x-3">
+                  <a
+                    href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-xl font-semibold flex-1 justify-center"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <Link href="#cotizacion" className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold flex-1 text-center">
+                    Cotizar
+                  </Link>
+                </div>
               </div>
               
               {isLangDropdownOpen && (

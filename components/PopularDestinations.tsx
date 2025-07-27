@@ -1,6 +1,17 @@
+"use client"
+
 import { MapPin, Clock, DollarSign, Truck } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function PopularDestinations() {
+  const { t } = useLanguage()
+  
+  // Helper function to ensure we get a string from translation
+  const getText = (key: string): string => {
+    const result = t(key)
+    return Array.isArray(result) ? result[0] : result
+  }
+  
   const routes = [
     {
       from: "Buenos Aires",
@@ -63,10 +74,10 @@ export default function PopularDestinations() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-black mb-6 tracking-tight">
-            DESTINOS <span className="text-yellow-400">POPULARES</span>
+            {getText('destinations.title')} <span className="text-yellow-400">{getText('destinations.titleAccent')}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            Rutas más solicitadas para comenzar tu aventura en moto
+            {getText('destinations.subtitle')}
           </p>
         </div>
 
@@ -87,11 +98,18 @@ export default function PopularDestinations() {
           </div>
         </div>
 
-        {/* Enhanced routes grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        {/* Enhanced routes grid - horizontal overflow slider */}
+        <div className="relative mb-16">
+          <div 
+            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-4 -mx-4 scroll-smooth"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollSnapType: 'x mandatory'
+            }}
+          >
           {routes.map((route, index) => (
-            <div key={index} className="stagger-item">
-              <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden elegant-hover group">
+            <div key={index} className="flex-none w-[300px] sm:w-[340px] lg:w-[360px] stagger-item" style={{ scrollSnapAlign: 'start' }}>
+              <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden elegant-hover group h-full">
                 {/* Route image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -149,12 +167,15 @@ export default function PopularDestinations() {
               </div>
             </div>
           ))}
+          </div>
+          {/* Gradient fade for overflow indication */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none" />
         </div>
 
         <div className="text-center">
           <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-8 rounded-3xl max-w-2xl mx-auto border border-yellow-200">
-            <p className="text-gray-700 mb-6 font-light">¿No encontrás tu destino?</p>
-            <button className="btn-primary font-oswald">Solicitar Cotización Personalizada</button>
+            <p className="text-gray-700 mb-6 font-light">{getText('destinations.customQuote')}</p>
+            <button className="btn-primary font-oswald">{getText('destinations.customQuoteButton')}</button>
           </div>
         </div>
       </div>

@@ -3,8 +3,17 @@
 import { useState, useEffect } from "react"
 import { Calculator, MapPin, Bike, Calendar, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function QuoteCalculator() {
+  const { t } = useLanguage()
+  
+  // Helper function to ensure we get a string from translation
+  const getText = (key: string): string => {
+    const result = t(key)
+    return Array.isArray(result) ? result[0] : result
+  }
+  
   const [origin, setOrigin] = useState("")
   const [destination, setDestination] = useState("")
   const [motorcycleType, setMotorcycleType] = useState("")
@@ -83,12 +92,12 @@ export default function QuoteCalculator() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-oswald font-bold text-navy-900 mb-4">
-            CALCULÁ TU <span className="text-yellow-400">PRESUPUESTO</span>
+            {getText('quoteCalculator.title')} <span className="text-yellow-400">{getText('quoteCalculator.titleAccent')}</span>
           </h2>
           <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
-            Obtené una estimación rápida del costo de transporte
+            {getText('quoteCalculator.subtitle')}
           </p>
-          <p className="text-accent mt-2">Respuesta instantánea, sin compromiso</p>
+          <p className="text-accent mt-2">{getText('quoteCalculator.tagline')}</p>
         </div>
 
         <div className="max-w-5xl mx-auto">
@@ -99,19 +108,19 @@ export default function QuoteCalculator() {
                 <div>
                   <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                     <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
-                    Ruta de Transporte
+                    {getText('quoteCalculator.fields.route')}
                   </label>
                   <div className="grid grid-cols-2 gap-4">
                     <input
                       type="text"
-                      placeholder="Ciudad origen"
+                      placeholder={getText('quoteCalculator.fields.originPlaceholder')}
                       value={origin}
                       onChange={(e) => setOrigin(e.target.value)}
                       className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 placeholder-charcoal-700/50 transition-all duration-300"
                     />
                     <input
                       type="text"
-                      placeholder="Ciudad destino"
+                      placeholder={getText('quoteCalculator.fields.destinationPlaceholder')}
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
                       className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 placeholder-charcoal-700/50 transition-all duration-300"
@@ -137,27 +146,27 @@ export default function QuoteCalculator() {
                 <div>
                   <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                     <Bike className="w-4 h-4 mr-2 text-yellow-400" />
-                    Tipo de Motocicleta
+                    {getText('quoteCalculator.fields.bikeType')}
                   </label>
                   <select
                     value={motorcycleType}
                     onChange={(e) => setMotorcycleType(e.target.value)}
                     className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
                   >
-                    <option value="">Seleccionar tipo</option>
-                    <option value="deportiva">Deportiva</option>
-                    <option value="touring">Touring</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="cruiser">Cruiser</option>
-                    <option value="naked">Naked</option>
-                    <option value="scooter">Scooter</option>
+                    <option value="">{getText('quoteCalculator.fields.bikeTypePlaceholder')}</option>
+                    <option value="deportiva">{getText('quoteCalculator.fields.bikeTypes.deportiva')}</option>
+                    <option value="touring">{getText('quoteCalculator.fields.bikeTypes.touring')}</option>
+                    <option value="adventure">{getText('quoteCalculator.fields.bikeTypes.adventure')}</option>
+                    <option value="cruiser">{getText('quoteCalculator.fields.bikeTypes.cruiser')}</option>
+                    <option value="naked">{getText('quoteCalculator.fields.bikeTypes.naked')}</option>
+                    <option value="scooter">{getText('quoteCalculator.fields.bikeTypes.scooter')}</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                     <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
-                    ¿Cuándo necesitás el transporte?
+                    {getText('quoteCalculator.fields.date')}
                   </label>
                   <input
                     type="date"
@@ -168,7 +177,7 @@ export default function QuoteCalculator() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-semibold text-navy-900 mb-3 block">Servicios Adicionales</label>
+                  <label className="text-sm font-semibold text-navy-900 mb-3 block">{getText('quoteCalculator.fields.additionalServices')}</label>
                   <div className="space-y-3">
                     <label className="flex items-center cursor-pointer group">
                       <input
@@ -180,7 +189,7 @@ export default function QuoteCalculator() {
                         className="w-5 h-5 text-yellow-400 rounded border-sand-300 focus:ring-yellow-400"
                       />
                       <span className="ml-3 text-charcoal-700 group-hover:text-navy-900">
-                        Entrega urgente (24-48hs)
+                        {getText('quoteCalculator.fields.urgentDelivery')}
                       </span>
                     </label>
                     <label className="flex items-center cursor-pointer group">
@@ -193,7 +202,7 @@ export default function QuoteCalculator() {
                         className="w-5 h-5 text-yellow-400 rounded border-sand-300 focus:ring-yellow-400"
                       />
                       <span className="ml-3 text-charcoal-700 group-hover:text-navy-900">
-                        Retiro a domicilio
+                        {getText('quoteCalculator.fields.pickupService')}
                       </span>
                     </label>
                     <label className="flex items-center cursor-pointer group">
@@ -206,7 +215,7 @@ export default function QuoteCalculator() {
                         className="w-5 h-5 text-yellow-400 rounded border-sand-300 focus:ring-yellow-400"
                       />
                       <span className="ml-3 text-charcoal-700 group-hover:text-navy-900">
-                        Seguro premium incluido
+                        {getText('quoteCalculator.fields.insurance')}
                       </span>
                     </label>
                   </div>
@@ -219,45 +228,45 @@ export default function QuoteCalculator() {
                   <div>
                     <div className="flex items-center mb-6">
                       <Calculator className="w-6 h-6 text-yellow-400 mr-3" />
-                      <h3 className="text-2xl font-oswald font-bold">Estimación de Precio</h3>
+                      <h3 className="text-2xl font-oswald font-bold">{getText('quoteCalculator.estimate.title')}</h3>
                     </div>
 
                     {estimate ? (
                       <div className="space-y-4">
                         <div>
-                          <p className="text-sand-300 mb-2">Rango estimado:</p>
+                          <p className="text-sand-300 mb-2">{getText('quoteCalculator.estimate.range')}</p>
                           <div className="text-3xl font-bold text-yellow-400">
                             {formatPrice(estimate.min)} - {formatPrice(estimate.max)}
                           </div>
                         </div>
 
                         <div className="border-t border-navy-700 pt-4">
-                          <p className="text-sm text-sand-300 mb-3">El precio incluye:</p>
+                          <p className="text-sm text-sand-300 mb-3">{getText('quoteCalculator.estimate.includes')}</p>
                           <ul className="space-y-2 text-sm">
                             <li className="flex items-center">
                               <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2" />
-                              Transporte seguro puerta a puerta
+                              {getText('quoteCalculator.estimate.safeTransport')}
                             </li>
                             <li className="flex items-center">
                               <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2" />
-                              Seguimiento GPS en tiempo real
+                              {getText('quoteCalculator.estimate.gpsTracking')}
                             </li>
                             {additionalServices.insurance && (
                               <li className="flex items-center">
                                 <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2" />
-                                Seguro premium todo riesgo
+                                {getText('quoteCalculator.estimate.premiumInsurance')}
                               </li>
                             )}
                             {additionalServices.urgentDelivery && (
                               <li className="flex items-center">
                                 <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2" />
-                                Entrega express garantizada
+                                {getText('quoteCalculator.estimate.expressDelivery')}
                               </li>
                             )}
                             {additionalServices.pickupService && (
                               <li className="flex items-center">
                                 <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2" />
-                                Retiro a domicilio incluido
+                                {getText('quoteCalculator.fields.pickupService')} incluido
                               </li>
                             )}
                           </ul>
@@ -266,7 +275,7 @@ export default function QuoteCalculator() {
                     ) : (
                       <div className="text-center py-12">
                         <p className="text-sand-300 mb-4">
-                          Completá los datos para ver una estimación instantánea
+                          {getText('quoteCalculator.estimate.placeholder')}
                         </p>
                         <div className="w-20 h-20 mx-auto bg-navy-800 rounded-2xl flex items-center justify-center">
                           <Calculator className="w-10 h-10 text-sand-300" />
@@ -281,11 +290,11 @@ export default function QuoteCalculator() {
                         href="#cotizacion"
                         className="w-full bg-yellow-400 text-navy-900 px-6 py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group"
                       >
-                        Solicitar Cotización Detallada
+                        {getText('quoteCalculator.estimate.ctaButton')}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </Link>
                       <p className="text-xs text-sand-300 text-center mt-3">
-                        * Esta es una estimación. El precio final puede variar.
+                        {getText('quoteCalculator.estimate.disclaimer')}
                       </p>
                     </div>
                   )}

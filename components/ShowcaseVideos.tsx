@@ -1,93 +1,171 @@
 "use client"
 
-import { Play } from "lucide-react"
+import { useState, useRef } from "react"
+import { ChevronLeft, ChevronRight, Camera, MapPin, Shield, Truck } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
-export default function ShowcaseVideos() {
-  const videos = [
+export default function ShowcaseGallery() {
+  const { t } = useLanguage()
+  
+  // Helper function to ensure we get a string from translation
+  const getText = (key: string): string => {
+    const result = t(key)
+    return Array.isArray(result) ? result[0] : result
+  }
+  
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const images = [
     {
-      title: "Proceso de Carga Profesional",
-      description: "Mirá cómo cargamos tu moto con el máximo cuidado",
-      thumbnail: "/images/video-showcase-1.png",
-      duration: "2:30",
-      videoId: "dQw4w9WgXcQ", // YouTube video ID
+      src: "/images/showcase-1.jpg",
+      title: getText('showcaseGallery.images.loading'),
+      description: getText('showcaseGallery.images.loadingDesc'),
+      category: getText('showcaseGallery.categories.loading'),
+      icon: Truck,
     },
     {
-      title: "Seguridad en el Transporte",
-      description: "Sistema de sujeción especializado para motocicletas",
-      thumbnail: "/images/video-showcase-2.png",
-      duration: "1:45",
-      videoId: "dQw4w9WgXcQ",
+      src: "/images/showcase-2.jpg", 
+      title: getText('showcaseGallery.images.security'),
+      description: getText('showcaseGallery.images.securityDesc'),
+      category: getText('showcaseGallery.categories.security'),
+      icon: Shield,
     },
     {
-      title: "Testimonios de Clientes",
-      description: "Experiencias reales de nuestros clientes satisfechos",
-      thumbnail: "/images/video-showcase-3.png",
-      duration: "3:15",
-      videoId: "dQw4w9WgXcQ",
+      src: "/images/showcase-3.jpg",
+      title: getText('showcaseGallery.images.fleet'),
+      description: getText('showcaseGallery.images.fleetDesc'),
+      category: getText('showcaseGallery.categories.transport'),
+      icon: Truck,
     },
     {
-      title: "Seguimiento GPS en Tiempo Real",
-      description: "Tecnología avanzada para monitorear tu envío",
-      thumbnail: "/images/video-showcase-4.png",
-      duration: "1:20",
-      videoId: "dQw4w9WgXcQ",
+      src: "/images/showcase-4.jpg",
+      title: getText('showcaseGallery.images.coverage'),
+      description: getText('showcaseGallery.images.coverageDesc'),
+      category: getText('showcaseGallery.categories.destinations'),
+      icon: MapPin,
+    },
+    {
+      src: "/images/showcase-5.jpg",
+      title: getText('showcaseGallery.images.documentation'),
+      description: getText('showcaseGallery.images.documentationDesc'),
+      category: getText('showcaseGallery.categories.control'),
+      icon: Camera,
+    },
+    {
+      src: "/images/showcase-6.jpg",
+      title: getText('showcaseGallery.images.delivery'),
+      description: getText('showcaseGallery.images.deliveryDesc'),
+      category: getText('showcaseGallery.categories.delivery'),
+      icon: MapPin,
     },
   ]
 
-  const handleVideoClick = (videoId: string) => {
-    window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank")
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 400
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
   }
 
   return (
-    <section className="py-20 bg-black">
+    <section className="section-padding bg-gradient-to-b from-charcoal-900 to-black overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bebas font-black text-white mb-6">
-            NUESTRO SERVICIO <span className="text-yellow-400">EN ACCIÓN</span>
+          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">
+            {getText('showcaseGallery.title')} <span className="text-yellow-400">{getText('showcaseGallery.titleAccent')}</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Descubrí cómo trabajamos y por qué miles de motociclistas confían en nosotros
+          <p className="text-xl text-sand-200 max-w-3xl mx-auto font-light">
+            {getText('showcaseGallery.subtitle')}
           </p>
+          <p className="text-accent mt-2">{getText('showcaseGallery.tagline')}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {videos.map((video, index) => (
-            <div key={index} className="stagger-item cursor-pointer" onClick={() => handleVideoClick(video.videoId)}>
-              <div className="video-overlay elegant-hover">
-                <img
-                  src={video.thumbnail || "/placeholder.svg"}
-                  alt={video.title}
-                  className="w-full h-64 object-cover"
-                />
+        {/* Image Carousel */}
+        <div className="relative max-w-7xl mx-auto">
+          {/* Navigation buttons */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-                <div className="play-button">
-                  <Play className="w-8 h-8 text-black ml-1" />
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 z-2">
-                  <div className="bg-black/80 backdrop-blur-sm rounded-lg p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-white font-bold text-lg leading-tight">{video.title}</h3>
-                      <span className="text-yellow-400 text-sm font-medium bg-yellow-400/20 px-2 py-1 rounded">
-                        {video.duration}
-                      </span>
+          {/* Scrollable container */}
+          <div 
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scrollbar-hide pb-6 px-4 -mx-4 scroll-smooth"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              scrollSnapType: 'x mandatory'
+            }}
+          >
+            {images.map((image, index) => (
+              <div key={index} className="flex-none w-[300px] sm:w-[350px] lg:w-[380px] group" style={{ scrollSnapAlign: 'start' }}>
+                <div className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl">
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/placeholder.svg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
+                    {/* Category badge */}
+                    <div className="absolute top-4 left-4">
+                      <div className="flex items-center space-x-2 bg-yellow-400/20 backdrop-blur-sm border border-yellow-400/30 rounded-full px-3 py-1">
+                        <image.icon className="w-4 h-4 text-yellow-400" />
+                        <span className="text-yellow-400 text-sm font-medium">{image.category}</span>
+                      </div>
                     </div>
-                    <p className="text-gray-300 text-sm">{video.description}</p>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-oswald font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+                      {image.title}
+                    </h3>
+                    <p className="text-sand-200/80 text-sm leading-relaxed">
+                      {image.description}
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Gradient edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-charcoal-900 to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-charcoal-900 to-transparent pointer-events-none z-10" />
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-400 mb-6">¿Querés ver más contenido?</p>
-          <button
-            onClick={() => window.open("https://www.youtube.com/@mototransfer", "_blank")}
-            className="bg-red-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition-all duration-300 elegant-hover"
-          >
-            VER CANAL DE YOUTUBE
-          </button>
+        {/* CTA Section */}
+        <div className="text-center mt-16">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto">
+            <p className="text-sand-200 mb-6 text-lg">
+              {getText('showcaseGallery.cta.question')}
+            </p>
+            <a
+              href="#cotizacion"
+              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-charcoal-900 px-8 py-4 rounded-xl font-oswald font-semibold text-lg hover:shadow-glow hover:scale-105 transition-all duration-300"
+            >
+              {getText('showcaseGallery.cta.button')}
+            </a>
+          </div>
         </div>
       </div>
     </section>

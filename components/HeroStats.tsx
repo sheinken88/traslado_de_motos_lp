@@ -8,10 +8,10 @@ export default function HeroStats() {
   const { t } = useLanguage()
   
   const stats = [
-    { number: "5000", suffix: "+", labelKey: "heroStats.transported", icon: TrendingUp, color: "text-yellow-400" },
-    { number: "98", suffix: "%", labelKey: "heroStats.satisfaction", icon: Star, color: "text-yellow-400" },
+    { number: "150", suffix: "+", labelKey: "heroStats.transported", icon: TrendingUp, color: "text-yellow-400" },
+    { number: "95", suffix: "%", labelKey: "heroStats.satisfaction", icon: Star, color: "text-yellow-400" },
     { number: "24", suffix: "/7", labelKey: "heroStats.support", icon: Clock, color: "text-yellow-400" },
-    { number: "5", suffix: "+", labelKey: "heroStats.experience", icon: Award, color: "text-yellow-400" },
+    { number: "6", suffix: "+", labelKey: "heroStats.experience", icon: Award, color: "text-yellow-400" },
   ]
 
   return (

@@ -2,57 +2,32 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function FAQ() {
+  const { t } = useLanguage()
+  
+  // Helper function to ensure we get a string from translation
+  const getText = (key: string): string => {
+    const result = t(key)
+    return Array.isArray(result) ? result[0] : result
+  }
+  
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const faqs = [
-    {
-      question: "¿Qué documentación necesito para el transporte?",
-      answer:
-        "Necesitás la cédula verde o azul de la motocicleta, tu DNI y el comprobante de seguro vigente. Nosotros nos encargamos de toda la documentación del transporte.",
-    },
-    {
-      question: "¿Cuánto tiempo demora el transporte?",
-      answer:
-        "Los tiempos varían según la distancia. Generalmente: hasta 500km (1-2 días), hasta 1000km (2-3 días), más de 1000km (3-5 días). Te confirmamos el tiempo exacto al cotizar.",
-    },
-    {
-      question: "¿Qué pasa si mi moto sufre algún daño durante el transporte?",
-      answer:
-        "Todas nuestras motos viajan con seguro completo. En el improbable caso de daños, nos hacemos cargo de la reparación o reposición según corresponda.",
-    },
-    {
-      question: "¿Puedo rastrear mi motocicleta durante el viaje?",
-      answer:
-        "Sí, todos nuestros vehículos tienen GPS y te enviamos actualizaciones regulares. También podés contactarnos en cualquier momento para conocer el estado del envío.",
-    },
-    {
-      question: "¿Transportan cualquier tipo de motocicleta?",
-      answer:
-        "Transportamos la mayoría de motocicletas: deportivas, touring, adventure, cruiser, etc. Consultanos por modelos específicos o motos de gran cilindrada.",
-    },
-    {
-      question: "¿Cómo se calcula el precio del transporte?",
-      answer:
-        "El precio se basa en la distancia, tipo de motocicleta, urgencia del envío y destino. Ofrecemos tarifas competitivas y transparentes sin costos ocultos.",
-    },
-    {
-      question: "¿Realizan servicios de urgencia?",
-      answer:
-        "Sí, ofrecemos servicio express con recargo adicional. En casos de urgencia, podemos coordinar entregas en 24-48 horas según la distancia.",
-    },
-  ]
+  // Get FAQs from translations
+  const faqsData = t('faq.questions')
+  const faqs = Array.isArray(faqsData) ? faqsData : []
 
   return (
     <section className="section-padding bg-gradient-to-b from-white to-sand-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">PREGUNTAS FRECUENTES</h2>
+          <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">{getText('faq.title')}</h2>
           <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
-            Resolvemos las dudas más comunes sobre nuestro servicio
+            {getText('faq.subtitle')}
           </p>
-          <p className="text-accent mt-2">Todo lo que necesitás saber para viajar tranquilo</p>
+          <p className="text-accent mt-2">{getText('faq.tagline')}</p>
         </div>
 
         <div className="max-w-4xl mx-auto">

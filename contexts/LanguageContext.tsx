@@ -7,7 +7,7 @@ type Language = 'es' | 'en' | 'pt';
 interface LanguageContextType {
   currentLanguage: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string) => string | string[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -60,7 +60,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('language', lang);
   };
 
-  const t = (key: string): string => {
+  const t = (key: string): string | string[] => {
     if (!isLoaded) return key;
     
     const keys = key.split('.');
@@ -74,7 +74,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
     }
     
-    return typeof value === 'string' ? value : key;
+    return (typeof value === 'string' || Array.isArray(value)) ? value : key;
   };
 
   return (

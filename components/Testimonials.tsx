@@ -2,47 +2,43 @@
 
 import { Star, Quote } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function Testimonials() {
+  const { t } = useLanguage()
+  
+  // Helper function to ensure we get a string from translation
+  const getText = (key: string): string => {
+    const result = t(key)
+    return Array.isArray(result) ? result[0] : result
+  }
+  
   const [activeTestimonial, setActiveTestimonial] = useState(0)
 
-  const testimonials = [
+  // Get testimonials from translations
+  const testimonialsData = t('testimonials.data')
+  const baseTestimonials = Array.isArray(testimonialsData) ? testimonialsData : []
+  
+  // Add static image data to translation data with fallback
+  const testimonials = baseTestimonials.length > 0 ? baseTestimonials.map((testimonial, index) => ({
+    ...testimonial,
+    image: "/placeholder.svg?height=120&width=120",
+    bikeImage: index === 0 ? "/images/bmw-r1250gs.png" : 
+               index === 1 ? "/images/honda-africa-twin.png" : 
+               "/images/ktm-790-adventure.png"
+  })) : [
+    // Fallback data if translations fail to load
     {
       name: "Carlos Mendoza",
-      bike: "BMW R1250GS",
+      bike: "BMW R1250GS", 
       brand: "BMW",
       model: "R1250GS",
       location: "Buenos Aires → Bariloche",
       rating: 5,
-      comment:
-        "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
+      comment: "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
       image: "/placeholder.svg?height=120&width=120",
-      bikeImage: "/images/bmw-r1250gs.png",
-    },
-    {
-      name: "María González",
-      bike: "Honda Africa Twin",
-      brand: "HONDA",
-      model: "Africa Twin",
-      location: "Córdoba → Salta",
-      rating: 5,
-      comment:
-        "Profesionales de primera. El seguimiento fue constante y la entrega puntual. Definitivamente los volvería a elegir.",
-      image: "/placeholder.svg?height=120&width=120",
-      bikeImage: "/images/honda-africa-twin.png",
-    },
-    {
-      name: "Roberto Silva",
-      bike: "KTM 790 Adventure",
-      brand: "KTM",
-      model: "790 Adventure",
-      location: "Rosario → Mendoza",
-      rating: 5,
-      comment:
-        "Servicio impecable. La comunicación fue excelente durante todo el proceso. Mi moto llegó como si la hubiera llevado yo mismo.",
-      image: "/placeholder.svg?height=120&width=120",
-      bikeImage: "/images/ktm-790-adventure.png",
-    },
+      bikeImage: "/images/bmw-r1250gs.png"
+    }
   ]
 
   useEffect(() => {
@@ -58,11 +54,11 @@ export default function Testimonials() {
         <div className="text-center mb-20">
           <div className="inline-flex items-center mb-6">
             <Quote className="w-8 h-8 text-yellow-400 mr-4" />
-            <h2 className="text-5xl md:text-6xl font-oswald font-bold text-black tracking-tight">TESTIMONIOS</h2>
+            <h2 className="text-5xl md:text-6xl font-oswald font-bold text-black tracking-tight">{getText('testimonials.title')}</h2>
             <Quote className="w-8 h-8 text-yellow-400 ml-4 rotate-180" />
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
-            Lo que dicen nuestros clientes sobre nuestro servicio
+            {getText('testimonials.subtitle')}
           </p>
         </div>
 
@@ -130,14 +126,22 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* All testimonials grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* All testimonials grid - horizontal slider */}
+        <div className="relative max-w-6xl mx-auto">
+          <div 
+            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-4 -mx-4 scroll-smooth md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:mx-0"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollSnapType: 'x mandatory'
+            }}
+          >
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-gray-50 p-6 rounded-2xl elegant-hover transition-all duration-300 cursor-pointer ${
+              className={`flex-none w-[280px] md:w-auto bg-gray-50 p-6 rounded-2xl elegant-hover transition-all duration-300 cursor-pointer ${
                 index === activeTestimonial ? "ring-2 ring-yellow-400 bg-yellow-50" : ""
               }`}
+              style={{ scrollSnapAlign: 'start' }}
               onClick={() => setActiveTestimonial(index)}
             >
               <div className="flex items-center justify-between mb-4">
@@ -167,6 +171,9 @@ export default function Testimonials() {
               <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">"{testimonial.comment}"</p>
             </div>
           ))}
+          </div>
+          {/* Gradient fade for overflow indication */}
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden" />
         </div>
       </div>
     </section>
