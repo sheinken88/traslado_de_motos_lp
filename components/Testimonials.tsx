@@ -126,54 +126,77 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* All testimonials grid - horizontal slider */}
-        <div className="relative max-w-6xl mx-auto">
-          <div 
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-4 -mx-4 scroll-smooth md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:mx-0"
-            style={{
-              WebkitOverflowScrolling: 'touch',
-              scrollSnapType: 'x mandatory'
-            }}
-          >
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={`flex-none w-[280px] md:w-auto bg-gray-50 p-6 rounded-2xl elegant-hover transition-all duration-300 cursor-pointer ${
-                index === activeTestimonial ? "ring-2 ring-yellow-400 bg-yellow-50" : ""
-              }`}
-              style={{ scrollSnapAlign: 'start' }}
-              onClick={() => setActiveTestimonial(index)}
+        {/* All testimonials grid - modern horizontal slider */}
+        <div className="relative -mx-4 md:mx-0">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div 
+              className="flex gap-4 md:gap-6 overflow-x-auto pb-6 
+                         scroll-smooth snap-x snap-mandatory
+                         no-scrollbar"
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                scrollBehavior: 'smooth'
+              }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center">
-                  <img
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-3"
-                  />
-                  <div>
-                    <h4 className="font-oswald font-bold text-black text-sm">{testimonial.name}</h4>
-                    <p className="text-xs text-gray-600">{testimonial.location}</p>
+              {/* Invisible spacer for left padding on mobile */}
+              <div className="flex-none w-0 md:hidden" />
+              
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className={`flex-none w-[85vw] max-w-[340px] md:w-[380px] snap-center
+                             transition-all duration-300`}
+                >
+                  <div 
+                    className={`h-full bg-white rounded-2xl p-6 border-2 
+                               transition-all duration-300 cursor-pointer
+                               hover:shadow-xl hover:border-yellow-400 hover:-translate-y-1
+                               ${index === activeTestimonial 
+                                 ? "border-yellow-400 shadow-lg bg-gradient-to-br from-yellow-50 to-white" 
+                                 : "border-gray-200 shadow-md"}`}
+                    onClick={() => setActiveTestimonial(index)}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center">
+                        <img
+                          src={testimonial.image || "/placeholder.svg"}
+                          alt={testimonial.name}
+                          className="w-14 h-14 rounded-full object-cover mr-3 ring-4 ring-yellow-400/20"
+                        />
+                        <div>
+                          <h4 className="font-oswald font-bold text-black text-base">{testimonial.name}</h4>
+                          <p className="text-sm text-gray-600">{testimonial.location}</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-yellow-600 font-oswald font-bold text-sm">{testimonial.brand}</div>
+                        <div className="text-gray-500 text-xs">{testimonial.model}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current drop-shadow-sm" />
+                      ))}
+                    </div>
+
+                    <p className="text-gray-700 text-sm leading-relaxed">"{testimonial.comment}"</p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-yellow-600 font-oswald font-bold text-xs">{testimonial.brand}</div>
-                  <div className="text-gray-500 text-xs">{testimonial.model}</div>
-                </div>
-              </div>
-
-              <div className="flex mb-3">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                ))}
-              </div>
-
-              <p className="text-gray-700 text-sm leading-relaxed line-clamp-3">"{testimonial.comment}"</p>
+              ))}
+              
+              {/* Invisible spacer for right padding on mobile */}
+              <div className="flex-none w-0 md:hidden" />
             </div>
-          ))}
           </div>
-          {/* Gradient fade for overflow indication */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden" />
+          
+          {/* Modern gradient overlays for desktop */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 
+                          bg-gradient-to-r from-white via-white/50 to-transparent 
+                          pointer-events-none z-10" />
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 
+                          bg-gradient-to-l from-white via-white/50 to-transparent 
+                          pointer-events-none z-10" />
         </div>
       </div>
     </section>

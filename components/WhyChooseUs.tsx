@@ -51,32 +51,41 @@ export default function WhyChooseUs() {
     <section className="section-padding bg-charcoal-900 overflow-hidden relative">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 25% 25%, #FFD100 0%, transparent 50%), radial-gradient(circle at 75% 75%, #FFD100 0%, transparent 50%)' }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 25% 25%, #FFD100 0%, transparent 50%), radial-gradient(circle at 75% 75%, #FFD100 0%, transparent 50%)",
+          }}
+        />
       </div>
-      <div className="container mx-auto px-4 relative z-10">
+      <div className=" mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">
-            {t('whyChooseUs.title')} <span className="text-yellow-400">{t('whyChooseUs.titleAccent')}</span>
+            {t("whyChooseUs.title")}{" "}
+            <span className="text-yellow-400">
+              {t("whyChooseUs.titleAccent")}
+            </span>
           </h2>
           <p className="text-xl text-sand-200 max-w-3xl mx-auto font-light">
-            {t('whyChooseUs.subtitle')}
+            {t("whyChooseUs.subtitle")}
           </p>
         </div>
 
         {/* Modern horizontal scrollable carousel */}
         <div className="relative -mx-4 px-4">
-          <div 
+          <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-6"
             style={{
-              WebkitOverflowScrolling: 'touch',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
             {features.map((feature, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="flex-none w-[320px] md:w-[380px] snap-start"
               >
                 <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/10 hover:transform hover:scale-[1.02] hover:shadow-2xl group">
@@ -84,7 +93,10 @@ export default function WhyChooseUs() {
                   <div className="flex items-start justify-between mb-6">
                     <div className="relative">
                       <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-yellow-400/25 transition-shadow duration-300">
-                        <feature.icon className="w-7 h-7 text-charcoal-900" strokeWidth={2} />
+                        <feature.icon
+                          className="w-7 h-7 text-charcoal-900"
+                          strokeWidth={2}
+                        />
                       </div>
                       <div className="absolute -inset-1 bg-yellow-400/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
@@ -107,7 +119,7 @@ export default function WhyChooseUs() {
                 </div>
               </div>
             ))}
-            
+
             {/* Peek card to suggest more content */}
             <div className="flex-none w-20 md:w-32" />
           </div>
@@ -115,12 +127,6 @@ export default function WhyChooseUs() {
           {/* Gradient edges for visual cue */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-charcoal-900 to-transparent pointer-events-none z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-charcoal-900 to-transparent pointer-events-none z-10" />
-        </div>
-
-        <div className="text-center mt-8">
-          <p className="text-sand-300/60 text-sm">
-            {t('whyChooseUs.scrollHint') || 'Deslizá para explorar más'}
-          </p>
         </div>
       </div>
     </section>

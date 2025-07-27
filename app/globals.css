@@ -54,6 +54,16 @@ html {
   display: none;
 }
 
+/* Modern no-scrollbar class */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: #ffffff;

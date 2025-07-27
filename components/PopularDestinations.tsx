@@ -98,78 +98,97 @@ export default function PopularDestinations() {
           </div>
         </div>
 
-        {/* Enhanced routes grid - horizontal overflow slider */}
-        <div className="relative mb-16">
-          <div 
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 px-4 -mx-4 scroll-smooth"
-            style={{
-              WebkitOverflowScrolling: 'touch',
-              scrollSnapType: 'x mandatory'
-            }}
-          >
-          {routes.map((route, index) => (
-            <div key={index} className="flex-none w-[300px] sm:w-[340px] lg:w-[360px] stagger-item" style={{ scrollSnapAlign: 'start' }}>
-              <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden elegant-hover group h-full">
-                {/* Route image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={route.image || "/placeholder.svg"}
-                    alt={`Ruta ${route.from} a ${route.to}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">
-                      {route.popularity}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center justify-between text-white">
-                      <h3 className="font-oswald font-bold text-lg">{route.from}</h3>
-                      <div className="text-yellow-400">→</div>
-                      <h3 className="font-oswald font-bold text-lg">{route.to}</h3>
+        {/* Modern routes grid - horizontal overflow slider */}
+        <div className="relative -mx-4 md:mx-0 mb-16">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+            <div 
+              className="flex gap-4 md:gap-6 overflow-x-auto pb-6 
+                         scroll-smooth snap-x snap-mandatory
+                         no-scrollbar"
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                scrollBehavior: 'smooth'
+              }}
+            >
+              {/* Invisible spacer for left padding on mobile */}
+              <div className="flex-none w-0 md:hidden" />
+              
+              {routes.map((route, index) => (
+                <div 
+                  key={index} 
+                  className="flex-none w-[85vw] max-w-[360px] md:w-[380px] snap-center" 
+                >
+                  <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden group h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    {/* Route image */}
+                    <div className="relative h-52 overflow-hidden">
+                      <img
+                        src={route.image || "/placeholder.svg"}
+                        alt={`Ruta ${route.from} a ${route.to}`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-yellow-400 text-black px-4 py-1.5 rounded-full text-xs font-bold shadow-lg uppercase tracking-wide">
+                          {route.popularity}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex items-center justify-between text-white">
+                          <h3 className="font-oswald font-bold text-xl drop-shadow-lg">{route.from}</h3>
+                          <div className="text-yellow-400 text-2xl animate-pulse">→</div>
+                          <h3 className="font-oswald font-bold text-xl drop-shadow-lg">{route.to}</h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Route details */}
+                    <div className="p-6">
+                      <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="text-center">
+                          <div className="flex items-center justify-center text-green-500 mb-1">
+                            <DollarSign className="w-5 h-5" />
+                          </div>
+                          <div className="text-xl font-oswald font-bold text-black">{route.price}</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="flex items-center justify-center text-blue-500 mb-1">
+                            <Clock className="w-5 h-5" />
+                          </div>
+                          <div className="text-base font-medium text-gray-700">{route.duration}</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between mb-6 py-3 border-t border-b border-gray-100">
+                        <div className="flex items-center text-gray-600 text-sm">
+                          <Truck className="w-4 h-4 mr-2 text-gray-400" />
+                          {route.distance}
+                        </div>
+                        <div className="flex items-center text-gray-600 text-sm">
+                          <MapPin className="w-4 h-4 mr-2 text-gray-400" />
+                          Ruta directa
+                        </div>
+                      </div>
+
+                      <button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-3.5 rounded-xl font-oswald font-bold text-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+                        COTIZAR RUTA
+                      </button>
                     </div>
                   </div>
                 </div>
-
-                {/* Route details */}
-                <div className="p-6">
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="flex items-center text-gray-600">
-                      <DollarSign className="w-4 h-4 mr-2 text-green-500" />
-                      <div>
-                        <div className="text-lg font-oswald font-bold text-black">{route.price}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <Clock className="w-4 h-4 mr-2 text-blue-500" />
-                      <div>
-                        <div className="text-sm font-medium">{route.duration}</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <Truck className="w-4 h-4 mr-2" />
-                      {route.distance}
-                    </div>
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Ruta directa
-                    </div>
-                  </div>
-
-                  <button className="w-full bg-yellow-400 text-black py-3 rounded-xl font-oswald font-bold hover:bg-yellow-300 transition-all duration-300 group-hover:shadow-lg">
-                    COTIZAR RUTA
-                  </button>
-                </div>
-              </div>
+              ))}
+              
+              {/* Invisible spacer for right padding on mobile */}
+              <div className="flex-none w-0 md:hidden" />
             </div>
-          ))}
           </div>
-          {/* Gradient fade for overflow indication */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+          
+          {/* Modern gradient overlays for desktop */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-40 
+                          bg-gradient-to-r from-white via-white/60 to-transparent 
+                          pointer-events-none z-10" />
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-40 
+                          bg-gradient-to-l from-white via-white/60 to-transparent 
+                          pointer-events-none z-10" />
         </div>
 
         <div className="text-center">
