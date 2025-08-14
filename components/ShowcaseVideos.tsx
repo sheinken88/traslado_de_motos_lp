@@ -25,7 +25,7 @@ export default function ShowcaseGallery() {
 
   const images = [
     {
-      src: "/images/showcase-1.jpg",
+      src: "/images/showcase-1.mp4",
       title: getText("showcaseGallery.images.loading"),
       description: getText("showcaseGallery.images.loadingDesc"),
       category: getText("showcaseGallery.categories.loading"),

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Calculator, MapPin, Bike, Calendar, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/LanguageContext"
+import { fetchSheetData } from "@/lib/sheets"
 
 export default function QuoteCalculator() {
   const { t } = useLanguage()
@@ -24,6 +25,23 @@ export default function QuoteCalculator() {
     insurance: true,
   })
   const [estimate, setEstimate] = useState<{ min: number; max: number } | null>(null)
+
+  // Load sheet data on component mount for testing
+  useEffect(() => {
+    const loadSheetData = async () => {
+      try {
+        const sheetData = await fetchSheetData()
+        console.log('Google Sheets Data:', sheetData)
+        console.log('Settings tab:', sheetData.settings)
+        console.log('Destinos tab:', sheetData.destinos)
+        console.log('Vehiculos tab:', sheetData.vehiculos)
+      } catch (error) {
+        console.error('Error loading sheet data:', error)
+      }
+    }
+
+    loadSheetData()
+  }, [])
 
   // Popular routes for quick selection
   const popularRoutes = [
