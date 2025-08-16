@@ -12,6 +12,65 @@ export class QuoteCalculator {
   }
 
   /**
+   * Calculate complete quote for multiple motorcycle types
+   */
+  calculateQuoteMultipleVehicles(
+    origin: string,
+    destination: string,
+    vehicles: Array<{type: string, quantity: number}>,
+    waitingDays: number
+  ): QuoteCalculation {
+    // Find route
+    const route = this.findRoute(origin, destination);
+    if (!route) {
+      throw new Error(`Route not found: ${origin} → ${destination}`);
+    }
+
+    // Calculate total quantity for driver/accommodation calculations
+    const totalQuantity = vehicles.reduce((sum, v) => sum + v.quantity, 0);
+
+    // Calculate transportation blocks (850km each, always round up)
+    const totalBlocks = Math.ceil(route.km / 850);
+    
+    // Calculate all cost components (same for all vehicles)
+    const fuelCost = this.calculateFuel(route.km);
+    const driverCost = this.calculateDriver(route.km);
+    const accommodationCost = this.calculateAccommodation(totalBlocks, waitingDays);
+    const { mealCost, airGarageCost } = this.calculateWaitingCosts(totalBlocks, waitingDays);
+    const tollCost = this.settings.PEAJES;
+    
+    // Calculate insurance for each vehicle type separately
+    const insuranceCost = vehicles.reduce((sum, vehicle) => {
+      return sum + this.calculateInsurance(vehicle.type, vehicle.quantity);
+    }, 0);
+    
+    // Total direct costs (subject to margin)
+    const totalDirectCost = fuelCost + driverCost + accommodationCost + 
+                           mealCost + tollCost + airGarageCost;
+    
+    // Apply margin to direct costs only
+    const priceWithMargin = totalDirectCost / this.settings.MARGIN_GENERAL;
+    
+    // Final price = margin-applied direct costs + insurance
+    const finalPrice = priceWithMargin + insuranceCost;
+
+    return {
+      fuelCost: Math.round(fuelCost),
+      driverCost: Math.round(driverCost),
+      accommodationCost: Math.round(accommodationCost),
+      mealCost: Math.round(mealCost),
+      tollCost: Math.round(tollCost),
+      airGarageCost: Math.round(airGarageCost),
+      totalDirectCost: Math.round(totalDirectCost),
+      priceWithMargin: Math.round(priceWithMargin),
+      insuranceCost: Math.round(insuranceCost),
+      finalPrice: Math.round(finalPrice),
+      totalBlocks,
+      totalKm: route.km
+    };
+  }
+
+  /**
    * Calculate complete quote for motorcycle transportation
    */
   calculateQuote(
@@ -118,7 +177,7 @@ export class QuoteCalculator {
   /**
    * Calculate insurance with its own markup (separate from general margin)
    */
-  private calculateInsurance(vehicleCategory: string, quantity: number): number {
+  calculateInsurance(vehicleCategory: string, quantity: number): number {
     const vehicle = this.vehicles.find(v => v.category === vehicleCategory);
     if (!vehicle) {
       throw new Error(`Vehicle category not found: ${vehicleCategory}`);

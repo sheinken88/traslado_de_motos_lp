@@ -19,10 +19,10 @@ export default function QuoteCalculator() {
   
   const [origin, setOrigin] = useState("")
   const [destination, setDestination] = useState("")
-  const [motorcycleType, setMotorcycleType] = useState("")
-  const [quantity, setQuantity] = useState(1)
+  const [motorcycles, setMotorcycles] = useState([{ type: "", quantity: 1 }])
+  const [startDate, setStartDate] = useState("")
+  const [endDate, setEndDate] = useState("")
   const [waitingDays, setWaitingDays] = useState(3)
-  const [tripDuration, setTripDuration] = useState("")
   const [additionalServices, setAdditionalServices] = useState({
     urgentDelivery: false,
     pickupService: false,
@@ -65,15 +65,31 @@ export default function QuoteCalculator() {
     distance: route.km
   })) || []
 
+  // Calculate waiting days from start and end dates
+  useEffect(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate)
+      const end = new Date(endDate)
+      const diffTime = Math.abs(end.getTime() - start.getTime())
+      const diffDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)))
+      setWaitingDays(diffDays)
+    }
+  }, [startDate, endDate])
+
   // Calculate estimate using the new service
   useEffect(() => {
-    if (origin && destination && motorcycleType && calculator) {
+    if (origin && destination && motorcycles.some(m => m.type) && calculator) {
       try {
-        const quote = calculator.calculateQuote(
+        const validMotorcycles = motorcycles.filter(m => m.type)
+        if (validMotorcycles.length === 0) {
+          setEstimate(null)
+          return
+        }
+        
+        const quote = calculator.calculateQuoteMultipleVehicles(
           origin,
           destination,
-          motorcycleType,
-          quantity,
+          validMotorcycles.map(m => ({ type: m.type, quantity: m.quantity })),
           waitingDays
         )
         
@@ -86,7 +102,7 @@ export default function QuoteCalculator() {
     } else {
       setEstimate(null)
     }
-  }, [origin, destination, motorcycleType, quantity, waitingDays, calculator])
+  }, [origin, destination, motorcycles, waitingDays, calculator])
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("es-AR", {
@@ -157,39 +173,66 @@ export default function QuoteCalculator() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="col-span-2">
-                    <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
-                      <Bike className="w-4 h-4 mr-2 text-yellow-400" />
-                      {getText('quoteCalculator.fields.bikeType')}
-                    </label>
-                    <select
-                      value={motorcycleType}
-                      onChange={(e) => setMotorcycleType(e.target.value)}
-                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
+                <div>
+                  <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
+                    <Bike className="w-4 h-4 mr-2 text-yellow-400" />
+                    {getText('quoteCalculator.fields.bikeType')}
+                  </label>
+                  <div className="space-y-3">
+                    {motorcycles.map((motorcycle, index) => (
+                      <div key={index} className="grid grid-cols-3 gap-3">
+                        <div className="col-span-2">
+                          <select
+                            value={motorcycle.type}
+                            onChange={(e) => {
+                              const newMotorcycles = [...motorcycles]
+                              newMotorcycles[index].type = e.target.value
+                              setMotorcycles(newMotorcycles)
+                            }}
+                            className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
+                          >
+                            <option value="">{getText('quoteCalculator.fields.bikeTypePlaceholder')}</option>
+                            {sheetData?.vehicles.map((vehicle) => (
+                              <option key={vehicle.category} value={vehicle.category}>
+                                {vehicle.category}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="flex gap-2">
+                          <select
+                            value={motorcycle.quantity}
+                            onChange={(e) => {
+                              const newMotorcycles = [...motorcycles]
+                              newMotorcycles[index].quantity = parseInt(e.target.value)
+                              setMotorcycles(newMotorcycles)
+                            }}
+                            className="flex-1 px-3 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
+                          >
+                            {[1, 2, 3, 4, 5].map(qty => (
+                              <option key={qty} value={qty}>{qty}</option>
+                            ))}
+                          </select>
+                          {motorcycles.length > 1 && (
+                            <button
+                              onClick={() => {
+                                const newMotorcycles = motorcycles.filter((_, i) => i !== index)
+                                setMotorcycles(newMotorcycles)
+                              }}
+                              className="px-3 py-3 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-colors"
+                            >
+                              ×
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => setMotorcycles([...motorcycles, { type: "", quantity: 1 }])}
+                      className="w-full px-4 py-3 bg-yellow-100 text-navy-900 rounded-xl hover:bg-yellow-200 transition-colors font-medium"
                     >
-                      <option value="">{getText('quoteCalculator.fields.bikeTypePlaceholder')}</option>
-                      {sheetData?.vehicles.map((vehicle) => (
-                        <option key={vehicle.category} value={vehicle.category}>
-                          {vehicle.category}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
-                      <Bike className="w-4 h-4 mr-2 text-yellow-400" />
-                      Cantidad
-                    </label>
-                    <select
-                      value={quantity}
-                      onChange={(e) => setQuantity(parseInt(e.target.value))}
-                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
-                    >
-                      {[1, 2, 3, 4, 5].map(qty => (
-                        <option key={qty} value={qty}>{qty} moto{qty > 1 ? 's' : ''}</option>
-                      ))}
-                    </select>
+                      + {getText('quoteCalculator.fields.addMotorcycle')}
+                    </button>
                   </div>
                 </div>
 
@@ -197,31 +240,35 @@ export default function QuoteCalculator() {
                   <div>
                     <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                       <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
-                      {getText('quoteCalculator.fields.date')}
+                      {getText('quoteCalculator.fields.startDate')}
                     </label>
                     <input
                       type="date"
-                      value={tripDuration}
-                      onChange={(e) => setTripDuration(e.target.value)}
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                      min={new Date().toISOString().split('T')[0]}
                       className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
                     />
                   </div>
                   <div>
                     <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                       <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
-                      Días de espera
+                      {getText('quoteCalculator.fields.endDate')}
                     </label>
-                    <select
-                      value={waitingDays}
-                      onChange={(e) => setWaitingDays(parseInt(e.target.value))}
+                    <input
+                      type="date"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                      min={startDate || new Date().toISOString().split('T')[0]}
                       className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(days => (
-                        <option key={days} value={days}>{days} día{days > 1 ? 's' : ''}</option>
-                      ))}
-                    </select>
+                    />
                   </div>
                 </div>
+                {startDate && endDate && (
+                  <div className="text-sm text-charcoal-700 bg-sand-100 px-4 py-2 rounded-lg">
+                    Duración del viaje: {waitingDays} día{waitingDays > 1 ? 's' : ''}
+                  </div>
+                )}
 
                 <div>
                   <label className="text-sm font-semibold text-navy-900 mb-3 block">{getText('quoteCalculator.fields.additionalServices')}</label>
@@ -286,7 +333,7 @@ export default function QuoteCalculator() {
                             {formatPrice(estimate.finalPrice)}
                           </div>
                           <p className="text-xs text-sand-400 mt-1">
-                            {estimate.totalKm} km • {quantity} moto{quantity > 1 ? 's' : ''} • {waitingDays} día{waitingDays > 1 ? 's' : ''}
+                            {estimate.totalKm} km • {motorcycles.reduce((sum, m) => sum + m.quantity, 0)} moto{motorcycles.reduce((sum, m) => sum + m.quantity, 0) > 1 ? 's' : ''} • {waitingDays} día{waitingDays > 1 ? 's' : ''}
                           </p>
                         </div>
 
@@ -307,6 +354,19 @@ export default function QuoteCalculator() {
                           </div>
                           
                           <div id="quote-details" style={{display: 'none'}} className="space-y-2 text-xs mb-4 bg-navy-800 p-3 rounded-lg">
+                            <div className="border-b border-navy-600 pb-2 mb-3">
+                              <span className="text-sand-200 font-semibold block mb-2">{getText('quoteCalculator.fields.bikeType')}:</span>
+                              {motorcycles.filter(m => m.type).map((motorcycle, index) => (
+                                <div key={index} className="flex justify-between text-xs mb-1">
+                                  <span className="text-sand-300">{motorcycle.quantity}x {motorcycle.type}:</span>
+                                  <span className="text-white">
+                                    {calculator && sheetData ? formatPrice(
+                                      calculator.calculateInsurance(motorcycle.type, motorcycle.quantity)
+                                    ) : '$0'}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
                             <div className="flex justify-between">
                               <span className="text-sand-300">Combustible:</span>
                               <span className="text-white">{formatPrice(estimate.fuelCost)}</span>

@@ -204,6 +204,10 @@
         "scooter": "Scooter"
       },
       "date": "When do you need transportation?",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "addMotorcycle": "Add another motorcycle",
+      "remove": "Remove",
       "additionalServices": "Additional Services",
       "urgentDelivery": "Urgent delivery (24-48hrs)",
       "pickupService": "Home pickup",
