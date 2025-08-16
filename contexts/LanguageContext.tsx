@@ -48,16 +48,20 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     loadTranslations();
 
-    // Get saved language from localStorage
-    const savedLang = localStorage.getItem('language') as Language;
-    if (savedLang && ['es', 'en', 'pt'].includes(savedLang)) {
-      setCurrentLanguage(savedLang);
+    // Get saved language from localStorage (only on client side)
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('language') as Language;
+      if (savedLang && ['es', 'en', 'pt'].includes(savedLang)) {
+        setCurrentLanguage(savedLang);
+      }
     }
   }, []);
 
   const setLanguage = (lang: Language) => {
     setCurrentLanguage(lang);
-    localStorage.setItem('language', lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
   };
 
   const t = (key: string): string | string[] => {
