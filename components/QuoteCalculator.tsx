@@ -90,11 +90,11 @@ export default function QuoteCalculator() {
           origin,
           destination,
           validMotorcycles.map(m => ({ type: m.type, quantity: m.quantity })),
-          waitingDays
+          waitingDays,
+          additionalServices.insurance
         )
         
         setEstimate(quote)
-        console.log('Quote calculation:', quote)
       } catch (error) {
         console.error('Error calculating quote:', error)
         setEstimate(null)
@@ -102,7 +102,7 @@ export default function QuoteCalculator() {
     } else {
       setEstimate(null)
     }
-  }, [origin, destination, motorcycles, waitingDays, calculator])
+  }, [origin, destination, motorcycles, waitingDays, calculator, additionalServices.insurance])
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("es-AR", {
@@ -141,20 +141,26 @@ export default function QuoteCalculator() {
                     {getText('quoteCalculator.fields.route')}
                   </label>
                   <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      placeholder={getText('quoteCalculator.fields.originPlaceholder')}
+                    <select
                       value={origin}
                       onChange={(e) => setOrigin(e.target.value)}
-                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 placeholder-charcoal-700/50 transition-all duration-300"
-                    />
-                    <input
-                      type="text"
-                      placeholder={getText('quoteCalculator.fields.destinationPlaceholder')}
+                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
+                    >
+                      <option value="">{getText('quoteCalculator.fields.originPlaceholder')}</option>
+                      {Array.from(new Set(sheetData?.routes.flatMap(r => [r.origin, r.destination]) || [])).sort().map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                    </select>
+                    <select
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
-                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 placeholder-charcoal-700/50 transition-all duration-300"
-                    />
+                      className="w-full px-4 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
+                    >
+                      <option value="">{getText('quoteCalculator.fields.destinationPlaceholder')}</option>
+                      {Array.from(new Set(sheetData?.routes.flatMap(r => [r.origin, r.destination]) || [])).sort().map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                    </select>
                   </div>
                   {/* Quick route buttons */}
                   <div className="mt-3 flex flex-wrap gap-2">

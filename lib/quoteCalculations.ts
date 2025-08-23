@@ -18,7 +18,8 @@ export class QuoteCalculator {
     origin: string,
     destination: string,
     vehicles: Array<{type: string, quantity: number}>,
-    waitingDays: number
+    waitingDays: number,
+    includeInsurance: boolean = true
   ): QuoteCalculation {
     // Find route
     const route = this.findRoute(origin, destination);
@@ -39,10 +40,12 @@ export class QuoteCalculator {
     const { mealCost, airGarageCost } = this.calculateWaitingCosts(totalBlocks, waitingDays);
     const tollCost = this.settings.PEAJES;
     
-    // Calculate insurance for each vehicle type separately
-    const insuranceCost = vehicles.reduce((sum, vehicle) => {
-      return sum + this.calculateInsurance(vehicle.type, vehicle.quantity);
-    }, 0);
+    // Calculate insurance for each vehicle type separately (only if includeInsurance is true)
+    const insuranceCost = includeInsurance 
+      ? vehicles.reduce((sum, vehicle) => {
+          return sum + this.calculateInsurance(vehicle.type, vehicle.quantity);
+        }, 0)
+      : 0;
     
     // Total direct costs (subject to margin)
     const totalDirectCost = fuelCost + driverCost + accommodationCost + 
@@ -53,6 +56,50 @@ export class QuoteCalculator {
     
     // Final price = margin-applied direct costs + insurance
     const finalPrice = priceWithMargin + insuranceCost;
+
+    // Detailed calculation log
+    console.log('=================== QUOTE CALCULATION BREAKDOWN ===================');
+    console.log(`Route: ${origin} → ${destination} (${route.km} km)`);
+    console.log(`Vehicles: ${vehicles.map(v => `${v.quantity}x ${v.type}`).join(', ')}`);
+    console.log(`Waiting Days: ${waitingDays}`);
+    console.log('-------------------------------------------------------------------');
+    console.log('OPERATIONAL COSTS:');
+    console.log(`  Fuel Cost: $${Math.round(fuelCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${route.km} km ÷ ${this.settings.KM_X_LITRO} km/L × $${this.settings.LITRO_DIESEL}/L`);
+    console.log(`  Driver Cost: $${Math.round(driverCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${totalBlocks} blocks × $${this.settings.CHOFER.toLocaleString('es-AR')}/block`);
+    console.log(`  Accommodation: $${Math.round(accommodationCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${accommodationCost > 0 ? `${totalBlocks - 1} nights × $${this.settings.ALOJAMIENTO.toLocaleString('es-AR')}` : 'Not required (waiting > 5 days)'}`);
+    console.log(`  Meals: $${Math.round(mealCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${mealCost > 0 ? `${totalBlocks - 1} × $${this.settings.COMIDAS.toLocaleString('es-AR')}` : 'Not required (waiting > 5 days)'}`);
+    console.log(`  Tolls: $${Math.round(tollCost).toLocaleString('es-AR')}`);
+    console.log(`  Air/Garage: $${Math.round(airGarageCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${airGarageCost > 0 ? `Air: $${this.settings.AEREO.toLocaleString('es-AR')} + Garage: $${this.settings.GARAGE_TRAILER.toLocaleString('es-AR')}` : 'Not required (waiting ≤ 4 days)'}`);
+    console.log('-------------------------------------------------------------------');
+    console.log(`TOTAL DIRECT COSTS: $${Math.round(totalDirectCost).toLocaleString('es-AR')}`);
+    console.log(`AFTER MARGIN (÷${this.settings.MARGIN_GENERAL}): $${Math.round(priceWithMargin).toLocaleString('es-AR')}`);
+    console.log('-------------------------------------------------------------------');
+    if (includeInsurance) {
+      console.log('INSURANCE CALCULATION:');
+      vehicles.forEach(vehicle => {
+        const veh = this.vehicles.find(v => v.category === vehicle.type);
+        if (veh) {
+          const vehicleValue = veh.estimatedPrice * vehicle.quantity;
+          const grossIns = vehicleValue * this.settings.INSURANCE_RATE;
+          const finalIns = grossIns * (1 + this.settings.INSURANCE_MARKUP);
+          console.log(`  ${vehicle.quantity}x ${vehicle.type}:`);
+          console.log(`    Vehicle value: $${vehicleValue.toLocaleString('es-AR')}`);
+          console.log(`    Insurance (${(this.settings.INSURANCE_RATE * 100).toFixed(2)}%): $${Math.round(grossIns).toLocaleString('es-AR')}`);
+          console.log(`    + Markup (${(this.settings.INSURANCE_MARKUP * 100).toFixed(1)}%): $${Math.round(finalIns).toLocaleString('es-AR')}`);
+        }
+      });
+      console.log(`  TOTAL INSURANCE: $${Math.round(insuranceCost).toLocaleString('es-AR')}`);
+    } else {
+      console.log('INSURANCE: Not included (checkbox unchecked)');
+    }
+    console.log('===================================================================');
+    console.log(`FINAL PRICE: $${Math.round(finalPrice).toLocaleString('es-AR')}`);
+    console.log('===================================================================');
 
     return {
       fuelCost: Math.round(fuelCost),
@@ -78,7 +125,8 @@ export class QuoteCalculator {
     destination: string,
     vehicleCategory: string,
     quantity: number,
-    waitingDays: number
+    waitingDays: number,
+    includeInsurance: boolean = true
   ): QuoteCalculation {
     // Find route
     const route = this.findRoute(origin, destination);
@@ -104,10 +152,54 @@ export class QuoteCalculator {
     const priceWithMargin = totalDirectCost / this.settings.MARGIN_GENERAL;
     
     // Calculate insurance (with its own markup, not subject to general margin)
-    const insuranceCost = this.calculateInsurance(vehicleCategory, quantity);
+    const insuranceCost = includeInsurance 
+      ? this.calculateInsurance(vehicleCategory, quantity)
+      : 0;
     
     // Final price = margin-applied direct costs + insurance
     const finalPrice = priceWithMargin + insuranceCost;
+
+    // Detailed calculation log (for single vehicle)
+    console.log('=================== QUOTE CALCULATION BREAKDOWN ===================');
+    console.log(`Route: ${origin} → ${destination} (${route.km} km)`);
+    console.log(`Vehicle: ${quantity}x ${vehicleCategory}`);
+    console.log(`Waiting Days: ${waitingDays}`);
+    console.log('-------------------------------------------------------------------');
+    console.log('OPERATIONAL COSTS:');
+    console.log(`  Fuel Cost: $${Math.round(fuelCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${route.km} km ÷ ${this.settings.KM_X_LITRO} km/L × $${this.settings.LITRO_DIESEL}/L`);
+    console.log(`  Driver Cost: $${Math.round(driverCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${totalBlocks} blocks × $${this.settings.CHOFER.toLocaleString('es-AR')}/block`);
+    console.log(`  Accommodation: $${Math.round(accommodationCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${accommodationCost > 0 ? `${totalBlocks - 1} nights × $${this.settings.ALOJAMIENTO.toLocaleString('es-AR')}` : 'Not required (waiting > 5 days)'}`);
+    console.log(`  Meals: $${Math.round(mealCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${mealCost > 0 ? `${totalBlocks - 1} × $${this.settings.COMIDAS.toLocaleString('es-AR')}` : 'Not required (waiting > 5 days)'}`);
+    console.log(`  Tolls: $${Math.round(tollCost).toLocaleString('es-AR')}`);
+    console.log(`  Air/Garage: $${Math.round(airGarageCost).toLocaleString('es-AR')}`);
+    console.log(`    → ${airGarageCost > 0 ? `Air: $${this.settings.AEREO.toLocaleString('es-AR')} + Garage: $${this.settings.GARAGE_TRAILER.toLocaleString('es-AR')}` : 'Not required (waiting ≤ 4 days)'}`);
+    console.log('-------------------------------------------------------------------');
+    console.log(`TOTAL DIRECT COSTS: $${Math.round(totalDirectCost).toLocaleString('es-AR')}`);
+    console.log(`AFTER MARGIN (÷${this.settings.MARGIN_GENERAL}): $${Math.round(priceWithMargin).toLocaleString('es-AR')}`);
+    console.log('-------------------------------------------------------------------');
+    if (includeInsurance) {
+      console.log('INSURANCE CALCULATION:');
+      const veh = this.vehicles.find(v => v.category === vehicleCategory);
+      if (veh) {
+        const vehicleValue = veh.estimatedPrice * quantity;
+        const grossIns = vehicleValue * this.settings.INSURANCE_RATE;
+        const finalIns = grossIns * (1 + this.settings.INSURANCE_MARKUP);
+        console.log(`  ${quantity}x ${vehicleCategory}:`);
+        console.log(`    Vehicle value: $${vehicleValue.toLocaleString('es-AR')}`);
+        console.log(`    Insurance (${(this.settings.INSURANCE_RATE * 100).toFixed(2)}%): $${Math.round(grossIns).toLocaleString('es-AR')}`);
+        console.log(`    + Markup (${(this.settings.INSURANCE_MARKUP * 100).toFixed(1)}%): $${Math.round(finalIns).toLocaleString('es-AR')}`);
+      }
+      console.log(`  TOTAL INSURANCE: $${Math.round(insuranceCost).toLocaleString('es-AR')}`);
+    } else {
+      console.log('INSURANCE: Not included (checkbox unchecked)');
+    }
+    console.log('===================================================================');
+    console.log(`FINAL PRICE: $${Math.round(finalPrice).toLocaleString('es-AR')}`);
+    console.log('===================================================================');
 
     return {
       fuelCost: Math.round(fuelCost),
@@ -180,7 +272,7 @@ export class QuoteCalculator {
   calculateInsurance(vehicleCategory: string, quantity: number): number {
     const vehicle = this.vehicles.find(v => v.category === vehicleCategory);
     if (!vehicle) {
-      throw new Error(`Vehicle category not found: ${vehicleCategory}`);
+      throw new Error(`Vehicle category not found: "${vehicleCategory}"`);
     }
     
     const totalValue = vehicle.estimatedPrice * quantity;
@@ -194,17 +286,19 @@ export class QuoteCalculator {
    * Find route by origin and destination (bidirectional search)
    */
   private findRoute(origin: string, destination: string): Route | null {
+    const normalizeString = (str: string) => str.toLowerCase().trim();
+    
     // Direct search
     let route = this.routes.find(r => 
-      r.origin.toLowerCase() === origin.toLowerCase() && 
-      r.destination.toLowerCase() === destination.toLowerCase()
+      normalizeString(r.origin) === normalizeString(origin) && 
+      normalizeString(r.destination) === normalizeString(destination)
     );
     
     // Reverse search if not found
     if (!route) {
       route = this.routes.find(r => 
-        r.origin.toLowerCase() === destination.toLowerCase() && 
-        r.destination.toLowerCase() === origin.toLowerCase()
+        normalizeString(r.origin) === normalizeString(destination) && 
+        normalizeString(r.destination) === normalizeString(origin)
       );
     }
     
