@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Shield, Clock, MapPin, Headphones, Award, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function WhyChooseUs() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const { t } = useLanguage();
 
   const features = [
@@ -47,6 +48,62 @@ export default function WhyChooseUs() {
     },
   ];
 
+  // Duplicate features for seamless infinite scroll
+  const duplicatedFeatures = [...features, ...features];
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    let animationId: number;
+    let startTime: number;
+    const duration = 40000; // 40 seconds for full cycle
+
+    // Responsive card width calculation
+    const getCardWidth = () => {
+      const screenWidth = window.innerWidth;
+      const cardWidth = screenWidth < 768 ? 320 : 380; // Mobile: 320px, Desktop: 380px
+      const gap = 24;
+      return cardWidth + gap;
+    };
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+
+      if (!isHovered) {
+        const cardWidth = getCardWidth();
+        const totalWidth = features.length * cardWidth;
+        const elapsed = currentTime - startTime;
+        const progress = (elapsed % duration) / duration;
+        const translateX = -(progress * totalWidth);
+
+        carousel.style.transform = `translateX(${translateX}px)`;
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    // Handle window resize
+    const handleResize = () => {
+      if (carousel) {
+        const cardWidth = getCardWidth();
+        carousel.style.width = `${duplicatedFeatures.length * cardWidth}px`;
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Set initial width
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isHovered, features.length, duplicatedFeatures.length]);
+
   return (
     <section
       id="por-que-elegirnos"
@@ -75,21 +132,20 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* Modern horizontal scrollable carousel */}
-        <div className="relative -mx-4 px-4">
+        {/* Auto-advancing infinite carousel */}
+        <div className="relative overflow-hidden">
           <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth pb-6"
-            style={{
-              WebkitOverflowScrolling: "touch",
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
+            ref={carouselRef}
+            className="flex gap-6 transition-transform ease-linear"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            {features.map((feature, index) => (
+            {duplicatedFeatures.map((feature, index) => (
               <div
-                key={index}
-                className="flex-none w-[320px] md:w-[380px] snap-start"
+                key={`${index}-${
+                  index >= features.length ? "duplicate" : "original"
+                }`}
+                className="flex-none w-[320px] md:w-[380px]"
               >
                 <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/10 hover:transform hover:scale-[1.02] hover:shadow-2xl group">
                   {/* Top section with icon and stat */}
@@ -122,12 +178,9 @@ export default function WhyChooseUs() {
                 </div>
               </div>
             ))}
-
-            {/* Peek card to suggest more content */}
-            <div className="flex-none w-20 md:w-32" />
           </div>
 
-          {/* Gradient edges for visual cue */}
+          {/* Gradient edges for visual depth */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-charcoal-900 to-transparent pointer-events-none z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-charcoal-900 to-transparent pointer-events-none z-10" />
         </div>
