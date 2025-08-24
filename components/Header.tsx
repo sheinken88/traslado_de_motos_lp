@@ -34,39 +34,39 @@ export default function Header() {
 
   return (
     <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center ml-8 xl:ml-12 space-x-6 xl:space-x-8">
             <Link
               href="#hero"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.home")}
             </Link>
             <Link
               href="#como-funciona"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.howItWorks")}
             </Link>
             <Link
               href="#por-que-elegirnos"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.services")}
             </Link>
             <Link
               href="#calculadora"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.calculator")}
             </Link>
             <Link
               href="#cotizacion"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.contact")}
             </Link>
@@ -76,11 +76,11 @@ export default function Header() {
             {/* Language Selector */}
             <div className="relative" ref={dropdownRef}>
               <button
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors"
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
               >
                 <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">
+                <span className="text-sm font-medium whitespace-nowrap">
                   {
                     languages.find((lang) => lang.code === currentLanguage)
                       ?.flag
@@ -120,7 +120,7 @@ export default function Header() {
               href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105"
+              className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105 whitespace-nowrap"
             >
               <MessageCircle className="w-4 h-4" />
               <span>WhatsApp</span>
@@ -128,7 +128,7 @@ export default function Header() {
 
             <Link
               href="#cotizacion"
-              className="bg-yellow-400 text-navy-900 px-4 xl:px-6 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105 text-sm xl:text-base"
+              className="bg-yellow-400 text-navy-900 px-4 xl:px-5 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105 text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.getQuote")}
             </Link>
