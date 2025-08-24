@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Send } from "lucide-react"
-import { useLanguage } from "@/contexts/LanguageContext"
+import { useState } from "react";
+import { Send } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function QuoteForm() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     origen: "",
     destino: "",
@@ -17,54 +17,66 @@ export default function QuoteForm() {
     telefono: "",
     email: "",
     comentarios: "",
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // TODO: Implement actual form submission
-    console.log("Form data:", formData)
+    console.log("Form data:", formData);
 
     // Simulate API call
     setTimeout(() => {
-      setIsSubmitted(true)
-    }, 1000)
-  }
+      setIsSubmitted(true);
+    }, 1000);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   if (isSubmitted) {
     return (
-      <section id="cotizacion" className="section-padding bg-navy-900 text-white">
+      <section
+        id="cotizacion"
+        className="section-padding bg-navy-900 text-white"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="bg-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-glow animate-scaleIn">
               <Send className="w-10 h-10" />
             </div>
-            <h2 className="text-4xl font-bebas font-black mb-4">{t('quoteForm.success.title')}</h2>
+            <h2 className="text-4xl font-bebas font-black mb-4">
+              {t("quoteForm.success.title")}
+            </h2>
             <p className="text-xl text-sand-200 mb-8">
-              {t('quoteForm.success.message')}
+              {t("quoteForm.success.message")}
             </p>
             <button
               onClick={() => setIsSubmitted(false)}
               className="bg-yellow-400 text-navy-900 px-8 py-3 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300"
             >
-              {t('quoteForm.success.newQuote')}
+              {t("quoteForm.success.newQuote")}
             </button>
           </div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
-    <section id="cotizacion" className="section-padding bg-navy-900 text-white relative overflow-hidden">
+    <section
+      id="cotizacion"
+      className="section-padding bg-navy-900 text-white relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
@@ -73,10 +85,13 @@ export default function QuoteForm() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bebas font-black mb-4">
-            {t('quoteForm.title')} <span className="text-yellow-400">{t('quoteForm.titleAccent')}</span>
+            {t("quoteForm.title")}{" "}
+            <span className="text-yellow-400">
+              {t("quoteForm.titleAccent")}
+            </span>
           </h2>
           <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light">
-            {t('quoteForm.subtitle')}
+            {t("quoteForm.subtitle")}
           </p>
         </div>
 
@@ -84,7 +99,7 @@ export default function QuoteForm() {
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="origen">
-                {t('quoteForm.fields.origin')} *
+                {t("quoteForm.fields.origin")} *
               </label>
               <input
                 type="text"
@@ -100,7 +115,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="destino">
-                {t('quoteForm.fields.destination')} *
+                {t("quoteForm.fields.destination")} *
               </label>
               <input
                 type="text"
@@ -115,8 +130,11 @@ export default function QuoteForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold mb-2" htmlFor="tipoMoto">
-                {t('quoteForm.fields.bikeType')} *
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="tipoMoto"
+              >
+                {t("quoteForm.fields.bikeType")} *
               </label>
               <select
                 id="tipoMoto"
@@ -139,7 +157,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="fecha">
-                {t('quoteForm.fields.date')}
+                {t("quoteForm.fields.date")}
               </label>
               <input
                 type="date"
@@ -153,7 +171,7 @@ export default function QuoteForm() {
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="nombre">
-                {t('quoteForm.fields.name')} *
+                {t("quoteForm.fields.name")} *
               </label>
               <input
                 type="text"
@@ -168,8 +186,11 @@ export default function QuoteForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold mb-2" htmlFor="telefono">
-                {t('quoteForm.fields.phone')} *
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="telefono"
+              >
+                {t("quoteForm.fields.phone")} *
               </label>
               <input
                 type="tel"
@@ -185,7 +206,7 @@ export default function QuoteForm() {
 
             <div className="md:col-span-2">
               <label className="block text-sm font-bold mb-2" htmlFor="email">
-                {t('quoteForm.fields.email')} *
+                {t("quoteForm.fields.email")} *
               </label>
               <input
                 type="email"
@@ -200,8 +221,11 @@ export default function QuoteForm() {
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm font-bold mb-2" htmlFor="comentarios">
-                {t('quoteForm.fields.comments')}
+              <label
+                className="block text-sm font-bold mb-2"
+                htmlFor="comentarios"
+              >
+                {t("quoteForm.fields.comments")}
               </label>
               <textarea
                 id="comentarios"
@@ -219,17 +243,17 @@ export default function QuoteForm() {
                 type="submit"
                 className="bg-yellow-400 text-navy-900 px-12 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 hover:shadow-glow transition-all transform hover:scale-105 flex items-center justify-center mx-auto group"
               >
-                {t('quoteForm.submit')}
+                {t("quoteForm.submit")}
                 <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <p className="text-sm text-sand-300 mt-4 font-light">
-                {t('quoteForm.required')}
+                {t("quoteForm.required")}
               </p>
             </div>
           </form>
         </div>
       </div>
     </section>
-  )
+  );
 }
