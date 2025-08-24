@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -96,6 +94,7 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web.
     // Try to send email if Resend API key is configured
     if (process.env.RESEND_API_KEY) {
       try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
           from: "MotoTransfer <onboarding@resend.dev>", // You'll need to verify your domain
           to: ["heinken.sebastian@gmail.com"],
