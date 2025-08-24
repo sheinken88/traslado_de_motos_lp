@@ -98,7 +98,7 @@ export default function FAQ() {
 
               {openIndex === index && (
                 <div className="px-6 pb-6 animate-fadeInUp">
-                  <p className="text-charcoal-700 leading-relaxed text-elegant pl-4 border-l-2 border-yellow-400">
+                  <p className="text-charcoal-700 leading-relaxed text-elegant mt-4 pl-4 border-l-2 border-yellow-400">
                     {faq.answer}
                   </p>
                 </div>
