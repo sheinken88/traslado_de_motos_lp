@@ -6,7 +6,6 @@ import HowItWorks from "@/components/HowItWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ShowcaseVideos from "@/components/ShowcaseVideos";
 import Testimonials from "@/components/Testimonials";
-import PopularDestinations from "@/components/PopularDestinations";
 import FAQ from "@/components/FAQ";
 import QuoteForm from "@/components/QuoteForm";
 import Footer from "@/components/Footer";
@@ -23,7 +22,6 @@ export default function Home() {
       <WhyChooseUs />
       <ShowcaseVideos />
       <Testimonials />
-      <PopularDestinations />
       <FAQ />
       <QuoteForm />
       <Footer />

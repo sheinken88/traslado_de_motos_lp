@@ -39,70 +39,94 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     },
     heroStats: {
       transported: "Motos Transportadas",
-      satisfaction: "Satisfacción", 
+      satisfaction: "Satisfacción",
       support: "Soporte",
       experience: "Años de Experiencia",
       ctaTitle: "¿LISTO PARA TU PRÓXIMA AVENTURA?",
-      ctaSubtitle: "Dejanos transportar tu moto mientras vos te enfocás en disfrutar el viaje",
-      ctaButton: "COMENZAR AHORA"
+      ctaSubtitle:
+        "Dejanos transportar tu moto mientras vos te enfocás en disfrutar el viaje",
+      ctaButton: "COMENZAR AHORA",
     },
     howItWorks: {
       title: "¿CÓMO FUNCIONA?",
-      subtitle: "Proceso simple y transparente para que tu moto llegue segura a destino",
+      subtitle:
+        "Proceso simple y transparente para que tu moto llegue segura a destino",
       tagline: "Realizando transporte de motos desde 2018",
       steps: {
         pickup: {
           title: "RETIRAMOS",
-          description: "Coordinamos la entrega de tu motocicleta con todas las medidas de seguridad y documentación necesaria.",
-          features: ["Inspección previa", "Documentación completa", "Carga de motocicletas"]
+          description:
+            "Coordinamos la entrega de tu motocicleta con todas las medidas de seguridad y documentación necesaria.",
+          features: [
+            "Inspección previa",
+            "Documentación completa",
+            "Carga de motocicletas",
+          ],
         },
         transport: {
           title: "TRANSPORTAMOS",
-          description: "Tu moto viaja segura en nuestros vehículos especializados, seguimiento constante y sistema de sujeción profesional.",
-          features: ["Seguimiento en tiempo real", "Actualización constante", "Fotos de la moto"]
+          description:
+            "Tu moto viaja segura en nuestros vehículos especializados, seguimiento constante y sistema de sujeción profesional.",
+          features: [
+            "Seguimiento en tiempo real",
+            "Actualización constante",
+            "Fotos de la moto",
+          ],
         },
         delivery: {
           title: "ENTREGAMOS",
-          description: "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura con toda la documentación en orden.",
-          features: ["Retiro por el aeropuerto", "Entrega puntual", "Documentación completa"]
-        }
-      }
+          description:
+            "Recibís tu motocicleta en perfecto estado en el destino acordado, lista para tu aventura con toda la documentación en orden.",
+          features: [
+            "Retiro por el aeropuerto",
+            "Entrega puntual",
+            "Documentación completa",
+          ],
+        },
+      },
     },
     whyChooseUs: {
       title: "¿POR QUÉ",
       titleAccent: "ELEGIRNOS?",
-      subtitle: "Más de 6 años ofreciendo servicios de transporte de motos y traslado de motocicletas por toda Argentina con total confiabilidad y seguridad",
+      subtitle:
+        "Más de 6 años ofreciendo servicios de transporte de motos y traslado de motocicletas por toda Argentina con total confiabilidad y seguridad",
       features: {
         insurance: {
           title: "Seguro Incluido",
-          description: "Cobertura completa durante todo el trayecto. Tu moto está protegida ante cualquier eventualidad."
+          description:
+            "Cobertura completa durante todo el trayecto. Tu moto está protegida ante cualquier eventualidad.",
         },
         fastDelivery: {
           title: "Entrega Rápida",
-          description: "Tiempos de entrega optimizados. Sabemos que querés comenzar tu aventura cuanto antes."
+          description:
+            "Tiempos de entrega optimizados. Sabemos que querés comenzar tu aventura cuanto antes.",
         },
         tracking: {
           title: "Seguimiento en Tiempo Real",
-          description: "Conocé la ubicación exacta de tu motocicleta durante todo el viaje con nuestro sistema GPS."
+          description:
+            "Conocé la ubicación exacta de tu motocicleta durante todo el viaje con nuestro sistema GPS.",
         },
         support: {
           title: "Atención Personalizada",
-          description: "Equipo dedicado disponible para resolver todas tus consultas durante el proceso."
+          description:
+            "Equipo dedicado disponible para resolver todas tus consultas durante el proceso.",
         },
         experience: {
           title: "Experiencia Comprobada",
-          description: "Más de 5 años en el mercado con miles de motocicletas transportadas exitosamente."
+          description:
+            "Más de 5 años en el mercado con miles de motocicletas transportadas exitosamente.",
         },
         team: {
           title: "Equipo Profesional",
-          description: "Personal capacitado y especializado en el manejo y transporte de motocicletas."
-        }
-      }
+          description:
+            "Personal capacitado y especializado en el manejo y transporte de motocicletas.",
+        },
+      },
     },
     testimonials: {
       title: "TESTIMONIOS",
       subtitle: "Lo que dicen nuestros clientes sobre nuestro servicio",
-      data: []
+      data: [],
     },
     destinations: {
       title: "DESTINOS",
@@ -115,12 +139,13 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "PREGUNTAS FRECUENTES",
       subtitle: "Resolvemos las dudas más comunes sobre nuestro servicio",
       tagline: "Todo lo que necesitás saber para viajar tranquilo",
-      questions: []
+      questions: [],
     },
     quoteForm: {
       title: "SOLICITAR",
       titleAccent: "COTIZACIÓN",
-      subtitle: "Completá el formulario y te enviaremos una cotización personalizada en menos de 2 horas",
+      subtitle:
+        "Completá el formulario y te enviaremos una cotización personalizada en menos de 2 horas",
       fields: {
         origin: "Ciudad de Origen",
         destination: "Ciudad de Destino",
@@ -129,10 +154,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         name: "Nombre Completo",
         phone: "Teléfono",
         email: "Email",
-        comments: "Comentarios Adicionales"
+        comments: "Comentarios Adicionales",
       },
       submit: "ENVIAR COTIZACIÓN",
-      required: "* Campos obligatorios. Te contactaremos dentro de las próximas 2 horas."
+      required:
+        "* Campos obligatorios. Te contactaremos dentro de las próximas 2 horas.",
     },
     quoteCalculator: {
       title: "CALCULÁ TU",
@@ -167,21 +193,27 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     showcaseGallery: {
       title: "NUESTRO SERVICIO",
       titleAccent: "EN ACCIÓN",
-      subtitle: "Galería de imágenes reales de nuestro proceso de transporte de motocicletas",
+      subtitle:
+        "Galería de imágenes reales de nuestro proceso de transporte de motocicletas",
       tagline: "Calidad y profesionalismo en cada envío",
       images: {
         loading: "Proceso de Carga Profesional",
-        loadingDesc: "Carga segura y profesional de motocicletas con equipos especializados",
+        loadingDesc:
+          "Carga segura y profesional de motocicletas con equipos especializados",
         security: "Sistema de Sujeción Avanzado",
-        securityDesc: "Sistemas de amarre profesionales que garantizan la seguridad de tu moto",
+        securityDesc:
+          "Sistemas de amarre profesionales que garantizan la seguridad de tu moto",
         fleet: "Flota de Vehículos Especializados",
-        fleetDesc: "Camiones equipados específicamente para el transporte de motocicletas",
+        fleetDesc:
+          "Camiones equipados específicamente para el transporte de motocicletas",
         coverage: "Cobertura Nacional Argentina",
-        coverageDesc: "Llegamos a todos los destinos de Argentina con el mismo nivel de calidad",
+        coverageDesc:
+          "Llegamos a todos los destinos de Argentina con el mismo nivel de calidad",
         documentation: "Documentación y Seguimiento",
-        documentationDesc: "Control total del proceso con documentación completa y seguimiento GPS",
+        documentationDesc:
+          "Control total del proceso con documentación completa y seguimiento GPS",
         delivery: "Entrega en Destino",
-        deliveryDesc: "Entrega puntual y segura en el destino acordado"
+        deliveryDesc: "Entrega puntual y segura en el destino acordado",
       },
       categories: {
         loading: "Carga",
@@ -189,21 +221,22 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         transport: "Transporte",
         destinations: "Destinos",
         control: "Control",
-        delivery: "Entrega"
+        delivery: "Entrega",
       },
       cta: {
         question: "¿Querés ver tu moto transportada con la misma calidad?",
-        button: "SOLICITAR COTIZACIÓN AHORA"
-      }
+        button: "SOLICITAR COTIZACIÓN AHORA",
+      },
     },
     footer: {
-      description: "Transportamos tu motocicleta de forma segura por toda Argentina. Más de 5 años de experiencia respaldando las aventuras de miles de motociclistas.",
+      description:
+        "Transportamos tu motocicleta de forma segura por toda Argentina. Más de 5 años de experiencia respaldando las aventuras de miles de motociclistas.",
       contact: "Contacto",
       links: "Enlaces",
       copyright: "Todos los derechos reservados.",
       terms: "Términos y Condiciones",
-      privacy: "Política de Privacidad"
-    }
+      privacy: "Política de Privacidad",
+    },
   },
   en: {
     nav: {
@@ -228,66 +261,90 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       support: "Support",
       experience: "Years of Experience",
       ctaTitle: "READY FOR YOUR NEXT ADVENTURE?",
-      ctaSubtitle: "Let us transport your motorcycle while you focus on enjoying the journey",
-      ctaButton: "START NOW"
+      ctaSubtitle:
+        "Let us transport your motorcycle while you focus on enjoying the journey",
+      ctaButton: "START NOW",
     },
     howItWorks: {
       title: "HOW IT WORKS?",
-      subtitle: "Simple and transparent process to get your motorcycle safely to destination",
+      subtitle:
+        "Simple and transparent process to get your motorcycle safely to destination",
       tagline: "Transporting motorcycles since 2018",
       steps: {
         pickup: {
           title: "WE PICK UP",
-          description: "We coordinate the pickup of your motorcycle with all security measures and necessary documentation.",
-          features: ["Previous inspection", "Complete documentation", "Motorcycle loading"]
+          description:
+            "We coordinate the pickup of your motorcycle with all security measures and necessary documentation.",
+          features: [
+            "Previous inspection",
+            "Complete documentation",
+            "Motorcycle loading",
+          ],
         },
         transport: {
           title: "WE TRANSPORT",
-          description: "Your motorcycle travels safely in our specialized vehicles, constant tracking and professional restraint system.",
-          features: ["Real-time tracking", "Constant updates", "Photos of the motorcycle"]
+          description:
+            "Your motorcycle travels safely in our specialized vehicles, constant tracking and professional restraint system.",
+          features: [
+            "Real-time tracking",
+            "Constant updates",
+            "Photos of the motorcycle",
+          ],
         },
         delivery: {
           title: "WE DELIVER",
-          description: "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure with all documentation in order.",
-          features: ["Airport pickup", "Punctual delivery", "Complete documentation"]
-        }
-      }
+          description:
+            "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure with all documentation in order.",
+          features: [
+            "Airport pickup",
+            "Punctual delivery",
+            "Complete documentation",
+          ],
+        },
+      },
     },
     whyChooseUs: {
       title: "WHY",
       titleAccent: "CHOOSE US?",
-      subtitle: "More than 6 years offering motorcycle transport services throughout Argentina with total reliability and security",
+      subtitle:
+        "More than 6 years offering motorcycle transport services throughout Argentina with total reliability and security",
       features: {
         insurance: {
           title: "Insurance Included",
-          description: "Complete coverage during the entire journey. Your motorcycle is protected against any eventuality."
+          description:
+            "Complete coverage during the entire journey. Your motorcycle is protected against any eventuality.",
         },
         fastDelivery: {
           title: "Fast Delivery",
-          description: "Optimized delivery times. We know you want to start your adventure as soon as possible."
+          description:
+            "Optimized delivery times. We know you want to start your adventure as soon as possible.",
         },
         tracking: {
           title: "Real-time Tracking",
-          description: "Know the exact location of your motorcycle during the entire trip with our GPS system."
+          description:
+            "Know the exact location of your motorcycle during the entire trip with our GPS system.",
         },
         support: {
           title: "Personalized Attention",
-          description: "Dedicated team available to resolve all your queries during the process."
+          description:
+            "Dedicated team available to resolve all your queries during the process.",
         },
         experience: {
           title: "Proven Experience",
-          description: "More than 5 years in the market with thousands of motorcycles successfully transported."
+          description:
+            "More than 5 years in the market with thousands of motorcycles successfully transported.",
         },
         team: {
           title: "Professional Team",
-          description: "Trained personnel specialized in handling and transporting motorcycles."
-        }
-      }
+          description:
+            "Trained personnel specialized in handling and transporting motorcycles.",
+        },
+      },
     },
     testimonials: {
       title: "TESTIMONIALS",
       subtitle: "What our clients say about our service",
-      data: []
+      data: [],
     },
     destinations: {
       title: "DESTINATIONS",
@@ -300,12 +357,13 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "FREQUENTLY ASKED QUESTIONS",
       subtitle: "We solve the most common doubts about our service",
       tagline: "Everything you need to know to travel peacefully",
-      questions: []
+      questions: [],
     },
     quoteForm: {
       title: "REQUEST",
       titleAccent: "QUOTE",
-      subtitle: "Fill out the form and we'll send you a personalized quote in less than 2 hours",
+      subtitle:
+        "Fill out the form and we'll send you a personalized quote in less than 2 hours",
       fields: {
         origin: "Origin City",
         destination: "Destination City",
@@ -314,10 +372,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         name: "Full Name",
         phone: "Phone",
         email: "Email",
-        comments: "Additional Comments"
+        comments: "Additional Comments",
       },
       submit: "SEND QUOTE",
-      required: "* Required fields. We will contact you within the next 2 hours."
+      required:
+        "* Required fields. We will contact you within the next 2 hours.",
     },
     quoteCalculator: {
       title: "CALCULATE YOUR",
@@ -356,17 +415,21 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       tagline: "Quality and professionalism in every shipment",
       images: {
         loading: "Professional Loading Process",
-        loadingDesc: "Safe and professional loading of motorcycles with specialized equipment",
+        loadingDesc:
+          "Safe and professional loading of motorcycles with specialized equipment",
         security: "Advanced Restraint System",
-        securityDesc: "Professional tie-down systems that guarantee the safety of your motorcycle",
+        securityDesc:
+          "Professional tie-down systems that guarantee the safety of your motorcycle",
         fleet: "Specialized Vehicle Fleet",
         fleetDesc: "Trucks specifically equipped for motorcycle transport",
         coverage: "National Coverage Argentina",
-        coverageDesc: "We reach all destinations in Argentina with the same level of quality",
+        coverageDesc:
+          "We reach all destinations in Argentina with the same level of quality",
         documentation: "Documentation and Tracking",
-        documentationDesc: "Total process control with complete documentation and GPS tracking",
+        documentationDesc:
+          "Total process control with complete documentation and GPS tracking",
         delivery: "Destination Delivery",
-        deliveryDesc: "Punctual and safe delivery at the agreed destination"
+        deliveryDesc: "Punctual and safe delivery at the agreed destination",
       },
       categories: {
         loading: "Loading",
@@ -374,21 +437,23 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         transport: "Transport",
         destinations: "Destinations",
         control: "Control",
-        delivery: "Delivery"
+        delivery: "Delivery",
       },
       cta: {
-        question: "Want to see your motorcycle transported with the same quality?",
-        button: "REQUEST QUOTE NOW"
-      }
+        question:
+          "Want to see your motorcycle transported with the same quality?",
+        button: "REQUEST QUOTE NOW",
+      },
     },
     footer: {
-      description: "We transport your motorcycle safely throughout Argentina. More than 5 years of experience supporting the adventures of thousands of motorcyclists.",
+      description:
+        "We transport your motorcycle safely throughout Argentina. More than 5 years of experience supporting the adventures of thousands of motorcyclists.",
       contact: "Contact",
       links: "Links",
       copyright: "All rights reserved.",
       terms: "Terms and Conditions",
-      privacy: "Privacy Policy"
-    }
+      privacy: "Privacy Policy",
+    },
   },
   pt: {
     nav: {
@@ -413,66 +478,90 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       support: "Suporte",
       experience: "Anos de Experiência",
       ctaTitle: "PRONTO PARA SUA PRÓXIMA AVENTURA?",
-      ctaSubtitle: "Deixe-nos transportar sua moto enquanto você se concentra em aproveitar a viagem",
-      ctaButton: "COMEÇAR AGORA"
+      ctaSubtitle:
+        "Deixe-nos transportar sua moto enquanto você se concentra em aproveitar a viagem",
+      ctaButton: "COMEÇAR AGORA",
     },
     howItWorks: {
       title: "COMO FUNCIONA?",
-      subtitle: "Processo simples e transparente para que sua moto chegue segura ao destino",
+      subtitle:
+        "Processo simples e transparente para que sua moto chegue segura ao destino",
       tagline: "Transportando motos desde 2018",
       steps: {
         pickup: {
           title: "RETIRAMOS",
-          description: "Coordenamos a entrega de sua motocicleta com todas as medidas de segurança e documentação necessária.",
-          features: ["Inspeção prévia", "Documentação completa", "Carga de motocicletas"]
+          description:
+            "Coordenamos a entrega de sua motocicleta com todas as medidas de segurança e documentação necessária.",
+          features: [
+            "Inspeção prévia",
+            "Documentação completa",
+            "Carga de motocicletas",
+          ],
         },
         transport: {
           title: "TRANSPORTAMOS",
-          description: "Sua moto viaja segura em nossos veículos especializados, acompanhamento constante e sistema de fixação profissional.",
-          features: ["Rastreamento em tempo real", "Atualização constante", "Fotos da moto"]
+          description:
+            "Sua moto viaja segura em nossos veículos especializados, acompanhamento constante e sistema de fixação profissional.",
+          features: [
+            "Rastreamento em tempo real",
+            "Atualização constante",
+            "Fotos da moto",
+          ],
         },
         delivery: {
           title: "ENTREGAMOS",
-          description: "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura com toda a documentação em ordem.",
-          features: ["Retirada no aeroporto", "Entrega pontual", "Documentação completa"]
-        }
-      }
+          description:
+            "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura com toda a documentação em ordem.",
+          features: [
+            "Retirada no aeroporto",
+            "Entrega pontual",
+            "Documentação completa",
+          ],
+        },
+      },
     },
     whyChooseUs: {
       title: "POR QUE",
       titleAccent: "NOS ESCOLHER?",
-      subtitle: "Mais de 6 anos oferecendo serviços de transporte de motos por toda Argentina com total confiabilidade e segurança",
+      subtitle:
+        "Mais de 6 anos oferecendo serviços de transporte de motos por toda Argentina com total confiabilidade e segurança",
       features: {
         insurance: {
           title: "Seguro Incluído",
-          description: "Cobertura completa durante todo o trajeto. Sua moto está protegida contra qualquer eventualidade."
+          description:
+            "Cobertura completa durante todo o trajeto. Sua moto está protegida contra qualquer eventualidade.",
         },
         fastDelivery: {
           title: "Entrega Rápida",
-          description: "Tempos de entrega otimizados. Sabemos que você quer começar sua aventura o quanto antes."
+          description:
+            "Tempos de entrega otimizados. Sabemos que você quer começar sua aventura o quanto antes.",
         },
         tracking: {
           title: "Rastreamento em Tempo Real",
-          description: "Conheça a localização exata de sua motocicleta durante toda a viagem com nosso sistema GPS."
+          description:
+            "Conheça a localização exata de sua motocicleta durante toda a viagem com nosso sistema GPS.",
         },
         support: {
           title: "Atendimento Personalizado",
-          description: "Equipe dedicada disponível para resolver todas as suas dúvidas durante o processo."
+          description:
+            "Equipe dedicada disponível para resolver todas as suas dúvidas durante o processo.",
         },
         experience: {
           title: "Experiência Comprovada",
-          description: "Mais de 5 anos no mercado com milhares de motocicletas transportadas com sucesso."
+          description:
+            "Mais de 5 anos no mercado com milhares de motocicletas transportadas com sucesso.",
         },
         team: {
           title: "Equipe Profissional",
-          description: "Pessoal capacitado e especializado no manuseio e transporte de motocicletas."
-        }
-      }
+          description:
+            "Pessoal capacitado e especializado no manuseio e transporte de motocicletas.",
+        },
+      },
     },
     testimonials: {
       title: "DEPOIMENTOS",
       subtitle: "O que nossos clientes dizem sobre nosso serviço",
-      data: []
+      data: [],
     },
     destinations: {
       title: "DESTINOS",
@@ -485,12 +574,13 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "PERGUNTAS FREQUENTES",
       subtitle: "Resolvemos as dúvidas mais comuns sobre nosso serviço",
       tagline: "Tudo o que você precisa saber para viajar tranquilo",
-      questions: []
+      questions: [],
     },
     quoteForm: {
       title: "SOLICITAR",
       titleAccent: "COTAÇÃO",
-      subtitle: "Preencha o formulário e enviaremos uma cotação personalizada em menos de 2 horas",
+      subtitle:
+        "Preencha o formulário e enviaremos uma cotação personalizada em menos de 2 horas",
       fields: {
         origin: "Cidade de Origem",
         destination: "Cidade de Destino",
@@ -499,10 +589,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         name: "Nome Completo",
         phone: "Telefone",
         email: "Email",
-        comments: "Comentários Adicionais"
+        comments: "Comentários Adicionais",
       },
       submit: "ENVIAR COTAÇÃO",
-      required: "* Campos obrigatórios. Entraremos em contato nas próximas 2 horas."
+      required:
+        "* Campos obrigatórios. Entraremos em contato nas próximas 2 horas.",
     },
     quoteCalculator: {
       title: "CALCULE SEU",
@@ -537,21 +628,27 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     showcaseGallery: {
       title: "NOSSO SERVIÇO",
       titleAccent: "EM AÇÃO",
-      subtitle: "Galeria de imagens reais de nosso processo de transporte de motocicletas",
+      subtitle:
+        "Galeria de imagens reais de nosso processo de transporte de motocicletas",
       tagline: "Qualidade e profissionalismo em cada envio",
       images: {
         loading: "Processo de Carregamento Profissional",
-        loadingDesc: "Carregamento seguro e profissional de motocicletas com equipamentos especializados",
+        loadingDesc:
+          "Carregamento seguro e profissional de motocicletas com equipamentos especializados",
         security: "Sistema de Fixação Avançado",
-        securityDesc: "Sistemas de amarração profissionais que garantem a segurança de sua moto",
+        securityDesc:
+          "Sistemas de amarração profissionais que garantem a segurança de sua moto",
         fleet: "Frota de Veículos Especializados",
-        fleetDesc: "Caminhões equipados especificamente para o transporte de motocicletas",
+        fleetDesc:
+          "Caminhões equipados especificamente para o transporte de motocicletas",
         coverage: "Cobertura Nacional Argentina",
-        coverageDesc: "Chegamos a todos os destinos da Argentina com o mesmo nível de qualidade",
+        coverageDesc:
+          "Chegamos a todos os destinos da Argentina com o mesmo nível de qualidade",
         documentation: "Documentação e Rastreamento",
-        documentationDesc: "Controle total do processo com documentação completa e rastreamento GPS",
+        documentationDesc:
+          "Controle total do processo com documentação completa e rastreamento GPS",
         delivery: "Entrega no Destino",
-        deliveryDesc: "Entrega pontual e segura no destino acordado"
+        deliveryDesc: "Entrega pontual e segura no destino acordado",
       },
       categories: {
         loading: "Carregamento",
@@ -559,21 +656,22 @@ const fallbackTranslations: { [key in Language]: Translations } = {
         transport: "Transporte",
         destinations: "Destinos",
         control: "Controle",
-        delivery: "Entrega"
+        delivery: "Entrega",
       },
       cta: {
         question: "Quer ver sua moto transportada com a mesma qualidade?",
-        button: "SOLICITAR COTAÇÃO AGORA"
-      }
+        button: "SOLICITAR COTAÇÃO AGORA",
+      },
     },
     footer: {
-      description: "Transportamos sua motocicleta de forma segura por toda Argentina. Mais de 5 anos de experiência apoiando as aventuras de milhares de motociclistas.",
+      description:
+        "Transportamos sua motocicleta de forma segura por toda Argentina. Mais de 5 anos de experiência apoiando as aventuras de milhares de motociclistas.",
       contact: "Contato",
       links: "Links",
       copyright: "Todos os direitos reservados.",
       terms: "Termos e Condições",
-      privacy: "Política de Privacidade"
-    }
+      privacy: "Política de Privacidade",
+    },
   },
 };
 
@@ -587,31 +685,47 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("es");
-  const [isLoaded, setIsLoaded] = useState(true); // Start as loaded with fallbacks
+  const [isLoaded, setIsLoaded] = useState(false); // Start as not loaded
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     // Mark as client-side after hydration
     setIsClient(true);
-    
-    // Load external translations in the background
+
+    // Load external translations
     const loadTranslations = async () => {
       try {
-        const languages = ['es', 'en', 'pt'] as Language[];
-        
+        const languages: Language[] = ["es", "en", "pt"];
+
         for (const lang of languages) {
           try {
             const response = await fetch(`/locales/${lang}/translation.json`);
             if (response.ok) {
               const data = await response.json();
               translations[lang] = { ...translations[lang], ...data };
+              console.log(
+                `Loaded ${lang} translations:`,
+                data.faq?.questions?.length || 0,
+                "FAQ questions"
+              );
             }
           } catch (error) {
-            // Silently fail - we have fallbacks
+            console.warn(`Failed to load ${lang} translations:`, error);
           }
         }
+
+        // Mark as loaded after all translations are processed
+        setIsLoaded(true);
+        console.log("Translations loaded, current language:", currentLanguage);
+        console.log(
+          "Current translations FAQ:",
+          translations[currentLanguage]?.faq?.questions?.length || 0,
+          "questions"
+        );
       } catch (error) {
-        // Silently fail - we have fallbacks
+        console.warn("Failed to load translations:", error);
+        // Still mark as loaded so we can use fallbacks
+        setIsLoaded(true);
       }
     };
 
@@ -637,6 +751,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const t = (key: string): string | string[] => {
     if (!isLoaded) {
+      console.log("Translation not loaded yet for key:", key);
       return key;
     }
 
@@ -648,30 +763,42 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
         value = value[k];
       } else {
         // Try fallback language (Spanish) if current language doesn't have the key
-        if (currentLanguage !== 'es') {
+        if (currentLanguage !== "es") {
           let fallbackValue: any = translations.es;
           for (const fallbackK of keys) {
-            if (fallbackValue && typeof fallbackValue === "object" && fallbackK in fallbackValue) {
+            if (
+              fallbackValue &&
+              typeof fallbackValue === "object" &&
+              fallbackK in fallbackValue
+            ) {
               fallbackValue = fallbackValue[fallbackK];
             } else {
+              console.log("Key not found in fallback language:", key);
               return key;
             }
           }
-          if (typeof fallbackValue === "string" || Array.isArray(fallbackValue)) {
+          if (
+            typeof fallbackValue === "string" ||
+            Array.isArray(fallbackValue)
+          ) {
             return fallbackValue;
           }
         }
+        console.log("Key not found:", key, "in language:", currentLanguage);
         return key;
       }
     }
 
     if (typeof value === "string" || Array.isArray(value)) {
+      if (key === "faq.questions") {
+        console.log("FAQ questions found:", value.length, "questions");
+      }
       return value;
     }
 
+    console.log("Unexpected value type for key:", key, "value:", value);
     return key;
   };
-
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, setLanguage, t }}>
