@@ -24,9 +24,9 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     nav: {
       home: "Inicio",
       howItWorks: "Cómo Funciona",
-      services: "Servicios",
-      destinations: "Destinos",
-      contact: "Contacto",
+      services: "Por Qué Elegirnos",
+      calculator: "Presupuesto",
+      contact: "Cotizar",
       getQuote: "Solicitar Cotización",
     },
     hero: {
@@ -126,7 +126,38 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     testimonials: {
       title: "TESTIMONIOS",
       subtitle: "Lo que dicen nuestros clientes sobre nuestro servicio",
-      data: [],
+      data: [
+        {
+          name: "Carlos Mendoza",
+          bike: "BMW R1250GS",
+          brand: "BMW",
+          model: "R1250GS",
+          location: "Buenos Aires → Bariloche",
+          rating: 5,
+          comment:
+            "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
+        },
+        {
+          name: "María González",
+          bike: "Honda Africa Twin",
+          brand: "HONDA",
+          model: "Africa Twin",
+          location: "Córdoba → Salta",
+          rating: 5,
+          comment:
+            "Profesionales de primera. El seguimiento fue constante y la entrega puntual. Definitivamente los volvería a elegir.",
+        },
+        {
+          name: "Roberto Silva",
+          bike: "KTM 790 Adventure",
+          brand: "KTM",
+          model: "790 Adventure",
+          location: "Rosario → Mendoza",
+          rating: 5,
+          comment:
+            "Servicio impecable. La comunicación fue excelente durante todo el proceso. Mi moto llegó como si la hubiera llevado yo mismo.",
+        },
+      ],
     },
     destinations: {
       title: "DESTINOS",
@@ -139,7 +170,44 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "PREGUNTAS FRECUENTES",
       subtitle: "Resolvemos las dudas más comunes sobre nuestro servicio",
       tagline: "Todo lo que necesitás saber para viajar tranquilo",
-      questions: [],
+      questions: [
+        {
+          question: "¿Qué documentación necesito para el transporte?",
+          answer:
+            "Necesitás la cédula verde o azul de la motocicleta, tu DNI y el comprobante de seguro vigente. Nosotros nos encargamos de toda la documentación del transporte.",
+        },
+        {
+          question: "¿Cuánto tiempo demora el transporte?",
+          answer:
+            "Los tiempos varían según la distancia. Generalmente: hasta 500km (1-2 días), hasta 1000km (2-3 días), más de 1000km (3-5 días). Te confirmamos el tiempo exacto al cotizar.",
+        },
+        {
+          question:
+            "¿Qué pasa si mi moto sufre algún daño durante el transporte?",
+          answer:
+            "Todas nuestras motos viajan con seguro completo. En el improbable caso de daños, nos hacemos cargo de la reparación o reposición según corresponda.",
+        },
+        {
+          question: "¿Puedo rastrear mi motocicleta durante el viaje?",
+          answer:
+            "Sí, todos nuestros vehículos tienen GPS y te enviamos actualizaciones regulares. También podés contactarnos en cualquier momento para conocer el estado del envío.",
+        },
+        {
+          question: "¿Transportan cualquier tipo de motocicleta?",
+          answer:
+            "Transportamos la mayoría de motocicletas: deportivas, touring, adventure, cruiser, etc. Consultanos por modelos específicos o motos de gran cilindrada.",
+        },
+        {
+          question: "¿Cómo se calcula el precio del transporte?",
+          answer:
+            "El precio se basa en la distancia, tipo de motocicleta, urgencia del envío y destino. Ofrecemos tarifas competitivas y transparentes sin costos ocultos.",
+        },
+        {
+          question: "¿Realizan servicios de urgencia?",
+          answer:
+            "Sí, ofrecemos servicio express con recargo adicional. En casos de urgencia, podemos coordinar entregas en 24-48 horas según la distancia.",
+        },
+      ],
     },
     quoteForm: {
       title: "SOLICITAR",
@@ -242,9 +310,9 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     nav: {
       home: "Home",
       howItWorks: "How It Works",
-      services: "Services",
-      destinations: "Destinations",
-      contact: "Contact",
+      services: "Why Choose Us",
+      calculator: "Budget",
+      contact: "Get Quote",
       getQuote: "Get Quote",
     },
     hero: {
@@ -344,7 +412,38 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     testimonials: {
       title: "TESTIMONIALS",
       subtitle: "What our clients say about our service",
-      data: [],
+      data: [
+        {
+          name: "Carlos Mendoza",
+          bike: "BMW R1250GS",
+          brand: "BMW",
+          model: "R1250GS",
+          location: "Buenos Aires → Bariloche",
+          rating: 5,
+          comment:
+            "Excellent service. My bike arrived in perfect condition and I was able to start my Patagonia trip without problems. Highly recommended.",
+        },
+        {
+          name: "María González",
+          bike: "Honda Africa Twin",
+          brand: "HONDA",
+          model: "Africa Twin",
+          location: "Córdoba → Salta",
+          rating: 5,
+          comment:
+            "First-class professionals. The tracking was constant and delivery was punctual. I would definitely choose them again.",
+        },
+        {
+          name: "Roberto Silva",
+          bike: "KTM 790 Adventure",
+          brand: "KTM",
+          model: "790 Adventure",
+          location: "Rosario → Mendoza",
+          rating: 5,
+          comment:
+            "Impeccable service. Communication was excellent throughout the process. My bike arrived as if I had taken it myself.",
+        },
+      ],
     },
     destinations: {
       title: "DESTINATIONS",
@@ -357,7 +456,43 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "FREQUENTLY ASKED QUESTIONS",
       subtitle: "We solve the most common doubts about our service",
       tagline: "Everything you need to know to travel peacefully",
-      questions: [],
+      questions: [
+        {
+          question: "What documentation do I need for transportation?",
+          answer:
+            "You need the green or blue motorcycle certificate, your ID and valid insurance proof. We handle all transportation documentation.",
+        },
+        {
+          question: "How long does transportation take?",
+          answer:
+            "Times vary by distance. Generally: up to 500km (1-2 days), up to 1000km (2-3 days), over 1000km (3-5 days). We confirm exact time when quoting.",
+        },
+        {
+          question: "What happens if my bike is damaged during transport?",
+          answer:
+            "All our motorcycles travel with full insurance. In the unlikely event of damage, we take care of repair or replacement as appropriate.",
+        },
+        {
+          question: "Can I track my motorcycle during the trip?",
+          answer:
+            "Yes, all our vehicles have GPS and we send you regular updates. You can also contact us anytime to know the shipping status.",
+        },
+        {
+          question: "Do you transport any type of motorcycle?",
+          answer:
+            "We transport most motorcycles: sport, touring, adventure, cruiser, etc. Ask us about specific models or large displacement bikes.",
+        },
+        {
+          question: "How is the transportation price calculated?",
+          answer:
+            "Price is based on distance, motorcycle type, shipping urgency and destination. We offer competitive and transparent rates with no hidden costs.",
+        },
+        {
+          question: "Do you provide emergency services?",
+          answer:
+            "Yes, we offer express service with additional charge. In emergency cases, we can coordinate deliveries in 24-48 hours depending on distance.",
+        },
+      ],
     },
     quoteForm: {
       title: "REQUEST",
@@ -459,10 +594,10 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     nav: {
       home: "Início",
       howItWorks: "Como Funciona",
-      services: "Serviços",
-      destinations: "Destinos",
-      contact: "Contato",
-      getQuote: "Solicitar Cotação",
+      services: "Por Que Nos Escolher",
+      calculator: "Orçamento",
+      contact: "Orçamento",
+      getQuote: "Solicitar Orçamento",
     },
     hero: {
       title: "SUA MOTO,",
@@ -561,7 +696,38 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     testimonials: {
       title: "DEPOIMENTOS",
       subtitle: "O que nossos clientes dizem sobre nosso serviço",
-      data: [],
+      data: [
+        {
+          name: "Carlos Mendoza",
+          bike: "BMW R1250GS",
+          brand: "BMW",
+          model: "R1250GS",
+          location: "Buenos Aires → Bariloche",
+          rating: 5,
+          comment:
+            "Excelente serviço. Minha moto chegou em perfeito estado e pude começar minha viagem pela Patagônia sem problemas. Muito recomendado.",
+        },
+        {
+          name: "María González",
+          bike: "Honda Africa Twin",
+          brand: "HONDA",
+          model: "Africa Twin",
+          location: "Córdoba → Salta",
+          rating: 5,
+          comment:
+            "Profissionais de primeira. O acompanhamento foi constante e a entrega pontual. Definitivamente os escolheria novamente.",
+        },
+        {
+          name: "Roberto Silva",
+          bike: "KTM 790 Adventure",
+          brand: "KTM",
+          model: "790 Adventure",
+          location: "Rosario → Mendoza",
+          rating: 5,
+          comment:
+            "Serviço impecável. A comunicação foi excelente durante todo o processo. Minha moto chegou como se eu mesmo a tivesse levado.",
+        },
+      ],
     },
     destinations: {
       title: "DESTINOS",
@@ -574,7 +740,44 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       title: "PERGUNTAS FREQUENTES",
       subtitle: "Resolvemos as dúvidas mais comuns sobre nosso serviço",
       tagline: "Tudo o que você precisa saber para viajar tranquilo",
-      questions: [],
+      questions: [
+        {
+          question: "Que documentação preciso para o transporte?",
+          answer:
+            "Você precisa do certificado verde ou azul da motocicleta, sua identidade e comprovante de seguro válido. Cuidamos de toda a documentação do transporte.",
+        },
+        {
+          question: "Quanto tempo demora o transporte?",
+          answer:
+            "Os tempos variam pela distância. Geralmente: até 500km (1-2 dias), até 1000km (2-3 dias), mais de 1000km (3-5 dias). Confirmamos o tempo exato na cotação.",
+        },
+        {
+          question:
+            "O que acontece se minha moto for danificada durante o transporte?",
+          answer:
+            "Todas as nossas motos viajam com seguro completo. No caso improvável de danos, cuidamos do reparo ou substituição conforme apropriado.",
+        },
+        {
+          question: "Posso rastrear minha motocicleta durante a viagem?",
+          answer:
+            "Sim, todos os nossos veículos têm GPS e enviamos atualizações regulares. Você também pode nos contatar a qualquer momento para saber o status do envio.",
+        },
+        {
+          question: "Vocês transportam qualquer tipo de motocicleta?",
+          answer:
+            "Transportamos a maioria das motocicletas: esportivas, touring, adventure, cruiser, etc. Consulte-nos sobre modelos específicos ou motos de grande cilindrada.",
+        },
+        {
+          question: "Como é calculado o preço do transporte?",
+          answer:
+            "O preço é baseado na distância, tipo de motocicleta, urgência do envio e destino. Oferecemos tarifas competitivas e transparentes sem custos ocultos.",
+        },
+        {
+          question: "Vocês oferecem serviços de emergência?",
+          answer:
+            "Sim, oferecemos serviço expresso com cobrança adicional. Em casos de emergência, podemos coordenar entregas em 24-48 horas dependendo da distância.",
+        },
+      ],
     },
     quoteForm: {
       title: "SOLICITAR",
@@ -685,7 +888,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>("es");
-  const [isLoaded, setIsLoaded] = useState(false); // Start as not loaded
+  const [isLoaded, setIsLoaded] = useState(true); // Start with fallback translations loaded
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -703,10 +906,11 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
             if (response.ok) {
               const data = await response.json();
               translations[lang] = { ...translations[lang], ...data };
-              console.log(
-                `Loaded ${lang} translations:`,
-                data.faq?.questions?.length || 0,
-                "FAQ questions"
+              console.log(`Loaded ${lang} translations successfully`);
+            } else {
+              console.warn(
+                `Failed to load ${lang} translations:`,
+                response.status
               );
             }
           } catch (error) {
@@ -717,11 +921,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
         // Mark as loaded after all translations are processed
         setIsLoaded(true);
         console.log("Translations loaded, current language:", currentLanguage);
-        console.log(
-          "Current translations FAQ:",
-          translations[currentLanguage]?.faq?.questions?.length || 0,
-          "questions"
-        );
       } catch (error) {
         console.warn("Failed to load translations:", error);
         // Still mark as loaded so we can use fallbacks
@@ -790,9 +989,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     }
 
     if (typeof value === "string" || Array.isArray(value)) {
-      if (key === "faq.questions") {
-        console.log("FAQ questions found:", value.length, "questions");
-      }
       return value;
     }
 

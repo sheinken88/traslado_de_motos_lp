@@ -2,9 +2,10 @@
   "nav": {
     "home": "Home",
     "howItWorks": "How It Works",
-    "services": "Services",
+    "services": "Why Choose Us",
+    "calculator": "Estimate Budget",
     "destinations": "Destinations",
-    "contact": "Contact",
+    "contact": "Get Quote",
     "getQuote": "Get Quote"
   },
   "hero": {
@@ -22,17 +23,29 @@
       "pickup": {
         "title": "WE PICK UP",
         "description": "We coordinate the pickup of your motorcycle with all safety measures and necessary documentation.",
-        "features": ["Previous inspection", "Complete documentation", "Motorcycle loading"]
+        "features": [
+          "Previous inspection",
+          "Complete documentation",
+          "Motorcycle loading"
+        ]
       },
       "transport": {
         "title": "WE TRANSPORT",
         "description": "Your bike travels safely in our specialized vehicles, constant monitoring and professional fastening system.",
-        "features": ["Real-time tracking", "Constant updates", "Motorcycle photos"]
+        "features": [
+          "Real-time tracking",
+          "Constant updates",
+          "Motorcycle photos"
+        ]
       },
       "delivery": {
         "title": "WE DELIVER",
         "description": "You receive your motorcycle in perfect condition at the agreed destination, ready for your adventure with all documentation in order.",
-        "features": ["Airport pickup available", "Punctual delivery", "Complete documentation"]
+        "features": [
+          "Airport pickup available",
+          "Punctual delivery",
+          "Complete documentation"
+        ]
       }
     }
   },

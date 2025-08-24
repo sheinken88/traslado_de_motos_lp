@@ -122,7 +122,10 @@ export default function QuoteCalculator() {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-b from-sand-100 to-white relative overflow-hidden">
+    <section
+      id="calculadora"
+      className="section-padding bg-gradient-to-b from-sand-100 to-white relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-yellow-400 rounded-full blur-3xl" />
@@ -472,23 +475,40 @@ export default function QuoteCalculator() {
                           const quoteData = {
                             origin,
                             destination,
-                            bikeType: motorcycles[0]?.type || '',
-                            quantity: motorcycles.reduce((sum, m) => sum + m.quantity, 0),
+                            bikeType: motorcycles[0]?.type || "",
+                            quantity: motorcycles.reduce(
+                              (sum, m) => sum + m.quantity,
+                              0
+                            ),
                             startDate,
                             endDate,
                             insurance: additionalServices.insurance,
                             pickupService: additionalServices.pickupService,
                             estimatedPrice: estimate?.finalPrice || 0,
-                            details: motorcycles.length > 1 
-                              ? motorcycles.map(m => `${m.quantity}x ${m.type}`).join(', ')
-                              : ''
+                            details:
+                              motorcycles.length > 1
+                                ? motorcycles
+                                    .map((m) => `${m.quantity}x ${m.type}`)
+                                    .join(", ")
+                                : "",
                           };
-                          
+
                           // Save to localStorage
-                          localStorage.setItem('calculatorData', JSON.stringify(quoteData));
-                          
+                          localStorage.setItem(
+                            "calculatorData",
+                            JSON.stringify(quoteData)
+                          );
+
                           // Navigate to form
-                          window.location.hash = 'cotizacion';
+                          window.location.hash = "#cotizacion";
+                          
+                          // Ensure smooth scroll to the form
+                          setTimeout(() => {
+                            const formElement = document.getElementById('cotizacion');
+                            if (formElement) {
+                              formElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }, 100);
                         }}
                         className="w-full bg-yellow-400 text-navy-900 px-6 py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group"
                       >

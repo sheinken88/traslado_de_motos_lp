@@ -1,33 +1,36 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X, Globe, Check, MessageCircle } from "lucide-react"
-import Logo from "./Logo"
-import { useLanguage } from "@/contexts/LanguageContext"
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X, Globe, Check, MessageCircle } from "lucide-react";
+import Logo from "./Logo";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false)
-  const { currentLanguage, setLanguage, t } = useLanguage()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const { currentLanguage, setLanguage, t } = useLanguage();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = [
-    { code: 'es' as const, name: "Español", flag: "🇦🇷" },
-    { code: 'en' as const, name: "English", flag: "🇺🇸" },
-    { code: 'pt' as const, name: "Português", flag: "🇧🇷" },
-  ]
+    { code: "es" as const, name: "Español", flag: "🇦🇷" },
+    { code: "en" as const, name: "English", flag: "🇺🇸" },
+    { code: "pt" as const, name: "Português", flag: "🇧🇷" },
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsLangDropdownOpen(false)
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsLangDropdownOpen(false);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95">
@@ -36,48 +39,67 @@ export default function Header() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#inicio" className="hover:text-yellow-400 transition-colors font-medium">
-              {t('nav.home')}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <Link
+              href="#hero"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+            >
+              {t("nav.home")}
             </Link>
-            <Link href="#como-funciona" className="hover:text-yellow-400 transition-colors font-medium">
-              {t('nav.howItWorks')}
+            <Link
+              href="#como-funciona"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+            >
+              {t("nav.howItWorks")}
             </Link>
-            <Link href="#servicios" className="hover:text-yellow-400 transition-colors font-medium">
-              {t('nav.services')}
+            <Link
+              href="#por-que-elegirnos"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+            >
+              {t("nav.services")}
             </Link>
-            <Link href="#destinos" className="hover:text-yellow-400 transition-colors font-medium">
-              {t('nav.destinations')}
+            <Link
+              href="#calculadora"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+            >
+              {t("nav.calculator")}
             </Link>
-            <Link href="#contacto" className="hover:text-yellow-400 transition-colors font-medium">
-              {t('nav.contact')}
+            <Link
+              href="#cotizacion"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base"
+            >
+              {t("nav.contact")}
             </Link>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
             {/* Language Selector */}
             <div className="relative" ref={dropdownRef}>
-              <button 
+              <button
                 className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
               >
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">
-                  {languages.find(lang => lang.code === currentLanguage)?.flag} {currentLanguage.toUpperCase()}
+                  {
+                    languages.find((lang) => lang.code === currentLanguage)
+                      ?.flag
+                  }{" "}
+                  {currentLanguage.toUpperCase()}
                 </span>
               </button>
-              
+
               {isLangDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-charcoal-900 border border-white/10 rounded-lg shadow-xl overflow-hidden">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => {
-                        setLanguage(lang.code)
-                        setIsLangDropdownOpen(false)
+                        setLanguage(lang.code);
+                        setIsLangDropdownOpen(false);
                       }}
                       className={`w-full px-4 py-3 text-left hover:bg-white/10 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? 'bg-white/5' : ''
+                        currentLanguage === lang.code ? "bg-white/5" : ""
                       }`}
                     >
                       <span className="flex items-center space-x-3">
@@ -106,15 +128,22 @@ export default function Header() {
 
             <Link
               href="#cotizacion"
-              className="bg-yellow-400 text-navy-900 px-6 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105"
+              className="bg-yellow-400 text-navy-900 px-4 xl:px-6 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105 text-sm xl:text-base"
             >
-              {t('nav.getQuote')}
+              {t("nav.getQuote")}
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
@@ -122,20 +151,35 @@ export default function Header() {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-navy-800">
             <div className="flex flex-col space-y-4 mt-4">
-              <Link href="#inicio" className="hover:text-yellow-400 transition-colors">
-                {t('nav.home')}
+              <Link
+                href="#hero"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                {t("nav.home")}
               </Link>
-              <Link href="#como-funciona" className="hover:text-yellow-400 transition-colors">
-                {t('nav.howItWorks')}
+              <Link
+                href="#como-funciona"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                {t("nav.howItWorks")}
               </Link>
-              <Link href="#servicios" className="hover:text-yellow-400 transition-colors">
-                {t('nav.services')}
+              <Link
+                href="#por-que-elegirnos"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                {t("nav.services")}
               </Link>
-              <Link href="#destinos" className="hover:text-yellow-400 transition-colors">
-                {t('nav.destinations')}
+              <Link
+                href="#calculadora"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                {t("nav.calculator")}
               </Link>
-              <Link href="#contacto" className="hover:text-yellow-400 transition-colors">
-                {t('nav.contact')}
+              <Link
+                href="#cotizacion"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                {t("nav.contact")}
               </Link>
               <div className="pt-4 border-t border-navy-800 space-y-4">
                 <button
@@ -143,9 +187,15 @@ export default function Header() {
                   className="flex items-center space-x-2 text-sm"
                 >
                   <Globe className="w-4 h-4" />
-                  <span>{languages.find(lang => lang.code === currentLanguage)?.flag} {currentLanguage.toUpperCase()}</span>
+                  <span>
+                    {
+                      languages.find((lang) => lang.code === currentLanguage)
+                        ?.flag
+                    }{" "}
+                    {currentLanguage.toUpperCase()}
+                  </span>
                 </button>
-                
+
                 <div className="flex space-x-3">
                   <a
                     href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
@@ -156,24 +206,27 @@ export default function Header() {
                     <MessageCircle className="w-4 h-4" />
                     <span>WhatsApp</span>
                   </a>
-                  <Link href="#cotizacion" className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold flex-1 text-center">
-                    Cotizar
+                  <Link
+                    href="#cotizacion"
+                    className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold flex-1 text-center"
+                  >
+                    {t("nav.contact")}
                   </Link>
                 </div>
               </div>
-              
+
               {isLangDropdownOpen && (
                 <div className="mt-2 space-y-2">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => {
-                        setLanguage(lang.code)
-                        setIsLangDropdownOpen(false)
-                        setIsMenuOpen(false)
+                        setLanguage(lang.code);
+                        setIsLangDropdownOpen(false);
+                        setIsMenuOpen(false);
                       }}
                       className={`w-full px-4 py-2 text-left rounded-lg hover:bg-white/10 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? 'bg-white/5' : ''
+                        currentLanguage === lang.code ? "bg-white/5" : ""
                       }`}
                     >
                       <span className="flex items-center space-x-3">
@@ -192,5 +245,5 @@ export default function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

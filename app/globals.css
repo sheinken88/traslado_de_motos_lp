@@ -42,6 +42,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed header height */
 }
 
 /* Hide scrollbars while keeping functionality */
@@ -90,15 +91,30 @@ body {
 
 /* Photo overlays and filters */
 .overlay-gradient {
-  background: linear-gradient(to bottom, rgba(26, 31, 46, 0.6), rgba(26, 31, 46, 0.3), rgba(26, 31, 46, 0.7));
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 31, 46, 0.6),
+    rgba(26, 31, 46, 0.3),
+    rgba(26, 31, 46, 0.7)
+  );
 }
 
 .overlay-warm {
-  background: linear-gradient(to bottom, rgba(201, 126, 90, 0.2), transparent, rgba(26, 31, 46, 0.8));
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 126, 90, 0.2),
+    transparent,
+    rgba(26, 31, 46, 0.8)
+  );
 }
 
 .overlay-adventure {
-  background: linear-gradient(135deg, rgba(26, 31, 46, 0.8) 0%, rgba(107, 124, 83, 0.3) 50%, rgba(26, 31, 46, 0.9) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(26, 31, 46, 0.8) 0%,
+    rgba(107, 124, 83, 0.3) 50%,
+    rgba(26, 31, 46, 0.9) 100%
+  );
 }
 
 .filter-warm {
@@ -203,8 +219,8 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Section spacing */

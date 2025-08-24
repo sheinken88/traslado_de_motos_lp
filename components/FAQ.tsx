@@ -33,7 +33,10 @@ export default function FAQ() {
   // Show loading state if no FAQs are available yet
   if (validFaqs.length === 0) {
     return (
-      <section className="section-padding bg-gradient-to-b from-white to-sand-100">
+      <section
+        id="faq"
+        className="section-padding bg-gradient-to-b from-white to-sand-100"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">
@@ -61,7 +64,10 @@ export default function FAQ() {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white to-sand-100">
+    <section
+      id="faq"
+      className="section-padding bg-gradient-to-b from-white to-sand-100"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">

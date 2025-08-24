@@ -48,7 +48,10 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="section-padding bg-charcoal-900 overflow-hidden relative">
+    <section
+      id="por-que-elegirnos"
+      className="section-padding bg-charcoal-900 overflow-hidden relative"
+    >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div

@@ -79,7 +79,10 @@ export default function ShowcaseGallery() {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-b from-charcoal-900 to-black overflow-hidden">
+    <section
+      id="videos"
+      className="section-padding bg-gradient-to-b from-charcoal-900 to-black overflow-hidden"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">

@@ -2,9 +2,10 @@
   "nav": {
     "home": "Início",
     "howItWorks": "Como Funciona",
-    "services": "Serviços",
+    "services": "Por Que Nos Escolher",
+    "calculator": "Estimar Orçamento",
     "destinations": "Destinos",
-    "contact": "Contato",
+    "contact": "Orçamento",
     "getQuote": "Solicitar Orçamento"
   },
   "hero": {
@@ -22,17 +23,29 @@
       "pickup": {
         "title": "COLETAMOS",
         "description": "Coordenamos a entrega de sua motocicleta com todas as medidas de segurança e documentação necessária.",
-        "features": ["Inspeção prévia", "Documentação completa", "Carregamento de motocicletas"]
+        "features": [
+          "Inspeção prévia",
+          "Documentação completa",
+          "Carregamento de motocicletas"
+        ]
       },
       "transport": {
         "title": "TRANSPORTAMOS",
         "description": "Sua moto viaja segura em nossos veículos especializados, monitoramento constante e sistema de fixação profissional.",
-        "features": ["Rastreamento em tempo real", "Atualização constante", "Fotos da moto"]
+        "features": [
+          "Rastreamento em tempo real",
+          "Atualização constante",
+          "Fotos da moto"
+        ]
       },
       "delivery": {
         "title": "ENTREGAMOS",
         "description": "Você recebe sua motocicleta em perfeito estado no destino acordado, pronta para sua aventura com toda a documentação em ordem.",
-        "features": ["Retirada no aeroporto", "Entrega pontual", "Documentação completa"]
+        "features": [
+          "Retirada no aeroporto",
+          "Entrega pontual",
+          "Documentação completa"
+        ]
       }
     }
   },
