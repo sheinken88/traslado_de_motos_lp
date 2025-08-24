@@ -186,7 +186,8 @@
     "privacy": "Política de Privacidade"
   },
   "whatsapp": {
-    "message": "Olá! Estou interessado no serviço de transporte de motocicletas. Poderiam me dar mais informações?"
+    "message": "Olá! Estou interessado no serviço de transporte de motocicletas. Poderiam me dar mais informações sobre preços e disponibilidade?",
+    "ariaLabel": "Contatar via WhatsApp"
   },
   "heroStats": {
     "transported": "Motos Transportadas",

@@ -26,6 +26,7 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       howItWorks: "Cómo Funciona",
       services: "Por Qué Elegirnos",
       calculator: "Presupuesto",
+      destinations: "Destinos",
       contact: "Cotizar",
       getQuote: "Solicitar Cotización",
     },
@@ -305,6 +306,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       terms: "Términos y Condiciones",
       privacy: "Política de Privacidad",
     },
+    whatsapp: {
+      message:
+        "Hola! Me interesa el servicio de transporte de motocicletas. ¿Podrían darme más información sobre precios y disponibilidad?",
+      ariaLabel: "Contactar por WhatsApp",
+    },
   },
   en: {
     nav: {
@@ -312,6 +318,7 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       howItWorks: "How It Works",
       services: "Why Choose Us",
       calculator: "Budget",
+      destinations: "Destinations",
       contact: "Get Quote",
       getQuote: "Get Quote",
     },
@@ -589,6 +596,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       terms: "Terms and Conditions",
       privacy: "Privacy Policy",
     },
+    whatsapp: {
+      message:
+        "Hello! I'm interested in the motorcycle transport service. Could you give me more information about prices and availability?",
+      ariaLabel: "Contact via WhatsApp",
+    },
   },
   pt: {
     nav: {
@@ -596,6 +608,7 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       howItWorks: "Como Funciona",
       services: "Por Que Nos Escolher",
       calculator: "Orçamento",
+      destinations: "Destinos",
       contact: "Orçamento",
       getQuote: "Solicitar Orçamento",
     },
@@ -874,6 +887,11 @@ const fallbackTranslations: { [key in Language]: Translations } = {
       copyright: "Todos os direitos reservados.",
       terms: "Termos e Condições",
       privacy: "Política de Privacidade",
+    },
+    whatsapp: {
+      message:
+        "Olá! Estou interessado no serviço de transporte de motocicletas. Poderiam me dar mais informações sobre preços e disponibilidade?",
+      ariaLabel: "Contatar via WhatsApp",
     },
   },
 };

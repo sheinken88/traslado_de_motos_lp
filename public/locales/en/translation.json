@@ -186,7 +186,8 @@
     "privacy": "Privacy Policy"
   },
   "whatsapp": {
-    "message": "Hello! I'm interested in the motorcycle transport service. Could you give me more information?"
+    "message": "Hello! I'm interested in the motorcycle transport service. Could you give me more information about prices and availability?",
+    "ariaLabel": "Contact via WhatsApp"
   },
   "heroStats": {
     "transported": "Motorcycles Transported",

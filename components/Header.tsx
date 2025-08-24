@@ -117,7 +117,9 @@ export default function Header() {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
+              href={`https://wa.me/5491135939730?text=${encodeURIComponent(
+                String(t("whatsapp.message"))
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105 whitespace-nowrap"
@@ -198,7 +200,9 @@ export default function Header() {
 
                 <div className="flex space-x-3">
                   <a
-                    href="https://wa.me/5491112345678?text=Hola,%20me%20interesa%20el%20servicio%20de%20transporte%20de%20motocicletas"
+                    href={`https://wa.me/5491135939730?text=${encodeURIComponent(
+                      String(t("whatsapp.message"))
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-xl font-semibold flex-1 justify-center"

@@ -493,11 +493,16 @@ export default function QuoteCalculator() {
                                 : "",
                           };
 
+                          console.log("Saving calculator data:", quoteData);
+                          
                           // Save to localStorage
                           localStorage.setItem(
                             "calculatorData",
                             JSON.stringify(quoteData)
                           );
+
+                          // Clear any existing form state
+                          window.dispatchEvent(new Event('calculatorDataUpdated'));
 
                           // Navigate to form
                           window.location.hash = "#cotizacion";
