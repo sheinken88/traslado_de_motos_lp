@@ -2,9 +2,11 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { fetchParsedSheetData } from "@/lib/sheets";
+import { ParsedSheetData } from "@/types/sheets";
 
 export default function QuoteForm() {
   const { t } = useLanguage();
@@ -12,19 +14,85 @@ export default function QuoteForm() {
     origen: "",
     destino: "",
     tipoMoto: "",
+    cantidad: 1,
     fecha: "",
+    fechaFin: "",
+    seguro: false,
+    recoleccion: false,
     nombre: "",
     telefono: "",
     email: "",
     comentarios: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [sheetData, setSheetData] = useState<ParsedSheetData | null>(null);
+  const [isFromCalculator, setIsFromCalculator] = useState(false);
+
+  // Load sheet data on component mount
+  useEffect(() => {
+    const loadSheetData = async () => {
+      try {
+        const parsedData = await fetchParsedSheetData();
+        setSheetData(parsedData);
+      } catch (error) {
+        console.error("Error loading sheet data:", error);
+      }
+    };
+
+    loadSheetData();
+  }, []);
+
+  // Listen for hash changes and check localStorage when navigating to form
+  useEffect(() => {
+    const checkAndLoadData = () => {
+      // Only load data if we're at the cotizacion hash
+      if (window.location.hash === '#cotizacion') {
+        const savedData = localStorage.getItem('calculatorData');
+        if (savedData && !isFromCalculator) { // Don't reload if already loaded
+          try {
+            const data = JSON.parse(savedData);
+            console.log('Loading calculator data:', data);
+            setIsFromCalculator(true);
+            setFormData(prev => ({
+              ...prev,
+              origen: data.origin || '',
+              destino: data.destination || '',
+              tipoMoto: data.bikeType || '',
+              cantidad: data.quantity || 1,
+              fecha: data.startDate || '',
+              fechaFin: data.endDate || '',
+              seguro: data.insurance || false,
+              recoleccion: data.pickupService || false,
+              comentarios: data.details ? `Motos: ${data.details}\n` : '',
+            }));
+          } catch (error) {
+            console.error('Error parsing calculator data:', error);
+            localStorage.removeItem('calculatorData');
+          }
+        }
+      }
+    };
+
+    // Check on mount
+    checkAndLoadData();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkAndLoadData);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('hashchange', checkAndLoadData);
+    };
+  }, [isFromCalculator]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // TODO: Implement actual form submission
     console.log("Form data:", formData);
+
+    // Clear calculator data from localStorage after successful submission
+    localStorage.removeItem('calculatorData');
 
     // Simulate API call
     setTimeout(() => {
@@ -37,9 +105,12 @@ export default function QuoteForm() {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
@@ -61,7 +132,27 @@ export default function QuoteForm() {
               {t("quoteForm.success.message")}
             </p>
             <button
-              onClick={() => setIsSubmitted(false)}
+              onClick={() => {
+                setIsSubmitted(false);
+                // Clear any remaining calculator data
+                localStorage.removeItem('calculatorData');
+                setIsFromCalculator(false);
+                // Reset form
+                setFormData({
+                  origen: "",
+                  destino: "",
+                  tipoMoto: "",
+                  cantidad: 1,
+                  fecha: "",
+                  fechaFin: "",
+                  seguro: false,
+                  recoleccion: false,
+                  nombre: "",
+                  telefono: "",
+                  email: "",
+                  comentarios: "",
+                });
+              }}
               className="bg-yellow-400 text-navy-900 px-8 py-3 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300"
             >
               {t("quoteForm.success.newQuote")}
@@ -96,6 +187,40 @@ export default function QuoteForm() {
         </div>
 
         <div className="max-w-4xl mx-auto">
+          {isFromCalculator && (
+            <div className="mb-6 p-4 bg-green-900/20 border border-green-400/30 rounded-xl">
+              <div className="flex items-center justify-between text-green-400">
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-sm font-medium">Datos importados del calculador</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    localStorage.removeItem('calculatorData');
+                    setIsFromCalculator(false);
+                    setFormData({
+                      origen: "",
+                      destino: "",
+                      tipoMoto: "",
+                      cantidad: 1,
+                      fecha: "",
+                      fechaFin: "",
+                      seguro: false,
+                      recoleccion: false,
+                      nombre: "",
+                      telefono: "",
+                      email: "",
+                      comentarios: "",
+                    });
+                  }}
+                  className="text-xs text-green-400 hover:text-white underline"
+                >
+                  Limpiar formulario
+                </button>
+              </div>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="origen">
@@ -108,7 +233,7 @@ export default function QuoteForm() {
                 value={formData.origen}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.origen ? 'border-yellow-400/30' : ''}`}
                 placeholder="Ej: Buenos Aires"
               />
             </div>
@@ -124,7 +249,7 @@ export default function QuoteForm() {
                 value={formData.destino}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.destino ? 'border-yellow-400/30' : ''}`}
                 placeholder="Ej: Bariloche"
               />
             </div>
@@ -142,22 +267,40 @@ export default function QuoteForm() {
                 value={formData.tipoMoto}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.tipoMoto ? 'border-yellow-400/30' : ''}`}
               >
                 <option value="">Seleccionar tipo</option>
-                <option value="deportiva">Deportiva</option>
-                <option value="touring">Touring</option>
-                <option value="adventure">Adventure</option>
-                <option value="cruiser">Cruiser</option>
-                <option value="naked">Naked</option>
-                <option value="scooter">Scooter</option>
-                <option value="otro">Otro</option>
+                {sheetData?.vehicles.map((vehicle) => (
+                  <option key={vehicle.category} value={vehicle.category}>
+                    {vehicle.category}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold mb-2" htmlFor="cantidad">
+                Cantidad de motos *
+              </label>
+              <select
+                id="cantidad"
+                name="cantidad"
+                value={formData.cantidad}
+                onChange={handleChange}
+                required
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.cantidad > 1 ? 'border-yellow-400/30' : ''}`}
+              >
+                {[1, 2, 3, 4, 5].map((qty) => (
+                  <option key={qty} value={qty}>
+                    {qty}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="fecha">
-                {t("quoteForm.fields.date")}
+                Fecha de inicio
               </label>
               <input
                 type="date"
@@ -165,7 +308,23 @@ export default function QuoteForm() {
                 name="fecha"
                 value={formData.fecha}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300"
+                min={new Date().toISOString().split("T")[0]}
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.fecha ? 'border-yellow-400/30' : ''}`}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold mb-2" htmlFor="fechaFin">
+                Fecha de fin (opcional)
+              </label>
+              <input
+                type="date"
+                id="fechaFin"
+                name="fechaFin"
+                value={formData.fechaFin}
+                onChange={handleChange}
+                min={formData.fecha || new Date().toISOString().split("T")[0]}
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white placeholder-sand-300/50 transition-all duration-300 ${isFromCalculator && formData.fechaFin ? 'border-yellow-400/30' : ''}`}
               />
             </div>
 
@@ -221,6 +380,44 @@ export default function QuoteForm() {
             </div>
 
             <div className="md:col-span-2">
+              <label className="text-sm font-bold text-white mb-3 block">
+                Servicios adicionales
+              </label>
+              <div className="space-y-3">
+                <label className="flex items-center cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    name="seguro"
+                    checked={formData.seguro}
+                    onChange={handleChange}
+                    className="w-5 h-5 text-yellow-400 rounded border-navy-600 focus:ring-yellow-400 bg-navy-800"
+                  />
+                  <span className="ml-3 text-sand-200 group-hover:text-white">
+                    Seguro premium{" "}
+                    {isFromCalculator && formData.seguro && (
+                      <span className="text-yellow-400 text-xs">(del calculador)</span>
+                    )}
+                  </span>
+                </label>
+                <label className="flex items-center cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    name="recoleccion"
+                    checked={formData.recoleccion}
+                    onChange={handleChange}
+                    className="w-5 h-5 text-yellow-400 rounded border-navy-600 focus:ring-yellow-400 bg-navy-800"
+                  />
+                  <span className="ml-3 text-sand-200 group-hover:text-white">
+                    Servicio de recolección{" "}
+                    {isFromCalculator && formData.recoleccion && (
+                      <span className="text-yellow-400 text-xs">(del calculador)</span>
+                    )}
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div className="md:col-span-2">
               <label
                 className="block text-sm font-bold mb-2"
                 htmlFor="comentarios"
@@ -233,7 +430,7 @@ export default function QuoteForm() {
                 value={formData.comentarios}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-yellow-400 focus:outline-none text-white resize-none"
+                className={`w-full px-4 py-3 bg-navy-800 border border-navy-700 rounded-xl focus:border-yellow-400 focus:outline-none text-white resize-none ${isFromCalculator && formData.comentarios ? 'border-yellow-400/30' : ''}`}
                 placeholder="Información adicional sobre tu motocicleta o requerimientos especiales..."
               />
             </div>

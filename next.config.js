@@ -10,19 +10,14 @@ const nextConfig = {
     unoptimized: true,
   },
   webpack: (config, { isServer }) => {
-    // Prevent excessive cache growth
-    if (!isServer) {
-      config.cache = {
-        type: 'filesystem',
-        maxMemoryGenerations: 1,
-      };
-      
-      // Set cache size limits
-      config.infrastructureLogging = {
-        level: 'error',
-      };
-    }
-    
+    // Disable caching temporarily to fix module resolution issues
+    config.cache = false;
+
+    // Disable infrastructure logging
+    config.infrastructureLogging = {
+      level: "error",
+    };
+
     return config;
   },
 };

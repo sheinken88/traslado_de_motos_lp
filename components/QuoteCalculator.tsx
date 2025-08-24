@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Calculator, MapPin, Bike, Calendar, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { fetchParsedSheetData } from "@/lib/sheets";
 import { QuoteCalculator as QuoteCalculatorService } from "@/lib/quoteCalculations";
@@ -32,13 +31,11 @@ export default function QuoteCalculator() {
   const [calculator, setCalculator] = useState<QuoteCalculatorService | null>(
     null
   );
-  const [isLoading, setIsLoading] = useState(false);
 
   // Load sheet data on component mount
   useEffect(() => {
     const loadSheetData = async () => {
       try {
-        setIsLoading(true);
         const parsedData = await fetchParsedSheetData();
         console.log("Parsed Google Sheets Data:", parsedData);
 
@@ -51,8 +48,6 @@ export default function QuoteCalculator() {
         setCalculator(calculatorInstance);
       } catch (error) {
         console.error("Error loading sheet data:", error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -472,13 +467,34 @@ export default function QuoteCalculator() {
 
                   {estimate && (
                     <div className="mt-8">
-                      <Link
-                        href="#cotizacion"
+                      <button
+                        onClick={() => {
+                          const quoteData = {
+                            origin,
+                            destination,
+                            bikeType: motorcycles[0]?.type || '',
+                            quantity: motorcycles.reduce((sum, m) => sum + m.quantity, 0),
+                            startDate,
+                            endDate,
+                            insurance: additionalServices.insurance,
+                            pickupService: additionalServices.pickupService,
+                            estimatedPrice: estimate?.finalPrice || 0,
+                            details: motorcycles.length > 1 
+                              ? motorcycles.map(m => `${m.quantity}x ${m.type}`).join(', ')
+                              : ''
+                          };
+                          
+                          // Save to localStorage
+                          localStorage.setItem('calculatorData', JSON.stringify(quoteData));
+                          
+                          // Navigate to form
+                          window.location.hash = 'cotizacion';
+                        }}
                         className="w-full bg-yellow-400 text-navy-900 px-6 py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group"
                       >
                         {getText("quoteCalculator.estimate.ctaButton")}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
+                      </button>
                       <p className="text-xs text-sand-300 text-center mt-3">
                         {getText("quoteCalculator.estimate.disclaimer")}
                       </p>
