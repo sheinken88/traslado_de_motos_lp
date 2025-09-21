@@ -26,13 +26,18 @@ export default function Testimonials() {
     baseTestimonials.length > 0
       ? baseTestimonials.map((testimonial, index) => ({
           ...testimonial,
-          image: "/images/bmw-r1250gs.png", // Use a real image instead of placeholder
+          image:
+            index === 0
+              ? "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true"
+              : index === 1
+              ? "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=FFD100&color=0D0D0D&bold=true"
+              : "https://ui-avatars.com/api/?name=Roberto+Silva&background=FFD100&color=0D0D0D&bold=true",
           bikeImage:
             index === 0
-              ? "/images/bmw-r1250gs.png"
+              ? "/images/r10.jpg"
               : index === 1
-              ? "/images/honda-africa-twin.png"
-              : "/images/ktm-790-adventure.png",
+              ? "/images/r5.jpeg"
+              : "/images/r18.jpeg",
         }))
       : [
           // Fallback data if translations fail to load
@@ -45,8 +50,8 @@ export default function Testimonials() {
             rating: 5,
             comment:
               "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
-            image: "/images/bmw-r1250gs.png", // Use a real image instead of placeholder
-            bikeImage: "/images/bmw-r1250gs.png",
+            image: "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true",
+            bikeImage: "/images/r10.jpg",
           },
         ];
 
@@ -96,10 +101,7 @@ export default function Testimonials() {
 
                 <div className="flex items-center">
                   <img
-                    src={
-                      testimonials[activeTestimonial].image ||
-                      "/images/bmw-r1250gs.png"
-                    }
+                    src={testimonials[activeTestimonial].image}
                     alt={testimonials[activeTestimonial].name}
                     className="w-16 h-16 rounded-full object-cover border-4 border-yellow-400 shadow-lg mr-4"
                   />
@@ -118,10 +120,7 @@ export default function Testimonials() {
               <div className="order-1 md:order-2 text-center">
                 <div className="relative">
                   <img
-                    src={
-                      testimonials[activeTestimonial].bikeImage ||
-                      "/images/bmw-r1250gs.png"
-                    }
+                    src={testimonials[activeTestimonial].bikeImage}
                     alt={testimonials[activeTestimonial].bike}
                     className="w-full max-w-md mx-auto h-64 object-contain"
                   />
@@ -191,7 +190,7 @@ export default function Testimonials() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center">
                         <img
-                          src={testimonial.image || "/images/bmw-r1250gs.png"}
+                          src={testimonial.image}
                           alt={testimonial.name}
                           className="w-14 h-14 rounded-full object-cover mr-3 ring-4 ring-yellow-400/20"
                         />

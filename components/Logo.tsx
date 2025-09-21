@@ -74,7 +74,7 @@ export default function Logo() {
           <span className="text-white">MOTO</span>
           <span className="text-yellow-400">TRANSFER</span>
         </h1>
-        <p className="text-[10px] text-sand-300 tracking-widest uppercase mt-0.5 font-light">
+        <p className="text-[10px] text-sand-300 tracking-widest uppercase mt-0.5 font-light whitespace-nowrap">
           Transporte Profesional
         </p>
       </div>

@@ -4,7 +4,7 @@ import HeroStats from "@/components/HeroStats";
 import QuoteCalculator from "@/components/QuoteCalculator";
 import HowItWorks from "@/components/HowItWorks";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import ShowcaseVideos from "@/components/ShowcaseVideos";
+import TransportGallery from "@/components/TransportGallery";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import QuoteForm from "@/components/QuoteForm";
@@ -19,8 +19,8 @@ export default function Home() {
       <HeroStats />
       <QuoteCalculator />
       <HowItWorks />
+      <TransportGallery />
       <WhyChooseUs />
-      <ShowcaseVideos />
       <Testimonials />
       <FAQ />
       <QuoteForm />

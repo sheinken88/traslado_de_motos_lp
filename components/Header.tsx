@@ -33,13 +33,15 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95">
-      <div className="container mx-auto px-6 py-4">
+    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95 overflow-x-hidden">
+      <div className="container mx-auto px-6 py-4 max-w-full">
         <div className="flex items-center justify-between">
-          <Logo />
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center ml-8 xl:ml-12 space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center ml-8 xl:ml-12 space-x-6 xl:space-x-8 min-w-0">
             <Link
               href="#hero"
               className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
@@ -72,7 +74,7 @@ export default function Header() {
             </Link>
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
             {/* Language Selector */}
             <div className="relative" ref={dropdownRef}>
               <button

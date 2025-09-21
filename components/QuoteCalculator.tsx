@@ -124,25 +124,42 @@ export default function QuoteCalculator() {
   return (
     <section
       id="calculadora"
-      className="section-padding bg-gradient-to-b from-sand-100 to-white relative overflow-hidden"
+      className="section-padding relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[800px] h-[800px] bg-yellow-400 rounded-full blur-3xl" />
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/r3.jpeg"
+          alt="Motorcycle adventure background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Floating accent shapes */}
+      <div className="absolute inset-0 z-1 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-400/20 rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-20 left-10 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl animate-float"
+          style={{ animationDelay: "4s" }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-oswald font-bold text-navy-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-oswald font-bold text-white mb-4 drop-shadow-lg">
             {getText("quoteCalculator.title")}{" "}
             <span className="text-yellow-400">
               {getText("quoteCalculator.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
+          <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light drop-shadow-md">
             {getText("quoteCalculator.subtitle")}
           </p>
-          <p className="text-accent mt-2">
+          <p className="text-yellow-300 mt-2 drop-shadow-md">
             {getText("quoteCalculator.tagline")}
           </p>
         </div>
@@ -494,7 +511,7 @@ export default function QuoteCalculator() {
                           };
 
                           console.log("Saving calculator data:", quoteData);
-                          
+
                           // Save to localStorage
                           localStorage.setItem(
                             "calculatorData",
@@ -502,16 +519,21 @@ export default function QuoteCalculator() {
                           );
 
                           // Clear any existing form state
-                          window.dispatchEvent(new Event('calculatorDataUpdated'));
+                          window.dispatchEvent(
+                            new Event("calculatorDataUpdated")
+                          );
 
                           // Navigate to form
                           window.location.hash = "#cotizacion";
-                          
+
                           // Ensure smooth scroll to the form
                           setTimeout(() => {
-                            const formElement = document.getElementById('cotizacion');
+                            const formElement =
+                              document.getElementById("cotizacion");
                             if (formElement) {
-                              formElement.scrollIntoView({ behavior: 'smooth' });
+                              formElement.scrollIntoView({
+                                behavior: "smooth",
+                              });
                             }
                           }, 100);
                         }}
