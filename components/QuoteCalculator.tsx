@@ -156,7 +156,7 @@ export default function QuoteCalculator() {
               {getText("quoteCalculator.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light drop-shadow-md">
+          <p className="text-xl text-black max-w-2xl mx-auto font-light drop-shadow-md">
             {getText("quoteCalculator.subtitle")}
           </p>
           <p className="text-yellow-300 mt-2 drop-shadow-md">

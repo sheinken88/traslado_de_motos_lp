@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -71,11 +71,6 @@ export default function Hero() {
                 {t("hero.ctaPrimary")}
                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-
-              <button className="btn-secondary inline-flex items-center justify-center group">
-                <Play className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
-                {t("hero.ctaSecondary")}
-              </button>
             </div>
           </div>
         </div>

@@ -299,7 +299,7 @@ const fallbackTranslations: { [key in Language]: Translations } = {
     },
     footer: {
       description:
-        "Transportamos tu motocicleta de forma segura por toda Argentina. Más de 5 años de experiencia respaldando las aventuras de miles de motociclistas.",
+        "Transportamos tu motocicleta de forma segura por toda Argentina. Más de 6 años de experiencia respaldando las aventuras de miles de motociclistas.",
       contact: "Contacto",
       links: "Enlaces",
       copyright: "Todos los derechos reservados.",

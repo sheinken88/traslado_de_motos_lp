@@ -42,7 +42,7 @@ export default function FAQ() {
             <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">
               {getText("faq.title")}
             </h2>
-            <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
+            <p className="text-xl text-black max-w-2xl mx-auto font-light">
               {getText("faq.subtitle")}
             </p>
             <p className="text-accent mt-2">{getText("faq.tagline")}</p>
@@ -73,10 +73,10 @@ export default function FAQ() {
           <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">
             {getText("faq.title")}
           </h2>
-          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
+          <p className="text-xl text-black max-w-2xl mx-auto font-light">
             {getText("faq.subtitle")}
           </p>
-          <p className="text-accent mt-2">{getText("faq.tagline")}</p>
+          <p className="text-black italic mt-2">{getText("faq.tagline")}</p>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -98,7 +98,7 @@ export default function FAQ() {
 
               {openIndex === index && (
                 <div className="px-6 pb-6 animate-fadeInUp">
-                  <p className="text-charcoal-700 leading-relaxed text-elegant mt-4 pl-4 border-l-2 border-yellow-400">
+                  <p className="text-black leading-relaxed text-elegant mt-4 pl-4 border-l-2 border-yellow-400">
                     {faq.answer}
                   </p>
                 </div>

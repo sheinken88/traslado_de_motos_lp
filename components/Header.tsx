@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Globe, Check, MessageCircle } from "lucide-react";
+import { Menu, X, Globe, Check, MessageCircle, Instagram } from "lucide-react";
 import Logo from "./Logo";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -33,7 +33,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95 overflow-x-hidden">
+    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95">
       <div className="container mx-auto px-6 py-4 max-w-full">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
@@ -92,7 +92,7 @@ export default function Header() {
               </button>
 
               {isLangDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-charcoal-900 border border-white/10 rounded-lg shadow-xl overflow-hidden">
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-2xl overflow-hidden z-[100]">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -100,8 +100,8 @@ export default function Header() {
                         setLanguage(lang.code);
                         setIsLangDropdownOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-left hover:bg-white/10 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? "bg-white/5" : ""
+                      className={`w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors flex items-center justify-between ${
+                        currentLanguage === lang.code ? "bg-gray-50" : ""
                       }`}
                     >
                       <span className="flex items-center space-x-3">
@@ -117,18 +117,30 @@ export default function Header() {
               )}
             </div>
 
-            {/* WhatsApp Button */}
-            <a
-              href={`https://wa.me/5491135939730?text=${encodeURIComponent(
-                String(t("whatsapp.message"))
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105 whitespace-nowrap"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp</span>
-            </a>
+            {/* Social Media Buttons */}
+            <div className="flex items-center space-x-2">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-110"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+
+              <a
+                href={`https://wa.me/5491135939730?text=${encodeURIComponent(
+                  String(t("whatsapp.message"))
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-10 h-10 flex items-center justify-center bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-110"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
+            </div>
 
             <Link
               href="#cotizacion"
@@ -200,29 +212,38 @@ export default function Header() {
                   </span>
                 </button>
 
-                <div className="flex space-x-3">
+                <div className="flex items-center space-x-2">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg"
+                  >
+                    <Instagram className="w-5 h-5" />
+                  </a>
                   <a
                     href={`https://wa.me/5491135939730?text=${encodeURIComponent(
                       String(t("whatsapp.message"))
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-xl font-semibold flex-1 justify-center"
+                    aria-label="WhatsApp"
+                    className="w-10 h-10 flex items-center justify-center bg-green-600 text-white rounded-lg"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp</span>
+                    <MessageCircle className="w-5 h-5" />
                   </a>
-                  <Link
-                    href="#cotizacion"
-                    className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold flex-1 text-center"
-                  >
-                    {t("nav.contact")}
-                  </Link>
                 </div>
+                <Link
+                  href="#cotizacion"
+                  className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold w-full text-center"
+                >
+                  {t("nav.contact")}
+                </Link>
               </div>
 
               {isLangDropdownOpen && (
-                <div className="mt-2 space-y-2">
+                <div className="mt-2 space-y-2 bg-white border border-gray-200 rounded-lg p-2 shadow-xl z-[100]">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -231,8 +252,8 @@ export default function Header() {
                         setIsLangDropdownOpen(false);
                         setIsMenuOpen(false);
                       }}
-                      className={`w-full px-4 py-2 text-left rounded-lg hover:bg-white/10 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? "bg-white/5" : ""
+                      className={`w-full px-4 py-2 text-left text-gray-800 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-between ${
+                        currentLanguage === lang.code ? "bg-gray-50" : ""
                       }`}
                     >
                       <span className="flex items-center space-x-3">

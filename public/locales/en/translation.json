@@ -52,31 +52,27 @@
   "whyChooseUs": {
     "title": "WHY",
     "titleAccent": "CHOOSE US?",
-    "subtitle": "Over 5 years transporting motorcycles throughout Argentina with total reliability",
+    "subtitle": "Over 6 years transporting motorcycles throughout Argentina with total reliability",
     "features": {
-      "insurance": {
-        "title": "Insurance Included",
-        "description": "Complete coverage throughout the journey. Your bike is protected against any eventuality."
-      },
       "fastDelivery": {
         "title": "Fast Delivery",
-        "description": "Optimized delivery times. We know you want to start your adventure as soon as possible."
+        "description": "Optimized delivery times for motorcycle transport."
       },
       "tracking": {
-        "title": "Real-Time Tracking",
-        "description": "Know the exact location of your motorcycle throughout the trip with our GPS system."
+        "title": "Tracking",
+        "description": "Know the exact location of your motorcycle throughout the entire journey."
       },
-      "support": {
-        "title": "Personalized Support",
-        "description": "Dedicated team available to resolve all your queries during the process."
+      "professionalism": {
+        "title": "Professionalism",
+        "description": "Certified vehicles and specialized cargo insurance for motorcycle transport."
+      },
+      "weareBikers": {
+        "title": "We Are Bikers",
+        "description": "We also ride motorcycles; we understand what it means to trust your bike to someone else (many customers choose us for this)."
       },
       "experience": {
         "title": "Proven Experience",
-        "description": "Over 5 years in the market with thousands of motorcycles successfully transported."
-      },
-      "team": {
-        "title": "Professional Team",
-        "description": "Trained staff specialized in motorcycle handling and transportation."
+        "description": "Over 6 years in the market performing motorcycle transport."
       }
     }
   },
@@ -178,7 +174,7 @@
     }
   },
   "footer": {
-    "description": "We transport your motorcycle safely throughout Argentina. Over 5 years of experience supporting the adventures of thousands of motorcyclists.",
+    "description": "We transport your motorcycle safely throughout Argentina. Over 6 years of experience supporting the adventures of thousands of motorcyclists.",
     "contact": "Contact",
     "links": "Links",
     "copyright": "All rights reserved.",

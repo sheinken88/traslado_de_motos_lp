@@ -37,12 +37,10 @@ export default function HowItWorks() {
           <h2 className="text-5xl md:text-6xl font-oswald font-bold text-navy-900 mb-6 tracking-tight">
             {t("howItWorks.title")}
           </h2>
-          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
+          <p className="text-xl text-black max-w-2xl mx-auto font-light">
             {t("howItWorks.subtitle")}
           </p>
-          <p className="text-accent mt-2 font-semibold">
-            {t("howItWorks.tagline")}
-          </p>
+          <p className="text-black italic mt-2">{t("howItWorks.tagline")}</p>
         </div>
 
         <div className="max-w-7xl mx-auto">
@@ -58,7 +56,7 @@ export default function HowItWorks() {
                         strokeWidth={1.5}
                       />
                     </div>
-                    <div className="text-7xl font-oswald font-light text-sand-200">
+                    <div className="text-7xl font-oswald font-light ">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
@@ -68,7 +66,7 @@ export default function HowItWorks() {
                     <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-4">
                       {t(step.titleKey)}
                     </h3>
-                    <p className="text-charcoal-700 leading-relaxed text-elegant mb-6">
+                    <p className="text-black leading-relaxed text-elegant mb-6">
                       {t(step.descriptionKey)}
                     </p>
                   </div>

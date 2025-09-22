@@ -52,31 +52,27 @@
   "whyChooseUs": {
     "title": "POR QUE",
     "titleAccent": "NOS ESCOLHER?",
-    "subtitle": "Mais de 5 anos transportando motocicletas por toda a Argentina com total confiabilidade",
+    "subtitle": "Mais de 6 anos transportando motocicletas por toda a Argentina com total confiabilidade",
     "features": {
-      "insurance": {
-        "title": "Seguro Incluído",
-        "description": "Cobertura completa durante todo o trajeto. Sua moto está protegida contra qualquer eventualidade."
-      },
       "fastDelivery": {
         "title": "Entrega Rápida",
-        "description": "Tempos de entrega otimizados. Sabemos que você quer começar sua aventura o quanto antes."
+        "description": "Tempos de entrega otimizados no transporte de motos."
       },
       "tracking": {
-        "title": "Rastreamento em Tempo Real",
-        "description": "Conheça a localização exata de sua motocicleta durante toda a viagem com nosso sistema GPS."
+        "title": "Rastreamento",
+        "description": "Conheça a localização exata de sua motocicleta durante toda a viagem."
       },
-      "support": {
-        "title": "Atendimento Personalizado",
-        "description": "Equipe dedicada disponível para resolver todas suas consultas durante o processo."
+      "professionalism": {
+        "title": "Profissionalismo",
+        "description": "Veículos homologados e seguro de carga especializado para o transporte de motos."
+      },
+      "weareBikers": {
+        "title": "Somos Motociclistas",
+        "description": "Nós também viajamos de moto; entendemos o que significa confiar sua moto a outra pessoa (muitos clientes nos escolhem por isso)."
       },
       "experience": {
         "title": "Experiência Comprovada",
-        "description": "Mais de 5 anos no mercado com milhares de motocicletas transportadas com sucesso."
-      },
-      "team": {
-        "title": "Equipe Profissional",
-        "description": "Pessoal treinado e especializado no manuseio e transporte de motocicletas."
+        "description": "Mais de 6 anos no mercado realizando transporte de motos."
       }
     }
   },
@@ -178,7 +174,7 @@
     }
   },
   "footer": {
-    "description": "Transportamos sua motocicleta com segurança por toda a Argentina. Mais de 5 anos de experiência apoiando as aventuras de milhares de motociclistas.",
+    "description": "Transportamos sua motocicleta com segurança por toda a Argentina. Mais de 6 anos de experiência apoiando as aventuras de milhares de motociclistas.",
     "contact": "Contato",
     "links": "Links",
     "copyright": "Todos os direitos reservados.",

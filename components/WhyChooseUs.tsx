@@ -11,12 +11,6 @@ export default function WhyChooseUs() {
 
   const features = [
     {
-      icon: Shield,
-      titleKey: "whyChooseUs.features.insurance.title",
-      descriptionKey: "whyChooseUs.features.insurance.description",
-      stat: "100%",
-    },
-    {
       icon: Clock,
       titleKey: "whyChooseUs.features.fastDelivery.title",
       descriptionKey: "whyChooseUs.features.fastDelivery.description",
@@ -29,22 +23,22 @@ export default function WhyChooseUs() {
       stat: "GPS",
     },
     {
-      icon: Headphones,
-      titleKey: "whyChooseUs.features.support.title",
-      descriptionKey: "whyChooseUs.features.support.description",
-      stat: "24/7",
+      icon: Shield,
+      titleKey: "whyChooseUs.features.professionalism.title",
+      descriptionKey: "whyChooseUs.features.professionalism.description",
+      stat: "100%",
+    },
+    {
+      icon: Users,
+      titleKey: "whyChooseUs.features.weareBikers.title",
+      descriptionKey: "whyChooseUs.features.weareBikers.description",
+      stat: "RIDERS",
     },
     {
       icon: Award,
       titleKey: "whyChooseUs.features.experience.title",
       descriptionKey: "whyChooseUs.features.experience.description",
-      stat: "5000+",
-    },
-    {
-      icon: Users,
-      titleKey: "whyChooseUs.features.team.title",
-      descriptionKey: "whyChooseUs.features.team.description",
-      stat: "PRO",
+      stat: "6+",
     },
   ];
 
