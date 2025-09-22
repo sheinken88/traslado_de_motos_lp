@@ -129,7 +129,7 @@ export default function QuoteCalculator() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/r3.jpeg"
+          src="/images/r1.jpg"
           alt="Motorcycle adventure background"
           className="w-full h-full object-cover"
         />
