@@ -49,6 +49,12 @@ export default function Header() {
               {t("nav.home")}
             </Link>
             <Link
+              href="#calculadora"
+              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
+            >
+              {t("nav.calculator")}
+            </Link>
+            <Link
               href="#como-funciona"
               className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
@@ -59,12 +65,6 @@ export default function Header() {
               className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
             >
               {t("nav.services")}
-            </Link>
-            <Link
-              href="#calculadora"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.calculator")}
             </Link>
             <Link
               href="#cotizacion"
@@ -175,6 +175,13 @@ export default function Header() {
                 {t("nav.home")}
               </Link>
               <Link
+                href="#calculadora"
+                className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("nav.calculator")}
+              </Link>
+              <Link
                 href="#como-funciona"
                 className="hover:text-yellow-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
@@ -187,13 +194,6 @@ export default function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.services")}
-              </Link>
-              <Link
-                href="#calculadora"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.calculator")}
               </Link>
               <Link
                 href="#cotizacion"
