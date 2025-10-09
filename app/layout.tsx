@@ -24,13 +24,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "MotoTransfer - Transporte y Traslado de Motos en Argentina | Servicio Profesional",
+  title: "Traslado de Motos - Transporte de Motocicletas en Argentina | Servicio Profesional",
   description:
     "Servicio de transporte de motocicletas y traslado de motos por toda Argentina. Transportamos tu moto de forma segura con seguro incluido, seguimiento GPS y entrega puntual. Desde 2018 ofreciendo calidad y confiabilidad.",
   keywords:
     "transporte motocicletas, traslado de motos, envío motos Argentina, transporte motos, servicio traslado motocicletas, transporte seguro motos, envío motocicletas Argentina, turismo aventura, transporte profesional motos",
   openGraph: {
-    title: "MotoTransfer - Transporte y Traslado de Motos en Argentina",
+    title: "Traslado de Motos - Transporte de Motocicletas en Argentina",
     description:
       "Servicio profesional de transporte de motocicletas y traslado de motos por toda Argentina. Seguridad, confiabilidad y seguimiento GPS.",
     type: "website",

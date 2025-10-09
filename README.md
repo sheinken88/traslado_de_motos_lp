@@ -1,4 +1,4 @@
-# MotoTransfer - Motorcycle Transport Service Landing Page
+# Traslado de Motos - Motorcycle Transport Service Landing Page
 
 A premium motorcycle transport service landing page built with Next.js, TailwindCSS, and designed for the Argentine market.
 
@@ -105,7 +105,7 @@ The project is structured for easy internationalization:
 
 ## 📧 Email Integration
 
-The quote form is integrated with Resend for email delivery to `heinken.sebastian@gmail.com`.
+The quote form is integrated with Resend for email delivery to `info@trasladodemotos.com.ar`.
 
 ### Setup Email Service
 
@@ -135,7 +135,7 @@ The quote form is integrated with Resend for email delivery to `heinken.sebastia
 ### How it Works
 
 - Form submissions are sent to `/api/contact`
-- Emails are sent to `heinken.sebastian@gmail.com`
+- Emails are sent to `info@trasladodemotos.com.ar`
 - If no API key is configured, form data is logged to console
 - Users always see success message for good UX
 

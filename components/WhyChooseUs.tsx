@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { Shield, Clock, MapPin, Headphones, Award, Users } from "lucide-react";
+import { Shield, Clock, MapPin, Award, Users } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
 
 export default function WhyChooseUs() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const { t } = useLanguage();
 
   const features = [
@@ -42,62 +44,6 @@ export default function WhyChooseUs() {
     },
   ];
 
-  // Duplicate features for seamless infinite scroll
-  const duplicatedFeatures = [...features, ...features];
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    let animationId: number;
-    let startTime: number;
-    const duration = 40000; // 40 seconds for full cycle
-
-    // Responsive card width calculation
-    const getCardWidth = () => {
-      const screenWidth = window.innerWidth;
-      const cardWidth = screenWidth < 768 ? 320 : 380; // Mobile: 320px, Desktop: 380px
-      const gap = 24;
-      return cardWidth + gap;
-    };
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-
-      if (!isHovered) {
-        const cardWidth = getCardWidth();
-        const totalWidth = features.length * cardWidth;
-        const elapsed = currentTime - startTime;
-        const progress = (elapsed % duration) / duration;
-        const translateX = -(progress * totalWidth);
-
-        carousel.style.transform = `translateX(${translateX}px)`;
-      }
-
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    // Handle window resize
-    const handleResize = () => {
-      if (carousel) {
-        const cardWidth = getCardWidth();
-        carousel.style.width = `${duplicatedFeatures.length * cardWidth}px`;
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Set initial width
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [isHovered, features.length, duplicatedFeatures.length]);
-
   return (
     <section
       id="por-que-elegirnos"
@@ -126,21 +72,38 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* Auto-advancing infinite carousel */}
-        <div className="relative overflow-hidden">
-          <div
-            ref={carouselRef}
-            className="flex gap-6 transition-transform ease-linear"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+        {/* Auto-advancing infinite carousel with Swiper */}
+        <div className="relative">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={24}
+            slidesPerView={1}
+            loop={true}
+            speed={8000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1.5,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 2.5,
+              },
+              1280: {
+                slidesPerView: 3.5,
+              },
+            }}
+            freeMode={true}
+            className="!overflow-visible"
           >
-            {duplicatedFeatures.map((feature, index) => (
-              <div
-                key={`${index}-${
-                  index >= features.length ? "duplicate" : "original"
-                }`}
-                className="flex-none w-[320px] md:w-[380px]"
-              >
+            {features.map((feature, index) => (
+              <SwiperSlide key={index} className="!h-auto">
                 <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/10 hover:transform hover:scale-[1.02] hover:shadow-2xl group">
                   {/* Top section with icon and stat */}
                   <div className="flex items-start justify-between mb-6">
@@ -170,9 +133,9 @@ export default function WhyChooseUs() {
                   {/* Bottom accent line */}
                   <div className="mt-6 h-1 bg-gradient-to-r from-yellow-400/20 via-yellow-400/40 to-transparent rounded-full group-hover:from-yellow-400/40 group-hover:via-yellow-400/60 transition-all duration-300" />
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
           {/* Gradient edges for visual depth */}
           <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-charcoal-900 to-transparent pointer-events-none z-10" />

@@ -24,7 +24,7 @@ export default function QuoteCalculator() {
   const [waitingDays, setWaitingDays] = useState(3);
   const [additionalServices, setAdditionalServices] = useState({
     pickupService: false,
-    insurance: true,
+    insurance: false,
   });
   const [estimate, setEstimate] = useState<QuoteCalculation | null>(null);
   const [sheetData, setSheetData] = useState<ParsedSheetData | null>(null);
@@ -124,49 +124,40 @@ export default function QuoteCalculator() {
   return (
     <section
       id="calculadora"
-      className="section-padding relative overflow-hidden"
+      className="section-padding relative overflow-hidden bg-gradient-to-b from-white via-sand-50 to-white"
     >
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/r1.jpg"
-          alt="Motorcycle adventure background"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
       {/* Floating accent shapes */}
       <div className="absolute inset-0 z-1 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-400/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute bottom-20 left-10 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl animate-float"
+          className="absolute bottom-20 left-10 w-96 h-96 bg-orange-500/8 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
         <div
-          className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl animate-float"
+          className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/5 rounded-full blur-2xl animate-float"
           style={{ animationDelay: "4s" }}
         />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-oswald font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="text-4xl md:text-5xl font-oswald font-bold text-navy-900 mb-4">
             {getText("quoteCalculator.title")}{" "}
-            <span className="text-yellow-400">
+            <span className="text-yellow-500">
               {getText("quoteCalculator.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-black max-w-2xl mx-auto font-light drop-shadow-md">
+          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
             {getText("quoteCalculator.subtitle")}
           </p>
-          <p className="text-yellow-300 mt-2 drop-shadow-md">
+          <p className="text-yellow-600 mt-2 font-medium">
             {getText("quoteCalculator.tagline")}
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-hard p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-8">
+          <div className="bg-white rounded-2xl shadow-hard p-4 sm:p-6 lg:p-12">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
               {/* Left Column - Inputs */}
               <div className="space-y-6">
                 <div>
@@ -174,7 +165,7 @@ export default function QuoteCalculator() {
                     <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
                     {getText("quoteCalculator.fields.route")}
                   </label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <select
                       value={origin}
                       onChange={(e) => setOrigin(e.target.value)}
@@ -246,10 +237,10 @@ export default function QuoteCalculator() {
                     <Bike className="w-4 h-4 mr-2 text-yellow-400" />
                     {getText("quoteCalculator.fields.bikeType")}
                   </label>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {motorcycles.map((motorcycle, index) => (
-                      <div key={index} className="grid grid-cols-3 gap-3">
-                        <div className="col-span-2">
+                      <div key={index} className="space-y-3">
+                        <div>
                           <select
                             value={motorcycle.type}
                             onChange={(e) => {
@@ -274,36 +265,43 @@ export default function QuoteCalculator() {
                             ))}
                           </select>
                         </div>
-                        <div className="flex gap-2">
-                          <select
-                            value={motorcycle.quantity}
-                            onChange={(e) => {
-                              const newMotorcycles = [...motorcycles];
-                              newMotorcycles[index].quantity = parseInt(
-                                e.target.value
-                              );
-                              setMotorcycles(newMotorcycles);
-                            }}
-                            className="flex-1 px-3 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
-                          >
-                            {[1, 2, 3, 4, 5].map((qty) => (
-                              <option key={qty} value={qty}>
-                                {qty}
-                              </option>
-                            ))}
-                          </select>
-                          {motorcycles.length > 1 && (
-                            <button
-                              onClick={() => {
-                                const newMotorcycles = motorcycles.filter(
-                                  (_, i) => i !== index
+                        <div className="flex gap-3">
+                          <div className="flex-1">
+                            <label className="block text-xs text-charcoal-600 mb-1">
+                              Cantidad
+                            </label>
+                            <select
+                              value={motorcycle.quantity}
+                              onChange={(e) => {
+                                const newMotorcycles = [...motorcycles];
+                                newMotorcycles[index].quantity = parseInt(
+                                  e.target.value
                                 );
                                 setMotorcycles(newMotorcycles);
                               }}
-                              className="px-3 py-3 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-colors"
+                              className="w-full px-3 py-3 bg-sand-100 border border-sand-200 rounded-xl focus:border-yellow-400 focus:outline-none text-navy-900 transition-all duration-300"
                             >
-                              ×
-                            </button>
+                              {[1, 2, 3, 4, 5].map((qty) => (
+                                <option key={qty} value={qty}>
+                                  {qty}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                          {motorcycles.length > 1 && (
+                            <div className="flex items-end">
+                              <button
+                                onClick={() => {
+                                  const newMotorcycles = motorcycles.filter(
+                                    (_, i) => i !== index
+                                  );
+                                  setMotorcycles(newMotorcycles);
+                                }}
+                                className="px-4 py-3 bg-red-100 text-red-600 rounded-xl hover:bg-red-200 transition-colors font-medium"
+                              >
+                                Eliminar
+                              </button>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -322,7 +320,7 @@ export default function QuoteCalculator() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
                       <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
@@ -400,7 +398,7 @@ export default function QuoteCalculator() {
 
               {/* Right Column - Result */}
               <div className="lg:pl-8">
-                <div className="bg-gradient-to-br from-navy-900 to-charcoal-900 rounded-2xl p-8 text-white h-full flex flex-col justify-between">
+                <div className="bg-gradient-to-br from-navy-900 to-charcoal-900 rounded-2xl p-6 sm:p-8 text-white h-full flex flex-col justify-between">
                   <div>
                     <div className="flex items-center mb-6">
                       <Calculator className="w-6 h-6 text-yellow-400 mr-3" />
@@ -415,7 +413,7 @@ export default function QuoteCalculator() {
                           <p className="text-sand-300 mb-2">
                             {getText("quoteCalculator.estimate.range")}
                           </p>
-                          <div className="text-3xl font-bold text-yellow-400">
+                          <div className="text-2xl sm:text-3xl font-bold text-yellow-400">
                             {formatPrice(estimate.finalPrice)}
                           </div>
                           <p className="text-xs text-sand-400 mt-1">
@@ -474,12 +472,12 @@ export default function QuoteCalculator() {
                         </div>
                       </div>
                     ) : (
-                      <div className="text-center py-12">
-                        <p className="text-sand-300 mb-4">
+                      <div className="text-center py-8 sm:py-12">
+                        <p className="text-sand-300 mb-4 text-sm sm:text-base">
                           {getText("quoteCalculator.estimate.placeholder")}
                         </p>
-                        <div className="w-20 h-20 mx-auto bg-navy-800 rounded-2xl flex items-center justify-center">
-                          <Calculator className="w-10 h-10 text-sand-300" />
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-navy-800 rounded-2xl flex items-center justify-center">
+                          <Calculator className="w-8 h-8 sm:w-10 sm:h-10 text-sand-300" />
                         </div>
                       </div>
                     )}
@@ -537,7 +535,7 @@ export default function QuoteCalculator() {
                             }
                           }, 100);
                         }}
-                        className="w-full bg-yellow-400 text-navy-900 px-6 py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group"
+                        className="w-full bg-yellow-400 text-navy-900 px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group text-sm sm:text-base"
                       >
                         {getText("quoteCalculator.estimate.ctaButton")}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

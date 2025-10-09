@@ -96,14 +96,14 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web.
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
-          from: "MotoTransfer <onboarding@resend.dev>", // You'll need to verify your domain
-          to: ["heinken.sebastian@gmail.com"],
+          from: "Traslado de Motos <onboarding@resend.dev>", // You'll need to verify your domain
+          to: ["info@trasladodemotos.com.ar"],
           subject: "Nueva solicitud de cotización - Transporte de motocicletas",
           text: emailContent,
           html: htmlContent,
         });
 
-        console.log("Email sent successfully to heinken.sebastian@gmail.com");
+        console.log("Email sent successfully to info@trasladodemotos.com.ar");
       } catch (emailError) {
         console.error("Failed to send email:", emailError);
 

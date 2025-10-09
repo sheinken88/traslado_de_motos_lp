@@ -1,8 +1,16 @@
 "use client";
 
 import { Star, Quote } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 export default function Testimonials() {
   const { t } = useLanguage();
@@ -14,6 +22,7 @@ export default function Testimonials() {
   };
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [mainSwiper, setMainSwiper] = useState<SwiperType | null>(null);
 
   // Get testimonials from translations
   const testimonialsData = t("testimonials.data");
@@ -50,17 +59,11 @@ export default function Testimonials() {
             rating: 5,
             comment:
               "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
-            image: "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true",
+            image:
+              "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true",
             bikeImage: "/images/r10.jpg",
           },
         ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section className="py-24 bg-white overflow-hidden">
@@ -78,74 +81,91 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Main testimonial display */}
+        {/* Main testimonial display with Swiper */}
         <div className="max-w-6xl mx-auto mb-16">
-          <div className="bg-gray-50 rounded-3xl p-12 shadow-sm border border-gray-100 overflow-hidden relative">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Testimonial content */}
-              <div className="order-2 md:order-1">
-                <div className="flex justify-start mb-6">
-                  {[...Array(testimonials[activeTestimonial].rating)].map(
-                    (_, i) => (
-                      <Star
-                        key={i}
-                        className="w-6 h-6 text-yellow-400 fill-current mx-1"
-                      />
-                    )
-                  )}
-                </div>
-
-                <blockquote className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-8 font-light">
-                  "{testimonials[activeTestimonial].comment}"
-                </blockquote>
-
-                <div className="flex items-center">
-                  <img
-                    src={testimonials[activeTestimonial].image}
-                    alt={testimonials[activeTestimonial].name}
-                    className="w-16 h-16 rounded-full object-cover border-4 border-yellow-400 shadow-lg mr-4"
-                  />
-                  <div>
-                    <h4 className="text-xl font-oswald font-bold text-black">
-                      {testimonials[activeTestimonial].name}
-                    </h4>
-                    <p className="text-yellow-600 font-semibold">
-                      {testimonials[activeTestimonial].location}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Motorcycle showcase */}
-              <div className="order-1 md:order-2 text-center">
-                <div className="relative">
-                  <img
-                    src={testimonials[activeTestimonial].bikeImage}
-                    alt={testimonials[activeTestimonial].bike}
-                    className="w-full max-w-md mx-auto h-64 object-contain"
-                  />
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm rounded-2xl px-6 py-3">
-                    <div className="text-center">
-                      <div className="text-yellow-400 font-oswald font-bold text-lg">
-                        {testimonials[activeTestimonial].brand}
+          <Swiper
+            modules={[Autoplay, Pagination, EffectFade]}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            spaceBetween={30}
+            slidesPerView={1}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            onSwiper={setMainSwiper}
+            onSlideChange={(swiper) => setActiveTestimonial(swiper.activeIndex)}
+            className="!pb-0"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <div className="bg-gray-50 rounded-3xl p-12 shadow-sm border border-gray-100 overflow-hidden relative">
+                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Testimonial content */}
+                    <div className="order-2 md:order-1">
+                      <div className="flex justify-start mb-6">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-6 h-6 text-yellow-400 fill-current mx-1"
+                          />
+                        ))}
                       </div>
-                      <div className="text-white font-medium text-sm">
-                        {testimonials[activeTestimonial].model}
+
+                      <blockquote className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-8 font-light">
+                        "{testimonial.comment}"
+                      </blockquote>
+
+                      <div className="flex items-center">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-16 h-16 rounded-full object-cover border-4 border-yellow-400 shadow-lg mr-4"
+                        />
+                        <div>
+                          <h4 className="text-xl font-oswald font-bold text-black">
+                            {testimonial.name}
+                          </h4>
+                          <p className="text-yellow-600 font-semibold">
+                            {testimonial.location}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Motorcycle showcase */}
+                    <div className="order-1 md:order-2 text-center">
+                      <div className="relative">
+                        <img
+                          src={testimonial.bikeImage}
+                          alt={testimonial.bike}
+                          className="w-full max-w-md mx-auto h-64 object-contain"
+                        />
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm rounded-2xl px-6 py-3">
+                          <div className="text-center">
+                            <div className="text-yellow-400 font-oswald font-bold text-lg">
+                              {testimonial.brand}
+                            </div>
+                            <div className="text-white font-medium text-sm">
+                              {testimonial.model}
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
-        {/* Testimonial navigation */}
+        {/* Testimonial navigation dots */}
         <div className="flex justify-center space-x-4 mb-12">
           {testimonials.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveTestimonial(index)}
+              onClick={() => mainSwiper?.slideTo(index)}
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 index === activeTestimonial
                   ? "bg-yellow-400 scale-125"
@@ -155,29 +175,37 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* All testimonials grid - modern horizontal slider */}
+        {/* All testimonials grid - Swiper horizontal slider */}
         <div className="relative -mx-4 md:mx-0">
-          <div className="max-w-7xl mx-auto px-4 md:px-6">
-            <div
-              className="flex gap-4 md:gap-6 overflow-x-auto pb-6 
-                         scroll-smooth snap-x snap-mandatory
-                         no-scrollbar"
-              style={{
-                WebkitOverflowScrolling: "touch",
-                scrollBehavior: "smooth",
+          <div className="max-w-7xl mx-auto">
+            <Swiper
+              modules={[]}
+              spaceBetween={16}
+              slidesPerView={1.1}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 24,
+                },
+                1024: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 24,
+                },
+                1280: {
+                  slidesPerView: 3,
+                  spaceBetween: 24,
+                },
               }}
+              className="!px-4 !py-4"
             >
-              {/* Invisible spacer for left padding on mobile */}
-              <div className="flex-none w-0 md:hidden" />
-
               {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className={`flex-none w-[85vw] max-w-[340px] md:w-[380px] snap-center
-                             transition-all duration-300`}
-                >
+                <SwiperSlide key={index}>
                   <div
-                    className={`h-full bg-white rounded-2xl p-6 border-2 
+                    className={`h-full bg-white rounded-2xl p-6 border-2
                                transition-all duration-300 cursor-pointer
                                hover:shadow-xl hover:border-yellow-400 hover:-translate-y-1
                                ${
@@ -185,7 +213,7 @@ export default function Testimonials() {
                                    ? "border-yellow-400 shadow-lg bg-gradient-to-br from-yellow-50 to-white"
                                    : "border-gray-200 shadow-md"
                                }`}
-                    onClick={() => setActiveTestimonial(index)}
+                    onClick={() => mainSwiper?.slideTo(index)}
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center">
@@ -226,23 +254,20 @@ export default function Testimonials() {
                       "{testimonial.comment}"
                     </p>
                   </div>
-                </div>
+                </SwiperSlide>
               ))}
-
-              {/* Invisible spacer for right padding on mobile */}
-              <div className="flex-none w-0 md:hidden" />
-            </div>
+            </Swiper>
           </div>
 
           {/* Modern gradient overlays for desktop */}
           <div
-            className="hidden md:block absolute left-0 top-0 bottom-0 w-32 
-                          bg-gradient-to-r from-white via-white/50 to-transparent 
+            className="hidden md:block absolute left-0 top-0 bottom-0 w-32
+                          bg-gradient-to-r from-white via-white/50 to-transparent
                           pointer-events-none z-10"
           />
           <div
-            className="hidden md:block absolute right-0 top-0 bottom-0 w-32 
-                          bg-gradient-to-l from-white via-white/50 to-transparent 
+            className="hidden md:block absolute right-0 top-0 bottom-0 w-32
+                          bg-gradient-to-l from-white via-white/50 to-transparent
                           pointer-events-none z-10"
           />
         </div>
