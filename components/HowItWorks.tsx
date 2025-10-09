@@ -46,8 +46,8 @@ export default function HowItWorks() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8 relative">
             {steps.map((step, index) => (
-              <div key={index} className="stagger-item step-connector">
-                <div className="card-elegant p-8 rounded-2xl hover:scale-105 transition-all duration-300 relative z-10">
+              <div key={index} className="stagger-item step-connector flex">
+                <div className="card-elegant p-8 rounded-2xl hover:scale-105 transition-all duration-300 relative z-10 flex flex-col w-full">
                   {/* Step number and icon */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-16 h-16 bg-yellow-400 rounded-xl flex items-center justify-center shadow-medium hover:shadow-glow transition-all duration-300">
@@ -62,36 +62,36 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Content */}
-                  <div className="mb-6">
+                  <div className="flex-1 flex flex-col">
                     <h3 className="text-2xl font-oswald font-bold text-navy-900 mb-4">
                       {t(step.titleKey)}
                     </h3>
-                    <p className="text-black leading-relaxed text-elegant mb-6">
+                    <p className="text-black leading-relaxed text-elegant mb-6 flex-1">
                       {t(step.descriptionKey)}
                     </p>
-                  </div>
 
-                  {/* Features list */}
-                  <div className="space-y-2">
-                    {(() => {
-                      const features = t(step.featuresKey);
-                      if (Array.isArray(features)) {
-                        return features.map((feature, featureIndex) => (
-                          <div
-                            key={featureIndex}
-                            className="flex items-center text-sm text-charcoal-700 hover:text-navy-900 transition-colors"
-                          >
-                            <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3" />
-                            {feature}
-                          </div>
-                        ));
-                      }
-                      return null;
-                    })()}
+                    {/* Features list */}
+                    <div className="space-y-2 mb-6">
+                      {(() => {
+                        const features = t(step.featuresKey);
+                        if (Array.isArray(features)) {
+                          return features.map((feature, featureIndex) => (
+                            <div
+                              key={featureIndex}
+                              className="flex items-center text-sm text-charcoal-700 hover:text-navy-900 transition-colors"
+                            >
+                              <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3" />
+                              {feature}
+                            </div>
+                          ));
+                        }
+                        return null;
+                      })()}
+                    </div>
                   </div>
 
                   {/* Progress indicator */}
-                  <div className="mt-6 h-1 bg-sand-200 rounded-full overflow-hidden">
+                  <div className="mt-auto h-1 bg-sand-200 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-yellow-400 rounded-full transition-all duration-1000"
                       style={{

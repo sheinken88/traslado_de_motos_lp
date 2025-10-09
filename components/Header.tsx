@@ -170,37 +170,42 @@ export default function Header() {
               <Link
                 href="#hero"
                 className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.home")}
               </Link>
               <Link
                 href="#como-funciona"
                 className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.howItWorks")}
               </Link>
               <Link
                 href="#por-que-elegirnos"
                 className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.services")}
               </Link>
               <Link
                 href="#calculadora"
                 className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.calculator")}
               </Link>
               <Link
                 href="#cotizacion"
                 className="hover:text-yellow-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.contact")}
               </Link>
-              <div className="pt-4 border-t border-navy-800 space-y-4">
+              <div className="pt-4 border-t border-navy-800">
                 <button
                   onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                  className="flex items-center space-x-2 text-sm"
+                  className="flex items-center space-x-2 text-sm mb-4"
                 >
                   <Globe className="w-4 h-4" />
                   <span>
@@ -212,7 +217,7 @@ export default function Header() {
                   </span>
                 </button>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 mb-6">
                   <a
                     href="https://instagram.com"
                     target="_blank"
@@ -237,6 +242,7 @@ export default function Header() {
                 <Link
                   href="#cotizacion"
                   className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold w-full text-center"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {t("nav.contact")}
                 </Link>

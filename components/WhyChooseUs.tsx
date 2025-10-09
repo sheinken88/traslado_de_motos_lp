@@ -136,10 +136,6 @@ export default function WhyChooseUs() {
               </SwiperSlide>
             ))}
           </Swiper>
-
-          {/* Gradient edges for visual depth */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-charcoal-900 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-charcoal-900 to-transparent pointer-events-none z-10" />
         </div>
       </div>
     </section>
