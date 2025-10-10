@@ -32,7 +32,9 @@ export default function Footer() {
 
             <div className="flex space-x-4 mt-6">
               <a
-                href="#"
+                href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 <Instagram className="w-6 h-6" />
@@ -68,10 +70,16 @@ export default function Footer() {
             </h3>
             <div className="space-y-2">
               <a
-                href="#inicio"
+                href="#hero"
                 className="block text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 {getText("nav.home")}
+              </a>
+              <a
+                href="#calculadora"
+                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+              >
+                {getText("nav.calculator")}
               </a>
               <a
                 href="#como-funciona"
@@ -80,22 +88,16 @@ export default function Footer() {
                 {getText("nav.howItWorks")}
               </a>
               <a
-                href="#servicios"
+                href="#por-que-elegirnos"
                 className="block text-gray-400 hover:text-yellow-400 transition-colors"
               >
                 {getText("nav.services")}
               </a>
               <a
-                href="#destinos"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
-              >
-                {getText("nav.destinations")}
-              </a>
-              <a
                 href="#cotizacion"
                 className="block text-gray-400 hover:text-yellow-400 transition-colors"
               >
-                {getText("nav.getQuote")}
+                {getText("nav.contact")}
               </a>
             </div>
           </div>

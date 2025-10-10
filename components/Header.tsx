@@ -120,7 +120,7 @@ export default function Header() {
             {/* Social Media Buttons */}
             <div className="flex items-center space-x-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -219,7 +219,7 @@ export default function Header() {
 
                 <div className="flex items-center space-x-2 mb-6">
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
