@@ -24,11 +24,16 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Traslado de Motos - Transporte de Motocicletas en Argentina | Servicio Profesional",
+  metadataBase: new URL("https://trasladodemotos.com.ar"),
+  title:
+    "Traslado de Motos - Transporte de Motocicletas en Argentina | Servicio Profesional",
   description:
     "Servicio de transporte de motocicletas y traslado de motos por toda Argentina. Transportamos tu moto de forma segura con seguro incluido, seguimiento GPS y entrega puntual. Desde 2018 ofreciendo calidad y confiabilidad.",
   keywords:
     "transporte motocicletas, traslado de motos, envío motos Argentina, transporte motos, servicio traslado motocicletas, transporte seguro motos, envío motocicletas Argentina, turismo aventura, transporte profesional motos",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Traslado de Motos - Transporte de Motocicletas en Argentina",
     description:
@@ -48,9 +53,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${oswald.variable} ${playfair.variable} font-sans bg-white`}
       >
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
