@@ -93,10 +93,11 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web.
 
     // Try to send email if Resend API key is configured
     if (process.env.RESEND_API_KEY) {
+      console.log("RESEND_API_KEY found, attempting to send email...");
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from: "Traslado de Motos <onboarding@resend.dev>", // You'll need to verify your domain
+        const emailResult = await resend.emails.send({
+          from: "Traslado de Motos <noreply@trasladodemotos.com.ar>", // Using verified domain
           to: ["info@trasladodemotos.com.ar"],
           subject: "Nueva solicitud de cotización - Transporte de motocicletas",
           text: emailContent,
@@ -104,8 +105,13 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web.
         });
 
         console.log("Email sent successfully to info@trasladodemotos.com.ar");
+        console.log("Email result:", JSON.stringify(emailResult, null, 2));
       } catch (emailError) {
         console.error("Failed to send email:", emailError);
+        console.error(
+          "Email error details:",
+          JSON.stringify(emailError, null, 2)
+        );
 
         // Still log the content for manual follow-up
         console.log("Email content that failed to send:");
