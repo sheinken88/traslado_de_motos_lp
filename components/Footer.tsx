@@ -30,7 +30,7 @@ export default function Footer() {
 
             <div className="flex space-x-4 mt-6">
               <a
-                href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
+                href="https://www.instagram.com/motoonofftours/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-steel-300 transition-colors hover:text-copper-400"

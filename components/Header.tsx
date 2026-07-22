@@ -98,7 +98,7 @@ export default function Header() {
             </div>
 
             <a
-              href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
+              href="https://www.instagram.com/motoonofftours/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -155,7 +155,7 @@ export default function Header() {
 
                 <div className="flex gap-1">
                   <a
-                    href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
+                    href="https://www.instagram.com/motoonofftours/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
