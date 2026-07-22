@@ -24,8 +24,8 @@ export default function Home() {
       <WhyChooseUs />
       <Testimonials />
       <FAQ />
-      <QuoteForm />
       <MotoToursCarousel />
+      <QuoteForm />
       <Footer />
       <WhatsAppButton />
     </main>
