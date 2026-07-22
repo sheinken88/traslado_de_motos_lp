@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -22,102 +22,77 @@ export default function TransportGallery() {
   const { t } = useLanguage();
 
   // Helper function to ensure we get a string from translation
-  const getText = (key: string): string => {
+  const getText = useCallback((key: string): string => {
     const result = t(key);
     return Array.isArray(result) ? result[0] : result;
-  };
-
-  // Generate random selection of images from r1-r18 - only once on mount
-  const randomImages = useMemo(() => {
-    const availableImages = [
-      "r1.jpg",
-      "r2.jpg",
-      "r3.jpeg",
-      "r4.jpeg",
-      "r5.jpeg",
-      "r6.jpeg",
-      "r7.jpg",
-      "r8.jpg",
-      "r9.jpg",
-      "r10.jpg",
-      "r11.jpeg",
-      "r14.jpg",
-      "r15.jpg",
-      "r17.jpeg",
-      "r18.jpeg",
-    ];
-
-    // Shuffle and select 6 random images
-    const shuffled = [...availableImages].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 6);
-  }, []); // Empty dependency array ensures this only runs once
+  }, [t]);
 
   const images = useMemo(
     () => [
       {
-        src: `/images/${randomImages[0]}`,
+        src: "/images/r11.jpeg",
         title: getText("showcaseGallery.images.loading"),
         description: getText("showcaseGallery.images.loadingDesc"),
         category: getText("showcaseGallery.categories.loading"),
         icon: Truck,
       },
       {
-        src: `/images/${randomImages[1]}`,
+        src: "/images/r17.jpeg",
         title: getText("showcaseGallery.images.security"),
         description: getText("showcaseGallery.images.securityDesc"),
         category: getText("showcaseGallery.categories.security"),
         icon: Shield,
       },
       {
-        src: `/images/${randomImages[2]}`,
+        src: "/images/r1.jpg",
         title: getText("showcaseGallery.images.fleet"),
         description: getText("showcaseGallery.images.fleetDesc"),
         category: getText("showcaseGallery.categories.transport"),
         icon: Truck,
       },
       {
-        src: `/images/${randomImages[3]}`,
+        src: "/images/r18.jpeg",
         title: getText("showcaseGallery.images.coverage"),
         description: getText("showcaseGallery.images.coverageDesc"),
         category: getText("showcaseGallery.categories.destinations"),
         icon: MapPin,
       },
       {
-        src: `/images/${randomImages[4]}`,
+        src: "/images/r10.jpg",
         title: getText("showcaseGallery.images.documentation"),
         description: getText("showcaseGallery.images.documentationDesc"),
         category: getText("showcaseGallery.categories.control"),
         icon: Camera,
       },
       {
-        src: `/images/${randomImages[5]}`,
+        src: "/images/r19.jpeg",
         title: getText("showcaseGallery.images.delivery"),
         description: getText("showcaseGallery.images.deliveryDesc"),
         category: getText("showcaseGallery.categories.delivery"),
         icon: MapPin,
       },
     ],
-    [randomImages, getText]
+    [getText]
   );
 
   return (
     <section
       id="gallery"
-      className="section-padding bg-gradient-to-b from-charcoal-900 to-black overflow-hidden"
+      className="section-padding overflow-hidden bg-ink-950"
     >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 max-w-3xl md:mb-16">
+          <p className="section-kicker !text-copper-400">
+            {getText("showcaseGallery.tagline")}
+          </p>
+          <h2 className="section-title !text-white">
             {getText("showcaseGallery.title")}{" "}
-            <span className="text-yellow-400">
+            <span className="text-copper-400">
               {getText("showcaseGallery.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-sand-200 max-w-3xl mx-auto font-light">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel-300 md:text-xl">
             {getText("showcaseGallery.subtitle")}
-          </p>
-          <p className="text-accent mt-2">
-            {getText("showcaseGallery.tagline")}
           </p>
         </div>
 
@@ -163,25 +138,25 @@ export default function TransportGallery() {
           >
             {images.map((image, index) => (
               <SwiperSlide key={`${image.src}-${index}`}>
-                <div className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:transform hover:scale-[1.02] hover:shadow-2xl h-full">
-                  <div className="relative h-56 sm:h-64 overflow-hidden">
+                <div className="group relative h-full overflow-hidden rounded-xl border border-white/15 bg-white/[0.04] transition-colors duration-300 hover:bg-white/[0.07]">
+                  <div className="relative h-64 overflow-hidden sm:h-72">
                     <img
                       src={image.src}
                       alt={image.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "/images/r1.jpg";
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/65 via-transparent to-transparent" />
 
                     {/* Category badge */}
                     <div className="absolute top-4 left-4 transform transition-transform duration-300 group-hover:scale-105">
-                      <div className="flex items-center space-x-2 bg-yellow-400/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
-                        <image.icon className="w-4 h-4 text-charcoal-900" />
-                        <span className="text-charcoal-900 text-sm font-semibold">
+                      <div className="flex items-center space-x-2 rounded-full border border-white/20 bg-ink-950/75 px-3 py-1.5 text-white backdrop-blur-sm">
+                        <image.icon className="h-4 w-4 text-copper-400" />
+                        <span className="text-xs font-medium">
                           {image.category}
                         </span>
                       </div>
@@ -189,7 +164,7 @@ export default function TransportGallery() {
                   </div>
 
                   <div className="p-4 sm:p-6">
-                    <h3 className="text-lg sm:text-xl font-oswald font-bold text-white mb-2 sm:mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+                    <h3 className="sentence-case mb-2 text-lg font-semibold tracking-[-0.025em] text-white sm:text-xl">
                       {image.title}
                     </h3>
                     <p className="text-sand-200/80 text-xs sm:text-sm leading-relaxed line-clamp-3">
@@ -221,13 +196,13 @@ export default function TransportGallery() {
 
         {/* CTA Section */}
         <div className="text-center mt-16">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto">
-            <p className="text-sand-200 mb-6 text-lg">
+          <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-5 border-t border-white/15 pt-10 sm:flex-row">
+            <p className="text-lg text-steel-300">
               {getText("showcaseGallery.cta.question")}
             </p>
             <a
               href="#cotizacion"
-              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-charcoal-900 px-8 py-4 rounded-xl font-oswald font-semibold text-lg hover:shadow-glow hover:scale-105 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center text-sm font-semibold text-copper-400 transition-colors hover:text-copper-300"
             >
               {getText("showcaseGallery.cta.button")}
             </a>
@@ -248,7 +223,7 @@ export default function TransportGallery() {
           width: 32px;
           height: 8px;
           border-radius: 4px;
-          background: #ffd100;
+          background: #d5653e;
         }
       `}</style>
     </section>

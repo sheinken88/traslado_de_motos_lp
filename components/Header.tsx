@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Globe, Check, MessageCircle, Instagram } from "lucide-react";
+import { Check, Globe, Instagram, Menu, MessageCircle, X } from "lucide-react";
 import Logo from "./Logo";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -16,6 +16,13 @@ export default function Header() {
     { code: "es" as const, name: "Español", flag: "🇦🇷" },
     { code: "en" as const, name: "English", flag: "🇺🇸" },
     { code: "pt" as const, name: "Português", flag: "🇧🇷" },
+  ];
+
+  const navItems = [
+    { href: "#hero", label: t("nav.home") },
+    { href: "#calculadora", label: t("nav.calculator") },
+    { href: "#como-funciona", label: t("nav.howItWorks") },
+    { href: "#por-que-elegirnos", label: t("nav.services") },
   ];
 
   useEffect(() => {
@@ -33,66 +40,37 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-navy-900 text-white sticky top-0 z-50 shadow-hard backdrop-blur-sm bg-opacity-95">
-      <div className="container mx-auto px-6 py-4 max-w-full">
-        <div className="flex items-center justify-between">
-          <div className="flex-shrink-0">
-            <Logo />
-          </div>
+    <header className="sticky top-0 z-50 border-b border-steel-300/70 bg-chalk-50/95 text-ink-950 backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="flex h-[76px] items-center justify-between">
+          <Logo />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center ml-8 xl:ml-12 space-x-6 xl:space-x-8 min-w-0">
-            <Link
-              href="#hero"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.home")}
-            </Link>
-            <Link
-              href="#calculadora"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.calculator")}
-            </Link>
-            <Link
-              href="#como-funciona"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.howItWorks")}
-            </Link>
-            <Link
-              href="#por-que-elegirnos"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.services")}
-            </Link>
-            <Link
-              href="#cotizacion"
-              className="hover:text-yellow-400 transition-colors font-medium text-sm xl:text-base whitespace-nowrap"
-            >
-              {t("nav.contact")}
-            </Link>
+          <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-steel-600 transition-colors hover:text-ink-950"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
-            {/* Language Selector */}
+          <div className="hidden items-center gap-2 md:flex">
             <div className="relative" ref={dropdownRef}>
               <button
-                className="flex items-center space-x-2 px-4 py-2.5 rounded-lg hover:bg-white/10 transition-colors"
+                className="flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-medium text-steel-600 transition-colors hover:bg-chalk-200 hover:text-ink-950"
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+                aria-expanded={isLangDropdownOpen}
+                aria-label="Seleccionar idioma"
               >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium whitespace-nowrap">
-                  {
-                    languages.find((lang) => lang.code === currentLanguage)
-                      ?.flag
-                  }{" "}
-                  {currentLanguage.toUpperCase()}
-                </span>
+                <Globe className="h-4 w-4" />
+                <span>{currentLanguage.toUpperCase()}</span>
               </button>
 
               {isLangDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-2xl overflow-hidden z-[100]">
+                <div className="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-steel-300 bg-white p-1.5 shadow-medium">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -100,16 +78,18 @@ export default function Header() {
                         setLanguage(lang.code);
                         setIsLangDropdownOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? "bg-gray-50" : ""
+                      className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-chalk-100 ${
+                        currentLanguage === lang.code
+                          ? "text-ink-950"
+                          : "text-steel-600"
                       }`}
                     >
-                      <span className="flex items-center space-x-3">
-                        <span className="text-lg">{lang.flag}</span>
-                        <span className="text-sm">{lang.name}</span>
+                      <span className="flex items-center gap-3">
+                        <span>{lang.flag}</span>
+                        <span>{lang.name}</span>
                       </span>
                       {currentLanguage === lang.code && (
-                        <Check className="w-4 h-4 text-yellow-400" />
+                        <Check className="h-4 w-4 text-copper-500" />
                       )}
                     </button>
                   ))}
@@ -117,115 +97,71 @@ export default function Header() {
               )}
             </div>
 
-            {/* Social Media Buttons */}
-            <div className="flex items-center space-x-2">
-              <a
-                href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-110"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-
-              <a
-                href={`https://wa.me/5491135939730?text=${encodeURIComponent(
-                  String(t("whatsapp.message"))
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="w-10 h-10 flex items-center justify-center bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-110"
-              >
-                <MessageCircle className="w-5 h-5" />
-              </a>
-            </div>
-
-            <Link
-              href="#cotizacion"
-              className="bg-yellow-400 text-navy-900 px-4 xl:px-5 py-2.5 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 hover:scale-105 text-sm xl:text-base whitespace-nowrap"
+            <a
+              href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hidden h-10 w-10 items-center justify-center rounded-lg text-steel-600 transition-colors hover:bg-chalk-200 hover:text-ink-950 xl:flex"
             >
+              <Instagram className="h-4 w-4" />
+            </a>
+
+            <Link href="#cotizacion" className="btn-primary ml-2 !px-5 !py-2.5 text-sm">
               {t("nav.getQuote")}
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-steel-300 md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label="Abrir menú"
           >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-navy-800">
-            <div className="flex flex-col space-y-4 mt-4">
-              <Link
-                href="#hero"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.home")}
-              </Link>
-              <Link
-                href="#calculadora"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.calculator")}
-              </Link>
-              <Link
-                href="#como-funciona"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.howItWorks")}
-              </Link>
-              <Link
-                href="#por-que-elegirnos"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.services")}
-              </Link>
-              <Link
-                href="#cotizacion"
-                className="hover:text-yellow-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t("nav.contact")}
-              </Link>
-              <div className="pt-4 border-t border-navy-800">
-                <button
-                  onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                  className="flex items-center space-x-2 text-sm mb-4"
+          <nav className="border-t border-steel-300/70 py-5 md:hidden">
+            <div className="flex flex-col">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="border-b border-steel-300/50 py-3.5 text-base font-medium text-ink-950"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  <Globe className="w-4 h-4" />
-                  <span>
-                    {
-                      languages.find((lang) => lang.code === currentLanguage)
-                        ?.flag
-                    }{" "}
-                    {currentLanguage.toUpperCase()}
-                  </span>
-                </button>
+                  {item.label}
+                </Link>
+              ))}
 
-                <div className="flex items-center space-x-2 mb-6">
+              <div className="mt-5 flex items-center justify-between">
+                <div className="flex gap-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`rounded-lg border px-3 py-2 text-sm ${
+                        currentLanguage === lang.code
+                          ? "border-copper-500 bg-copper-500 text-white"
+                          : "border-steel-300 text-steel-600"
+                      }`}
+                    >
+                      {lang.code.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex gap-1">
                   <a
                     href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg text-steel-600"
                   >
-                    <Instagram className="w-5 h-5" />
+                    <Instagram className="h-5 w-5" />
                   </a>
                   <a
                     href={`https://wa.me/5491135939730?text=${encodeURIComponent(
@@ -234,45 +170,20 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
-                    className="w-10 h-10 flex items-center justify-center bg-green-600 text-white rounded-lg"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg text-steel-600"
                   >
-                    <MessageCircle className="w-5 h-5" />
+                    <MessageCircle className="h-5 w-5" />
                   </a>
                 </div>
-                <Link
-                  href="#cotizacion"
-                  className="bg-yellow-400 text-navy-900 px-4 py-2 rounded-xl font-semibold w-full text-center"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t("nav.contact")}
-                </Link>
               </div>
 
-              {isLangDropdownOpen && (
-                <div className="mt-2 space-y-2 bg-white border border-gray-200 rounded-lg p-2 shadow-xl z-[100]">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code);
-                        setIsLangDropdownOpen(false);
-                        setIsMenuOpen(false);
-                      }}
-                      className={`w-full px-4 py-2 text-left text-gray-800 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-between ${
-                        currentLanguage === lang.code ? "bg-gray-50" : ""
-                      }`}
-                    >
-                      <span className="flex items-center space-x-3">
-                        <span>{lang.flag}</span>
-                        <span className="text-sm">{lang.name}</span>
-                      </span>
-                      {currentLanguage === lang.code && (
-                        <Check className="w-4 h-4 text-yellow-400" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <Link
+                href="#cotizacion"
+                className="btn-primary mt-5 w-full"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("nav.getQuote")}
+              </Link>
             </div>
           </nav>
         )}

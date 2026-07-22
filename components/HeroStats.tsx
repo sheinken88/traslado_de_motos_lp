@@ -1,158 +1,58 @@
 "use client";
 
 import Link from "next/link";
-import { TrendingUp, Star, Clock, Award } from "lucide-react";
+import { ArrowRight, Award, Clock, Star, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HeroStats() {
   const { t } = useLanguage();
 
   const stats = [
-    {
-      number: "150",
-      suffix: "+",
-      labelKey: "heroStats.transported",
-      icon: TrendingUp,
-      color: "text-yellow-400",
-    },
-    {
-      number: "95",
-      suffix: "%",
-      labelKey: "heroStats.satisfaction",
-      icon: Star,
-      color: "text-yellow-400",
-    },
-    {
-      number: "24",
-      suffix: "/7",
-      labelKey: "heroStats.support",
-      icon: Clock,
-      color: "text-yellow-400",
-    },
-    {
-      number: "6",
-      suffix: "+",
-      labelKey: "heroStats.experience",
-      icon: Award,
-      color: "text-yellow-400",
-    },
+    { number: "150", suffix: "+", labelKey: "heroStats.transported", icon: TrendingUp },
+    { number: "95", suffix: "%", labelKey: "heroStats.satisfaction", icon: Star },
+    { number: "24", suffix: "/7", labelKey: "heroStats.support", icon: Clock },
+    { number: "6", suffix: "+", labelKey: "heroStats.experience", icon: Award },
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-white overflow-hidden">
-      {/* Dynamic background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4">
-        {/* Stats row with responsive layout */}
-        <div className="max-w-6xl mx-auto">
-          {/* Mobile: 2x2 grid layout */}
-          <div className="grid grid-cols-2 gap-6 md:hidden">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center stagger-item"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Simplified mobile design */}
-                <div className="mb-3">
-                  <div className="flex items-center justify-center mb-2">
-                    <stat.icon
-                      className={`w-6 h-6 ${stat.color}`}
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <span className="text-3xl font-oswald font-bold text-white">
-                      {stat.number}
-                    </span>
-                    <span className="text-xl font-oswald font-light text-yellow-400 ml-1">
-                      {stat.suffix}
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sand-200/70 text-xs font-light tracking-wide leading-tight">
-                  {t(stat.labelKey)}
-                </p>
+    <section className="border-b border-steel-300/70 bg-chalk-50">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 border-x border-steel-300/70 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.labelKey}
+              className={`px-5 py-8 sm:px-7 lg:py-10 ${
+                index % 2 ? "border-l border-steel-300/70" : ""
+              } ${index > 1 ? "border-t border-steel-300/70 lg:border-t-0" : ""} ${
+                index > 0 ? "lg:border-l lg:border-steel-300/70" : ""
+              }`}
+            >
+              <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-full border border-steel-300 text-copper-500">
+                <stat.icon className="h-4 w-4" strokeWidth={1.75} />
               </div>
-            ))}
-          </div>
-
-          {/* Desktop: Original horizontal layout */}
-          <div className="hidden md:flex flex-wrap justify-center items-center gap-x-8 lg:gap-x-16 gap-y-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="group flex items-center space-x-4 stagger-item"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Icon with gradient background */}
-                <div className="relative">
-                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-yellow-500/20 rounded-2xl flex items-center justify-center transform rotate-3 group-hover:rotate-6 transition-transform duration-300">
-                    <stat.icon
-                      className={`w-8 h-8 ${stat.color}`}
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-yellow-400/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-
-                {/* Text content */}
-                <div className="text-left">
-                  <div className="flex items-baseline">
-                    <span className="text-4xl lg:text-5xl font-oswald font-bold text-white">
-                      {stat.number}
-                    </span>
-                    <span className="text-2xl lg:text-3xl font-oswald font-light text-yellow-400 ml-1">
-                      {stat.suffix}
-                    </span>
-                  </div>
-                  <p className="text-sand-200/70 text-sm mt-1 font-light tracking-wide">
-                    {t(stat.labelKey)}
-                  </p>
-                </div>
+              <div className="flex items-baseline tracking-[-0.05em]">
+                <span className="text-4xl font-semibold text-ink-950 lg:text-5xl">{stat.number}</span>
+                <span className="ml-1 text-xl font-medium text-copper-500">{stat.suffix}</span>
               </div>
-            ))}
-          </div>
+              <p className="mt-2 text-sm leading-5 text-steel-600">{t(stat.labelKey)}</p>
+            </div>
+          ))}
         </div>
 
-        {/* CTA section with responsive design */}
-        <div className="mt-12 md:mt-20 text-center">
-          <div className="relative inline-block">
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 blur-2xl" />
-
-            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-10 max-w-2xl mx-auto">
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-oswald font-bold text-white mb-3 md:mb-4">
-                {t("heroStats.ctaTitle")}
-              </h3>
-              <p className="text-sand-200/80 mb-6 md:mb-8 text-base md:text-lg font-light leading-relaxed">
-                {t("heroStats.ctaSubtitle")}
-              </p>
-              <Link
-                href="#cotizacion"
-                className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-charcoal-900 px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl font-oswald font-semibold text-base md:text-lg hover:shadow-glow hover:scale-105 transition-all duration-300 group"
-              >
-                {t("heroStats.ctaButton")}
-                <svg
-                  className="w-4 h-4 md:w-5 md:h-5 ml-2 md:ml-3 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </Link>
-            </div>
+        <div className="flex flex-col gap-5 border-x border-t border-steel-300/70 px-6 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <div>
+            <h3 className="sentence-case text-xl font-semibold tracking-[-0.025em] text-ink-950">
+              {t("heroStats.ctaTitle")}
+            </h3>
+            <p className="mt-1 text-sm text-steel-600">{t("heroStats.ctaSubtitle")}</p>
           </div>
+          <Link
+            href="#cotizacion"
+            className="group inline-flex shrink-0 items-center text-sm font-semibold text-copper-600"
+          >
+            {t("heroStats.ctaButton")}
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>

@@ -47,27 +47,17 @@ export default function WhyChooseUs() {
   return (
     <section
       id="por-que-elegirnos"
-      className="section-padding bg-charcoal-900 overflow-hidden relative"
+      className="section-padding relative overflow-hidden bg-chalk-100"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 25% 25%, #FFD100 0%, transparent 50%), radial-gradient(circle at 75% 75%, #FFD100 0%, transparent 50%)",
-          }}
-        />
-      </div>
-      <div className=" mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-oswald font-bold text-white mb-6 tracking-tight">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 max-w-3xl md:mb-16">
+          <h2 className="section-title">
             {t("whyChooseUs.title")}{" "}
-            <span className="text-yellow-400">
+            <span className="text-copper-500">
               {t("whyChooseUs.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-sand-200 max-w-3xl mx-auto font-light">
+          <p className="section-copy mt-6 max-w-3xl">
             {t("whyChooseUs.subtitle")}
           </p>
         </div>
@@ -104,34 +94,33 @@ export default function WhyChooseUs() {
           >
             {features.map((feature, index) => (
               <SwiperSlide key={index} className="!h-auto">
-                <div className="h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/10 hover:transform hover:scale-[1.02] hover:shadow-2xl group">
+                <div className="group h-full rounded-xl border border-steel-300/80 bg-white p-8 transition-colors duration-300 hover:border-copper-500/60">
                   {/* Top section with icon and stat */}
                   <div className="flex items-start justify-between mb-6">
                     <div className="relative">
-                      <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-yellow-400/25 transition-shadow duration-300">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-steel-300 bg-chalk-100">
                         <feature.icon
-                          className="w-7 h-7 text-charcoal-900"
-                          strokeWidth={2}
+                          className="h-5 w-5 text-copper-500"
+                          strokeWidth={1.75}
                         />
                       </div>
-                      <div className="absolute -inset-1 bg-yellow-400/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <span className="text-xs font-semibold text-yellow-400 uppercase tracking-wider">
+                    <span className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-copper-600">
                       {feature.stat}
                     </span>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-oswald font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+                  <h3 className="sentence-case mb-3 text-2xl font-semibold tracking-[-0.035em] text-ink-950">
                     {t(feature.titleKey)}
                   </h3>
 
-                  <p className="text-sand-200/80 leading-relaxed">
+                  <p className="leading-relaxed text-steel-600">
                     {t(feature.descriptionKey)}
                   </p>
 
                   {/* Bottom accent line */}
-                  <div className="mt-6 h-1 bg-gradient-to-r from-yellow-400/20 via-yellow-400/40 to-transparent rounded-full group-hover:from-yellow-400/40 group-hover:via-yellow-400/60 transition-all duration-300" />
+                  <div className="mt-7 h-px w-10 bg-copper-500" />
                 </div>
               </SwiperSlide>
             ))}

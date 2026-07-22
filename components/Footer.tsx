@@ -4,9 +4,7 @@ import {
   Phone,
   Mail,
   MapPin,
-  Facebook,
   Instagram,
-  Twitter,
 } from "lucide-react";
 import Logo from "./Logo";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -21,12 +19,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+    <footer className="border-t border-white/10 bg-ink-950 py-16 text-white">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Logo />
-            <p className="text-gray-400 mt-4 max-w-md">
+            <Logo inverse />
+            <p className="mt-5 max-w-md leading-7 text-steel-300">
               {getText("footer.description")}
             </p>
 
@@ -35,7 +33,7 @@ export default function Footer() {
                 href="https://www.instagram.com/traslado.de.motos?igsh=aWIzMHVqbHY0OG80"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-yellow-400 transition-colors"
+                className="text-steel-300 transition-colors hover:text-copper-400"
               >
                 <Instagram className="w-6 h-6" />
               </a>
@@ -43,59 +41,59 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="mb-5 text-base font-semibold">
               {getText("footer.contact")}
             </h3>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Phone className="w-5 h-5 text-yellow-400 mr-3" />
-                <span className="text-gray-400">+54 9 11 3593-9730</span>
+                <Phone className="mr-3 h-4 w-4 text-copper-400" />
+                <span className="text-steel-300">+54 9 11 3593-9730</span>
               </div>
               <div className="flex items-center">
-                <Mail className="w-5 h-5 text-yellow-400 mr-3" />
-                <span className="text-gray-400">
+                <Mail className="mr-3 h-4 w-4 text-copper-400" />
+                <span className="text-steel-300">
                   info@trasladodemotos.com.ar
                 </span>
               </div>
               <div className="flex items-center">
-                <MapPin className="w-5 h-5 text-yellow-400 mr-3" />
-                <span className="text-gray-400">Buenos Aires, Argentina</span>
+                <MapPin className="mr-3 h-4 w-4 text-copper-400" />
+                <span className="text-steel-300">Buenos Aires, Argentina</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">
+            <h3 className="mb-5 text-base font-semibold">
               {getText("footer.links")}
             </h3>
             <div className="space-y-2">
               <a
                 href="#hero"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+                className="block text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("nav.home")}
               </a>
               <a
                 href="#calculadora"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+                className="block text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("nav.calculator")}
               </a>
               <a
                 href="#como-funciona"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+                className="block text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("nav.howItWorks")}
               </a>
               <a
                 href="#por-que-elegirnos"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+                className="block text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("nav.services")}
               </a>
               <a
                 href="#cotizacion"
-                className="block text-gray-400 hover:text-yellow-400 transition-colors"
+                className="block text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("nav.contact")}
               </a>
@@ -103,9 +101,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-sm text-steel-300">
               © {new Date().getFullYear()} MotoTransfer.{" "}
               {getText("footer.copyright")}
             </p>
@@ -113,13 +111,13 @@ export default function Footer() {
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a
                 href="#"
-                className="text-gray-400 hover:text-yellow-400 text-sm transition-colors"
+                className="text-sm text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("footer.terms")}
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-yellow-400 text-sm transition-colors"
+                className="text-sm text-steel-300 transition-colors hover:text-copper-400"
               >
                 {getText("footer.privacy")}
               </a>

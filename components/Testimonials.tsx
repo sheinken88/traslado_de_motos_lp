@@ -12,6 +12,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
+interface TestimonialData {
+  name: string;
+  bike: string;
+  brand: string;
+  model: string;
+  location: string;
+  rating: number;
+  comment: string;
+}
+
 export default function Testimonials() {
   const { t } = useLanguage();
 
@@ -27,7 +37,7 @@ export default function Testimonials() {
   // Get testimonials from translations
   const testimonialsData = t("testimonials.data");
   const baseTestimonials = Array.isArray(testimonialsData)
-    ? testimonialsData
+    ? (testimonialsData as unknown as TestimonialData[])
     : [];
 
   // Add static image data to translation data with fallback
@@ -37,10 +47,10 @@ export default function Testimonials() {
           ...testimonial,
           image:
             index === 0
-              ? "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true"
+              ? "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=D5653E&color=FFFFFF&bold=true"
               : index === 1
-              ? "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=FFD100&color=0D0D0D&bold=true"
-              : "https://ui-avatars.com/api/?name=Roberto+Silva&background=FFD100&color=0D0D0D&bold=true",
+              ? "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=D5653E&color=FFFFFF&bold=true"
+              : "https://ui-avatars.com/api/?name=Roberto+Silva&background=D5653E&color=FFFFFF&bold=true",
           bikeImage:
             index === 0
               ? "/images/r10.jpg"
@@ -60,23 +70,22 @@ export default function Testimonials() {
             comment:
               "Excelente servicio. Mi moto llegó en perfecto estado y pude comenzar mi viaje por la Patagonia sin problemas. Muy recomendable.",
             image:
-              "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=FFD100&color=0D0D0D&bold=true",
+              "https://ui-avatars.com/api/?name=Carlos+Mendoza&background=D5653E&color=FFFFFF&bold=true",
             bikeImage: "/images/r10.jpg",
           },
         ];
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center mb-6">
-            <Quote className="w-8 h-8 text-yellow-400 mr-4" />
-            <h2 className="text-5xl md:text-6xl font-oswald font-bold text-black tracking-tight">
+    <section className="section-padding overflow-hidden bg-chalk-50">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 max-w-3xl md:mb-16">
+          <div className="mb-5 flex items-center">
+            <Quote className="mr-3 h-5 w-5 text-copper-500" />
+            <h2 className="section-title">
               {getText("testimonials.title")}
             </h2>
-            <Quote className="w-8 h-8 text-yellow-400 ml-4 rotate-180" />
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
+          <p className="section-copy max-w-3xl">
             {getText("testimonials.subtitle")}
           </p>
         </div>
@@ -99,34 +108,34 @@ export default function Testimonials() {
           >
             {testimonials.map((testimonial, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-gray-50 rounded-3xl p-12 shadow-sm border border-gray-100 overflow-hidden relative">
-                  <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative overflow-hidden rounded-2xl border border-steel-300/80 bg-white p-6 sm:p-10 lg:p-12">
+                  <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-14">
                     {/* Testimonial content */}
                     <div className="order-2 md:order-1">
                       <div className="flex justify-start mb-6">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star
                             key={i}
-                            className="w-6 h-6 text-yellow-400 fill-current mx-1"
+                            className="mr-1 h-5 w-5 fill-current text-copper-500"
                           />
                         ))}
                       </div>
 
-                      <blockquote className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-8 font-light">
-                        "{testimonial.comment}"
+                      <blockquote className="mb-8 text-2xl font-medium leading-snug tracking-[-0.035em] text-ink-950 md:text-3xl">
+                        &ldquo;{testimonial.comment}&rdquo;
                       </blockquote>
 
                       <div className="flex items-center">
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover border-4 border-yellow-400 shadow-lg mr-4"
+                          className="mr-4 h-12 w-12 rounded-full border border-steel-300 object-cover"
                         />
                         <div>
-                          <h4 className="text-xl font-oswald font-bold text-black">
+                          <h4 className="text-base font-semibold text-ink-950">
                             {testimonial.name}
                           </h4>
-                          <p className="text-yellow-600 font-semibold">
+                          <p className="mt-1 text-sm text-copper-600">
                             {testimonial.location}
                           </p>
                         </div>
@@ -136,14 +145,16 @@ export default function Testimonials() {
                     {/* Motorcycle showcase */}
                     <div className="order-1 md:order-2 text-center">
                       <div className="relative">
+                        <div className="overflow-hidden rounded-xl bg-chalk-100">
                         <img
                           src={testimonial.bikeImage}
                           alt={testimonial.bike}
-                          className="w-full max-w-md mx-auto h-64 object-contain"
+                          className="mx-auto h-72 w-full object-cover"
                         />
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm rounded-2xl px-6 py-3">
+                        </div>
+                        <div className="absolute bottom-4 left-4 rounded-lg border border-white/20 bg-ink-950/85 px-4 py-2 backdrop-blur-sm">
                           <div className="text-center">
-                            <div className="text-yellow-400 font-oswald font-bold text-lg">
+                            <div className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-copper-400">
                               {testimonial.brand}
                             </div>
                             <div className="text-white font-medium text-sm">
@@ -166,10 +177,10 @@ export default function Testimonials() {
             <button
               key={index}
               onClick={() => mainSwiper?.slideTo(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeTestimonial
-                  ? "bg-yellow-400 scale-125"
-                  : "bg-gray-300 hover:bg-gray-400"
+                  ? "w-8 bg-copper-500"
+                  : "w-2 bg-steel-300 hover:bg-steel-500"
               }`}
             />
           ))}
@@ -205,13 +216,13 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => (
                 <SwiperSlide key={index}>
                   <div
-                    className={`h-full bg-white rounded-2xl p-6 border-2
+                    className={`h-full rounded-xl border bg-white p-6
                                transition-all duration-300 cursor-pointer
-                               hover:shadow-xl hover:border-yellow-400 hover:-translate-y-1
+                               hover:border-copper-500/60
                                ${
                                  index === activeTestimonial
-                                   ? "border-yellow-400 shadow-lg bg-gradient-to-br from-yellow-50 to-white"
-                                   : "border-gray-200 shadow-md"
+                                   ? "border-copper-500"
+                                   : "border-steel-300/80"
                                }`}
                     onClick={() => mainSwiper?.slideTo(index)}
                   >
@@ -220,19 +231,19 @@ export default function Testimonials() {
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          className="w-14 h-14 rounded-full object-cover mr-3 ring-4 ring-yellow-400/20"
+                          className="mr-3 h-11 w-11 rounded-full border border-steel-300 object-cover"
                         />
                         <div>
-                          <h4 className="font-oswald font-bold text-black text-base">
+                          <h4 className="text-base font-semibold text-ink-950">
                             {testimonial.name}
                           </h4>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-steel-600">
                             {testimonial.location}
                           </p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-yellow-600 font-oswald font-bold text-sm">
+                        <div className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-copper-600">
                           {testimonial.brand}
                         </div>
                         <div className="text-gray-500 text-xs">
@@ -245,13 +256,13 @@ export default function Testimonials() {
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-5 h-5 text-yellow-400 fill-current drop-shadow-sm"
+                          className="h-4 w-4 fill-current text-copper-500"
                         />
                       ))}
                     </div>
 
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      "{testimonial.comment}"
+                    <p className="text-sm leading-relaxed text-steel-600">
+                      &ldquo;{testimonial.comment}&rdquo;
                     </p>
                   </div>
                 </SwiperSlide>
@@ -262,12 +273,12 @@ export default function Testimonials() {
           {/* Modern gradient overlays for desktop */}
           <div
             className="hidden md:block absolute left-0 top-0 bottom-0 w-32
-                          bg-gradient-to-r from-white via-white/50 to-transparent
+                          bg-gradient-to-r from-chalk-50 via-chalk-50/50 to-transparent
                           pointer-events-none z-10"
           />
           <div
             className="hidden md:block absolute right-0 top-0 bottom-0 w-32
-                          bg-gradient-to-l from-white via-white/50 to-transparent
+                          bg-gradient-to-l from-chalk-50 via-chalk-50/50 to-transparent
                           pointer-events-none z-10"
           />
         </div>

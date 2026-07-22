@@ -8,12 +8,13 @@ import TransportGallery from "@/components/TransportGallery";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import QuoteForm from "@/components/QuoteForm";
+import MotoToursCarousel from "@/components/MotoToursCarousel";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-sand-100 text-navy-900">
+    <main className="min-h-screen bg-chalk-100 text-ink-950">
       <Header />
       <Hero />
       <HeroStats />
@@ -24,6 +25,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <QuoteForm />
+      <MotoToursCarousel />
       <Footer />
       <WhatsAppButton />
     </main>

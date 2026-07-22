@@ -124,44 +124,29 @@ export default function QuoteCalculator() {
   return (
     <section
       id="calculadora"
-      className="section-padding relative overflow-hidden bg-gradient-to-b from-white via-sand-50 to-white"
+      className="section-padding border-b border-steel-300/70 bg-chalk-100"
     >
-      {/* Floating accent shapes */}
-      <div className="absolute inset-0 z-1 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-20 left-10 w-96 h-96 bg-orange-500/8 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/5 rounded-full blur-2xl animate-float"
-          style={{ animationDelay: "4s" }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-oswald font-bold text-navy-900 mb-4">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-12 max-w-3xl md:mb-16">
+          <p className="section-kicker">{getText("quoteCalculator.tagline")}</p>
+          <h2 className="section-title">
             {getText("quoteCalculator.title")}{" "}
-            <span className="text-yellow-500">
+            <span className="text-copper-500">
               {getText("quoteCalculator.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-charcoal-700 max-w-2xl mx-auto font-light">
+          <p className="section-copy mt-6 max-w-2xl">
             {getText("quoteCalculator.subtitle")}
-          </p>
-          <p className="text-yellow-600 mt-2 font-medium">
-            {getText("quoteCalculator.tagline")}
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-hard p-4 sm:p-6 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-2xl border border-steel-300/80 bg-white p-5 sm:p-8 lg:p-10">
+            <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
               {/* Left Column - Inputs */}
               <div className="space-y-6">
                 <div>
-                  <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
+                  <label className="field-label flex items-center">
                     <MapPin className="w-4 h-4 mr-2 text-yellow-400" />
                     {getText("quoteCalculator.fields.route")}
                   </label>
@@ -233,7 +218,7 @@ export default function QuoteCalculator() {
                 </div>
 
                 <div>
-                  <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
+                  <label className="field-label flex items-center">
                     <Bike className="w-4 h-4 mr-2 text-yellow-400" />
                     {getText("quoteCalculator.fields.bikeType")}
                   </label>
@@ -313,7 +298,7 @@ export default function QuoteCalculator() {
                           { type: "", quantity: 1 },
                         ])
                       }
-                      className="w-full px-4 py-3 bg-yellow-100 text-navy-900 rounded-xl hover:bg-yellow-200 transition-colors font-medium"
+                      className="w-full rounded-lg border border-steel-300 bg-white px-4 py-3 font-medium text-ink-950 transition-colors hover:border-copper-500 hover:text-copper-600"
                     >
                       + {getText("quoteCalculator.fields.addMotorcycle")}
                     </button>
@@ -322,7 +307,7 @@ export default function QuoteCalculator() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
+                    <label className="field-label flex items-center">
                       <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
                       {getText("quoteCalculator.fields.startDate")}
                     </label>
@@ -335,7 +320,7 @@ export default function QuoteCalculator() {
                     />
                   </div>
                   <div>
-                    <label className="flex items-center text-sm font-semibold text-navy-900 mb-2">
+                    <label className="field-label flex items-center">
                       <Calendar className="w-4 h-4 mr-2 text-yellow-400" />
                       {getText("quoteCalculator.fields.endDate")}
                     </label>
@@ -397,12 +382,12 @@ export default function QuoteCalculator() {
               </div>
 
               {/* Right Column - Result */}
-              <div className="lg:pl-8">
-                <div className="bg-gradient-to-br from-navy-900 to-charcoal-900 rounded-2xl p-6 sm:p-8 text-white h-full flex flex-col justify-between">
+              <div>
+                <div className="flex h-full flex-col justify-between rounded-xl bg-ink-950 p-6 text-white sm:p-8">
                   <div>
                     <div className="flex items-center mb-6">
                       <Calculator className="w-6 h-6 text-yellow-400 mr-3" />
-                      <h3 className="text-2xl font-oswald font-bold">
+                      <h3 className="sentence-case text-2xl font-semibold tracking-[-0.03em]">
                         {getText("quoteCalculator.estimate.title")}
                       </h3>
                     </div>
@@ -413,7 +398,7 @@ export default function QuoteCalculator() {
                           <p className="text-sand-300 mb-2">
                             {getText("quoteCalculator.estimate.range")}
                           </p>
-                          <div className="text-2xl sm:text-3xl font-bold text-yellow-400">
+                          <div className="text-2xl font-semibold tracking-[-0.035em] text-copper-400 sm:text-3xl">
                             {formatPrice(estimate.finalPrice)}
                           </div>
                           <p className="text-xs text-sand-400 mt-1">
@@ -535,7 +520,7 @@ export default function QuoteCalculator() {
                             }
                           }, 100);
                         }}
-                        className="w-full bg-yellow-400 text-navy-900 px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300 flex items-center justify-center group text-sm sm:text-base"
+                        className="group flex w-full items-center justify-center rounded-lg bg-copper-500 px-4 py-3 font-semibold text-white transition duration-300 hover:bg-copper-600 sm:px-6 sm:py-4"
                       >
                         {getText("quoteCalculator.estimate.ctaButton")}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "5491135939730";
-    const message = t("whatsapp.message");
+    const message = String(t("whatsapp.message"));
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -18,8 +18,10 @@ export default function WhatsAppButton() {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-2xl shadow-hard hover:shadow-glow transition-all transform hover:scale-110 z-50 animate-float"
-      aria-label={t("whatsapp.ariaLabel") || "Contactar por WhatsApp"}
+      className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-[#1f9d62] text-white shadow-medium transition duration-300 hover:-translate-y-0.5 hover:bg-[#188454] md:bottom-6 md:right-6"
+      aria-label={String(
+        t("whatsapp.ariaLabel") || "Contactar por WhatsApp"
+      )}
     >
       <MessageCircle className="w-6 h-6" />
     </button>

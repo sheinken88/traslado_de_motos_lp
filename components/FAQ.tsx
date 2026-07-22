@@ -35,17 +35,17 @@ export default function FAQ() {
     return (
       <section
         id="faq"
-        className="section-padding bg-gradient-to-b from-white to-sand-100"
+        className="section-padding border-t border-steel-300/70 bg-chalk-100"
       >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="mb-14 max-w-3xl">
+            <p className="section-kicker">{getText("faq.tagline")}</p>
+            <h2 className="section-title">
               {getText("faq.title")}
             </h2>
-            <p className="text-xl text-black max-w-2xl mx-auto font-light">
+            <p className="section-copy mt-6 max-w-2xl">
               {getText("faq.subtitle")}
             </p>
-            <p className="text-accent mt-2">{getText("faq.tagline")}</p>
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -66,39 +66,39 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="section-padding bg-gradient-to-b from-white to-sand-100"
+      className="section-padding border-t border-steel-300/70 bg-chalk-100"
     >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bebas font-black text-navy-900 mb-4">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 max-w-3xl md:mb-16">
+          <p className="section-kicker">{getText("faq.tagline")}</p>
+          <h2 className="section-title">
             {getText("faq.title")}
           </h2>
-          <p className="text-xl text-black max-w-2xl mx-auto font-light">
+          <p className="section-copy mt-6 max-w-2xl">
             {getText("faq.subtitle")}
           </p>
-          <p className="text-black italic mt-2">{getText("faq.tagline")}</p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl border-t border-steel-300">
           {validFaqs.map((faq, index) => (
-            <div key={index} className="mb-4 last:mb-0">
+            <div key={index} className="border-b border-steel-300">
               <button
-                className="w-full py-6 text-left flex justify-between items-center bg-white hover:bg-sand-100 px-6 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300"
+                className="flex w-full items-center justify-between py-7 text-left"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <h3 className="text-lg font-semibold text-navy-900 pr-4">
+                <h3 className="pr-4 text-lg font-semibold tracking-[-0.02em] text-ink-950">
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-6 h-6 text-yellow-400 flex-shrink-0 transition-transform" />
+                  <ChevronUp className="h-5 w-5 flex-shrink-0 text-copper-500" />
                 ) : (
-                  <ChevronDown className="w-6 h-6 text-charcoal-700 flex-shrink-0 transition-transform hover:text-yellow-400" />
+                  <ChevronDown className="h-5 w-5 flex-shrink-0 text-steel-600" />
                 )}
               </button>
 
               {openIndex === index && (
-                <div className="px-6 pb-6 animate-fadeInUp">
-                  <p className="text-black leading-relaxed text-elegant mt-4 pl-4 border-l-2 border-yellow-400">
+                <div className="animate-fadeInUp pb-7">
+                  <p className="max-w-3xl border-l-2 border-copper-500 pl-5 leading-7 text-steel-600">
                     {faq.answer}
                   </p>
                 </div>

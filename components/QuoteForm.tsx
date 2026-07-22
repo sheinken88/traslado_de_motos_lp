@@ -170,14 +170,14 @@ export default function QuoteForm() {
     return (
       <section
         id="cotizacion"
-        className="section-padding bg-navy-900 text-white"
+        className="section-padding bg-ink-950 text-white"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-green-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-glow animate-scaleIn">
+            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-copper-500 animate-scaleIn">
               <Send className="w-10 h-10" />
             </div>
-            <h2 className="text-4xl font-bebas font-black mb-4">
+            <h2 className="sentence-case mb-4 text-4xl font-semibold tracking-[-0.045em]">
               {t("quoteForm.success.title")}
             </h2>
             <p className="text-xl text-sand-200 mb-8">
@@ -205,7 +205,7 @@ export default function QuoteForm() {
                   comentarios: "",
                 });
               }}
-              className="bg-yellow-400 text-navy-900 px-8 py-3 rounded-xl font-semibold hover:bg-yellow-300 hover:shadow-glow transition-all duration-300"
+              className="btn-primary"
             >
               {t("quoteForm.success.newQuote")}
             </button>
@@ -218,27 +218,23 @@ export default function QuoteForm() {
   return (
     <section
       id="cotizacion"
-      className="section-padding bg-navy-900 text-white relative overflow-hidden"
+      className="section-padding relative overflow-hidden bg-ink-950 text-white"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-olive-600 rounded-full blur-3xl" />
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bebas font-black mb-4">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mb-14 max-w-3xl md:mb-16">
+          <p className="section-kicker !text-copper-400">MotoTransfer</p>
+          <h2 className="section-title !text-white">
             {t("quoteForm.title")}{" "}
-            <span className="text-yellow-400">
+            <span className="text-copper-400">
               {t("quoteForm.titleAccent")}
             </span>
           </h2>
-          <p className="text-xl text-sand-200 max-w-2xl mx-auto font-light">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel-300 md:text-xl">
             {t("quoteForm.subtitle")}
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl">
           {isFromCalculator && (
             <div className="mb-6 p-4 bg-green-900/20 border border-green-400/30 rounded-xl">
               <div className="flex items-center justify-between text-green-400">
@@ -275,7 +271,10 @@ export default function QuoteForm() {
               </div>
             </div>
           )}
-          <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
+          <form
+            onSubmit={handleSubmit}
+            className="grid gap-x-6 gap-y-7 border-t border-white/15 pt-10 md:grid-cols-2"
+          >
             <div>
               <label className="block text-sm font-bold mb-2" htmlFor="origen">
                 {t("quoteForm.fields.origin")} *
@@ -530,7 +529,7 @@ export default function QuoteForm() {
             <div className="md:col-span-2 text-center">
               <button
                 type="submit"
-                className="bg-yellow-400 text-navy-900 px-12 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 hover:shadow-glow transition-all transform hover:scale-105 flex items-center justify-center mx-auto group"
+                className="group mx-auto flex items-center justify-center rounded-lg bg-copper-500 px-12 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-copper-600"
               >
                 {t("quoteForm.submit")}
                 <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

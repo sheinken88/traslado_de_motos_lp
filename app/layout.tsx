@@ -1,26 +1,19 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Oswald, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  display: "swap",
 });
 
-const oswald = Oswald({
-  subsets: ["latin"],
-  variable: "--font-oswald",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -51,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${inter.variable} ${oswald.variable} ${playfair.variable} font-sans bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <LanguageProvider>{children}</LanguageProvider>
       </body>
